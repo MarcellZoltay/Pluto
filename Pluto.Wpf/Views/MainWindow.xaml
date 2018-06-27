@@ -3,8 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="{Binding Title}" Height="350" Width="525">
-    <Grid>
-        <ContentControl prism:RegionManager.RegionName="ContentRegion" />
-    </Grid>
+        xmlns:myControls="clr-namespace:Pluto.Wpf.Views"
+        Title="{Binding Title}" Height="350" Width="525"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized"
+        MinWidth="600" MinHeight="600">
+    
+    <DockPanel>
+        <myControls:NavigationBar DockPanel.Dock="Top"
+                                  StartPageCommand="{Binding NavigateToStartPageCommand}"
+                                  CurriculumPageCommand="{Binding NavigateToCurriculumPageCommand}"/>
+        <Label DockPanel.Dock="Bottom" Content="{Binding Title}"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"/>
+        <ContentControl prism:RegionManager.RegionName="MainRegion" />
+    </DockPanel>
 </Window>
