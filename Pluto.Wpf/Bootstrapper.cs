@@ -3,6 +3,7 @@ using System.Windows;
 using Prism.Modularity;
 using Autofac;
 using Prism.Autofac;
+using Pluto.BLL.Services;
 
 namespace Pluto.Wpf
 {
@@ -30,6 +31,8 @@ namespace Pluto.Wpf
 
             builder.RegisterTypeForNavigation<StartPage>();
             builder.RegisterTypeForNavigation<CurriculumPage>();
+
+            builder.RegisterType<SubjectService>().As<ISubjectService>();
         }
     }
 }
