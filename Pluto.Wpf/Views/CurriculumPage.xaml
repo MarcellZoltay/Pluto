@@ -5,7 +5,51 @@
              prism:ViewModelLocator.AutoWireViewModel="True">
 
     <Grid>
-        <Label Content="{Binding Title}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" MinWidth="150" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" MinHeight="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        
+        <Label Grid.Column="1" Content="{Binding Title}" />
+
+        <StackPanel Grid.Row="1" MinWidth="210" VerticalAlignment="Stretch">
+            <Button Content="New subject" />
+            <Button Content="Edit subject" />
+            <Button Content="Delete subject" />
+        </StackPanel>
+
+        <Border Grid.Column="1" Grid.Row="1"
+                BorderBrush="Black" BorderThickness="1.5" CornerRadius="10"
+                Margin="0 0 10 3" Padding="10">
+
+            <ListView Name="lvSubjects" ItemsSource="{Binding Subjects}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock x:Name="Name" Text="{Binding Name}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Header="Credit">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock x:Name="Credit" Text="{Binding Credit}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Border>
+        
     </Grid>
     
 </UserControl>

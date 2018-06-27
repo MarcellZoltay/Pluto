@@ -2,7 +2,10 @@
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using Pluto.BLL.Model;
+using Pluto.BLL.Services;
 
 namespace Pluto.Wpf.ViewModels
 {
@@ -14,9 +17,16 @@ namespace Pluto.Wpf.ViewModels
             get { return _title; }
             set { SetProperty(ref _title, value); }
         }
-        public CurriculumPageViewModel()
-        {
 
+        public ObservableCollection<Subject> Subjects { get; private set; }
+
+        private ISubjectService _subjectService;
+
+        public CurriculumPageViewModel(ISubjectService subjectService)
+        {
+            _subjectService = subjectService;
+
+            Subjects = new ObservableCollection<Subject>(_subjectService.GetSubjects());
         }
     }
 }
