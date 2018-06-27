@@ -23,5 +23,13 @@ namespace Pluto.Wpf
             var moduleCatalog = (ModuleCatalog)ModuleCatalog;
             //moduleCatalog.AddModule(typeof(YOUR_MODULE));
         }
+
+        protected override void ConfigureContainerBuilder(ContainerBuilder builder)
+        {
+            base.ConfigureContainerBuilder(builder);
+
+            builder.RegisterTypeForNavigation<StartPage>();
+            builder.RegisterTypeForNavigation<CurriculumPage>();
+        }
     }
 }
