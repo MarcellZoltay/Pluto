@@ -4,7 +4,7 @@ namespace Pluto.Wpf.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-        private string _title = "Prism Application";
+        private string _title = "Pluto";
         public string Title
         {
             get { return _title; }
