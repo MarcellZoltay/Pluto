@@ -9,6 +9,6 @@ namespace Pluto.BLL.Services
 {
     public interface ISubjectService
     {
-        IEnumerable<Subject> GetSubjects();
+        List<Subject> GetSubjects();
     }
 }
