@@ -10,5 +10,9 @@ namespace Pluto.BLL.Services
     public interface ISubjectService
     {
         List<Subject> GetSubjects();
+        Subject GetSubjectById(int? id);
+        void AddSubject(Subject subject);
+        void UpdateSubject(Subject subjectToUpdate);
+        void DeleteSubjectById(int id);
     }
 }

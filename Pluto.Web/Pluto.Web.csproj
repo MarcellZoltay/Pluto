@@ -213,6 +213,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Curriculum\Index.cshtml" />
+    <Content Include="Views\Curriculum\Edit.cshtml" />
+    <Content Include="Views\Curriculum\Delete.cshtml" />
+    <Content Include="Views\Curriculum\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

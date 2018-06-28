@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,12 +15,53 @@ namespace Pluto.BLL.Services
         {
             List<Subject> subjects;
 
-            using (var context = new PlutoContext())
+            using (var db = new PlutoContext())
             {
-                subjects = context.Subjects.ToList();
+                subjects = db.Subjects.ToList();
             }
 
             return subjects;
+        }
+
+        public Subject GetSubjectById(int? id)
+        {
+            Subject subject;
+
+            using (var db = new PlutoContext())
+            {
+                subject = db.Subjects.Find(id);
+            }
+
+            return subject;
+        }
+
+        public void AddSubject(Subject subject)
+        {
+            using (var db = new PlutoContext())
+            {
+                db.Entry(subject).State = EntityState.Added;
+                db.SaveChanges();
+            }
+        }
+
+        public void UpdateSubject(Subject subjectToUpdate)
+        {
+            using (var db = new PlutoContext())
+            {
+                db.Entry(subjectToUpdate).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
+        public void DeleteSubjectById(int id)
+        {
+            using (var db = new PlutoContext())
+            {
+                var subject = db.Subjects.Find(id);
+
+                db.Entry(subject).State = EntityState.Deleted;
+                db.SaveChanges();
+            }
         }
     }
 }
