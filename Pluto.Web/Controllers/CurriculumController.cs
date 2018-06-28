@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pluto.BLL.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,18 @@ namespace Pluto.Web.Controllers
 {
     public class CurriculumController : Controller
     {
+        private ISubjectService _subjectService;
+
+        public CurriculumController(ISubjectService subjectService)
+        {
+            _subjectService = subjectService;
+        }
+
         // GET: Curriculum
         public ActionResult Index()
         {
-            return View();
+            var model = _subjectService.GetSubjects();
+            return View(model);
         }
 
         //// GET: Curriculum/Details/5

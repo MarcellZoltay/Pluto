@@ -11,6 +11,11 @@ namespace Pluto.BLL.DAL
 {
     public class PlutoContext : DbContext
     {
+        public PlutoContext()
+        {
+            Database.SetInitializer(new PlutoInitializer());
+        }
+
         public DbSet<Subject> Subjects { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -10,7 +10,7 @@ namespace Pluto.BLL.Services
 {
     public class SubjectService : ISubjectService
     {
-        public IEnumerable<Subject> GetSubjects()
+        public List<Subject> GetSubjects()
         {
             List<Subject> subjects;
 

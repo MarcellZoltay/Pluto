@@ -23,8 +23,6 @@ namespace Pluto.BLL.DAL
             subjects.ForEach(s => context.Subjects.Add(s));
 
             context.SaveChanges();
-
-            base.Seed(context);
         }
     }
 }
