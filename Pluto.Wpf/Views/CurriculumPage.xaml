@@ -18,16 +18,18 @@
         <Label Grid.Column="1" Content="{Binding Title}" />
 
         <StackPanel Grid.Row="1" MinWidth="210" VerticalAlignment="Stretch">
-            <Button Content="New subject" />
-            <Button Content="Edit subject" />
-            <Button Content="Delete subject" />
+            <Button Content="New subject" Command="{Binding NewSubjectCommand}" />
+            <Button Content="Edit subject" Command="{Binding EditSubjectCommand}"/>
+            <Button Content="Delete subject" Command="{Binding DeleteSubjectCommand}" />
+            <Button Content="Order list" Command="{Binding OrderListCommand}" />
         </StackPanel>
 
         <Border Grid.Column="1" Grid.Row="1"
                 BorderBrush="Black" BorderThickness="1.5" CornerRadius="10"
                 Margin="0 0 10 3" Padding="10">
 
-            <ListView Name="lvSubjects" ItemsSource="{Binding Subjects}">
+            <ListView Name="lvSubjects" ItemsSource="{Binding Subjects}"
+                      SelectedIndex="{Binding SelectedSubjectIndex, Mode=TwoWay}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Name">
