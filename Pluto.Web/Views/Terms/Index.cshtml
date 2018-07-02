@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Pluto.BLL.Model.Term>
+
+@{
+    ViewBag.Title = "Terms";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    bool deleteLastVisible = false;
+}
+<h2>@ViewBag.Title</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Name)
+            </td>
+            <td>
+                @Html.CheckBoxFor(model => item.IsActive, new { @disabled = "disabled" } )
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TermId })
+            </td>
+        </tr>
+
+        if (!deleteLastVisible)
+        {
+            deleteLastVisible = true;
+        }
+    }
+</table>
+
+<p>
+    @Html.ActionLink("New term", "Create")
+    @if(deleteLastVisible)
+    {
+        @Html.ActionLink("Delete last term", "Delete");
+    }
+</p>

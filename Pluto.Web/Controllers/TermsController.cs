@@ -10,38 +10,42 @@ using System.Web.Mvc;
 
 namespace Pluto.Web.Controllers
 {
-    public class CurriculumController : Controller
+    public class TermsController : Controller
     {
-        private ISubjectService _subjectService;
+        private ITermService _termService;
 
-        public CurriculumController(ISubjectService subjectService)
+        public TermsController(ITermService termService)
         {
-            _subjectService = subjectService;
+            _termService = termService;
         }
-
-        // GET: Curriculum
+        // GET: Terms
         public ActionResult Index()
         {
-            var subjects = _subjectService.GetSubjects();
-            return View(subjects);
+            var terms = _termService.GetTerms();
+
+            return View(terms);
         }
 
-        // GET: Curriculum/Create
+        // GET: Terms/Create
         public ActionResult Create()
         {
+            int count = _termService.GetTerms().Count;
+            ViewBag.TermName = (count+1) + ". term";
             return View();
         }
 
-        // POST: Curriculum/Create
+        // POST: Terms/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Name, Credit")] Subject subject)
+        public ActionResult Create([Bind(Include = "IsActive")] Term term)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _subjectService.AddSubject(subject);
+                    int count = _termService.GetTerms().Count;
+                    term.Name = (count + 1) + ". term";
+                    _termService.AddTerm(term);
 
                     return RedirectToAction("Index");
                 }
@@ -51,40 +55,40 @@ namespace Pluto.Web.Controllers
                 ModelState.AddModelError("", "Unable to save changes");
             }
 
-            return View(subject);
+            return View(term);
         }
 
-        // GET: Curriculum/Edit/5
+        // GET: Terms/Edit/5
         public ActionResult Edit(int? id)
         {
             if(id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var subject = _subjectService.GetSubjectById(id);
-            if(subject == null)
+            var term = _termService.GetTermById(id);
+            if(term == null)
             {
                 return HttpNotFound();
             }
 
-            return View(subject);
+            return View(term);
         }
 
-        // POST: Curriculum/Edit/5
+        // POST: Terms/Edit/5
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
         public ActionResult EditPost(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var subjectToUpdate = _subjectService.GetSubjectById(id);
-            if (TryUpdateModel(subjectToUpdate, "", new string[] { "Name", "Credit"}))
+            var termToUpdate = _termService.GetTermById(id);
+            if (TryUpdateModel(termToUpdate, "", new string[] { "IsActive" }))
             {
                 try
                 {
-                    _subjectService.UpdateSubject(subjectToUpdate);
+                    _termService.UpdateTerm(termToUpdate);
 
                     return RedirectToAction("Index");
                 }
@@ -93,42 +97,31 @@ namespace Pluto.Web.Controllers
                     ModelState.AddModelError("", "Unable to save changes.");
                 }
             }
-            return View(subjectToUpdate);
+            return View(termToUpdate);
         }
 
-        // GET: Curriculum/Delete/5
-        public ActionResult Delete(int? id, bool? saveChangesError = false)
+        // GET: Terms/Delete/5
+        public ActionResult Delete(bool? saveChangesError = false)
         {
-            if(id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             if (saveChangesError.GetValueOrDefault())
             {
                 ViewBag.ErrorMessage = "Delete failed.";
             }
 
-            var subject = _subjectService.GetSubjectById(id);
-            if(subject == null)
-            {
-                return HttpNotFound();
-            }
-            
-            return View(subject);
+            return View();
         }
 
-        // POST: Curriculum/Delete/5
+        // POST: Terms/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
+        public ActionResult Delete()
         {
             try
             {
-                _subjectService.DeleteSubjectById(id);
+                _termService.DeleteLastTerm();
             }
-            catch (DataException)
+            catch
             {
-                return RedirectToAction("Delete", new { id = id, saveChangesError = true });
+                return RedirectToAction("Delete", new { saveChangesError = true });
             }
             return RedirectToAction("Index");
         }
