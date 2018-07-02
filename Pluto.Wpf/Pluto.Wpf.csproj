@@ -59,12 +59,17 @@
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="ViewModels\CurriculumPageViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\CreateOrEditSubjectDialogViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\CreateOrEditTermDialogViewModel.cs" />
     <Compile Include="ViewModels\StartPageViewModel.cs" />
+    <Compile Include="ViewModels\TermsPageViewModel.cs" />
     <Compile Include="Views\CurriculumPage.xaml.cs">
       <DependentUpon>CurriculumPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Dialogs\CreateOrEditSubjectDialog.xaml.cs">
       <DependentUpon>CreateOrEditSubjectDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\CreateOrEditTermDialog.xaml.cs">
+      <DependentUpon>CreateOrEditTermDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NavigationBar.xaml.cs">
       <DependentUpon>NavigationBar.xaml</DependentUpon>
@@ -72,11 +77,18 @@
     <Compile Include="Views\StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\TermsPage.xaml.cs">
+      <DependentUpon>TermsPage.xaml</DependentUpon>
+    </Compile>
     <Page Include="Views\CurriculumPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Dialogs\CreateOrEditSubjectDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\CreateOrEditTermDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -99,6 +111,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\StartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TermsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

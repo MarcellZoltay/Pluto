@@ -41,6 +41,16 @@ namespace Pluto.Wpf.Views
             typeof(DelegateCommand),
             typeof(NavigationBar));
 
+        public DelegateCommand TermsPageCommand
+        {
+            get { return (DelegateCommand)GetValue(NavigationBar.TermsPageCommandProperty); }
+            set { SetValue(NavigationBar.TermsPageCommandProperty, value); }
+        }
+        public static readonly DependencyProperty TermsPageCommandProperty = DependencyProperty.Register(
+            nameof(TermsPageCommand),
+            typeof(DelegateCommand),
+            typeof(NavigationBar));
+
         public NavigationBar()
         {
             InitializeComponent();

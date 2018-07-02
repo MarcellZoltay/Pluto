@@ -23,6 +23,16 @@ namespace Pluto.BLL.DAL
             subjects.ForEach(s => context.Subjects.Add(s));
 
             context.SaveChanges();
+
+            var terms = new List<Term>();
+            for (var i=1; i<5; i++)
+            {
+                terms.Add(new Term() { Name = i + ". term", IsActive = (i%2 == 0 ? true : false) });
+            }
+
+            terms.ForEach(t => context.Terms.Add(t));
+
+            context.SaveChanges();
         }
     }
 }
