@@ -69,10 +69,22 @@
   <ItemGroup>
     <Compile Include="DAL\PlutoContext.cs" />
     <Compile Include="DAL\PlutoInitializer.cs" />
+    <Compile Include="Migrations\201807020822029_InitialCreate.cs" />
+    <Compile Include="Migrations\201807020822029_InitialCreate.Designer.cs">
+      <DependentUpon>201807020822029_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807020823022_AddTermTable.cs" />
+    <Compile Include="Migrations\201807020823022_AddTermTable.Designer.cs">
+      <DependentUpon>201807020823022_AddTermTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Subjects\Subject.cs" />
+    <Compile Include="Model\Term.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ISubjectService.cs" />
+    <Compile Include="Services\ITermService.cs" />
     <Compile Include="Services\SubjectService.cs" />
+    <Compile Include="Services\TermService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -90,6 +102,13 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201807020822029_InitialCreate.resx">
+      <DependentUpon>201807020822029_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807020823022_AddTermTable.resx">
+      <DependentUpon>201807020823022_AddTermTable.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

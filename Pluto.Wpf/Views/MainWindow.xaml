@@ -11,7 +11,8 @@
     <DockPanel>
         <myControls:NavigationBar DockPanel.Dock="Top"
                                   StartPageCommand="{Binding NavigateToStartPageCommand}"
-                                  CurriculumPageCommand="{Binding NavigateToCurriculumPageCommand}"/>
+                                  CurriculumPageCommand="{Binding NavigateToCurriculumPageCommand}"
+                                  TermsPageCommand="{Binding NavigateToTermsPageCommand}"/>
         <Label DockPanel.Dock="Bottom" Content="{Binding Title}"
                HorizontalAlignment="Center"
                VerticalAlignment="Center"/>

@@ -5,17 +5,15 @@ using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
-using System.Windows.Input;
 
 namespace Pluto.Wpf.ViewModels.Dialogs
 {
-    public class CreateOrEditSubjectDialogViewModel : BindableBase
+    public class CreateOrEditTermDialogViewModel : BindableBase
     {
         public string Title { get; private set; }
         public string ButtonContent { get; private set; }
 
-        public Subject Subject { get; private set; }
+        public Term Term { get; private set; }
 
         public DelegateCommand CreateSaveCommand { get; private set; }
         public DelegateCommand BackCommand { get; private set; }
@@ -30,21 +28,20 @@ namespace Pluto.Wpf.ViewModels.Dialogs
                 view.DialogResult = dialogResult;
             }
         }
-        private CreateOrEditSubjectDialog view;
-
-        public CreateOrEditSubjectDialogViewModel(Subject subject = null)
+        private CreateOrEditTermDialog view;
+        public CreateOrEditTermDialogViewModel(Term term = null)
         {
-            if(subject == null)
+            if (term == null)
             {
-                Title = "Create subject";
+                Title = "Create term";
                 ButtonContent = "Create";
-                Subject = new Subject();
+                Term = new Term();
             }
             else
             {
-                Title = "Edit subject";
+                Title = "Edit term";
                 ButtonContent = "Save";
-                Subject = subject;
+                Term = term;
             }
 
             CreateSaveCommand = new DelegateCommand(CreateSaveOnClick);
@@ -53,9 +50,8 @@ namespace Pluto.Wpf.ViewModels.Dialogs
 
         public bool? ShowDialog()
         {
-            view = new CreateOrEditSubjectDialog();
+            view = new CreateOrEditTermDialog();
             view.DataContext = this;
-            //view.tbCredit.PreviewTextInput += PreviewCreditTextboxHandler;
             view.ShowDialog();
 
             return DialogResult;
@@ -69,16 +65,5 @@ namespace Pluto.Wpf.ViewModels.Dialogs
         {
             DialogResult = false;
         }
-
-        //private void PreviewCreditTextboxHandler(object sender, TextCompositionEventArgs e)
-        //{
-        //    Regex regex = new Regex("^[0-9]{1,2}$");
-
-        //    int value;
-        //    Int32.TryParse(e.Text, out value);
-        //    bool accepted = (value >= 0 && value <= 30);
-
-        //    e.Handled = regex.IsMatch(e.Text) && accepted;
-        //}
     }
 }

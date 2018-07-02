@@ -17,6 +17,7 @@ namespace Pluto.BLL.DAL
         }
 
         public DbSet<Subject> Subjects { get; set; }
+        public DbSet<Term> Terms { get;set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using System;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
 
@@ -17,6 +18,7 @@ namespace Pluto.Wpf.ViewModels
 
         public DelegateCommand NavigateToStartPageCommand { get; private set; }
         public DelegateCommand NavigateToCurriculumPageCommand { get; private set; }
+        public DelegateCommand NavigateToTermsPageCommand { get; set; }
 
         public MainWindowViewModel(IRegionManager regionManager)
         {
@@ -24,6 +26,7 @@ namespace Pluto.Wpf.ViewModels
 
             NavigateToStartPageCommand = new DelegateCommand(NavigateToStartPage);
             NavigateToCurriculumPageCommand = new DelegateCommand(NavigateToCurriculumPage);
+            NavigateToTermsPageCommand = new DelegateCommand(NavigateToTermsPage);
         }
 
         private void NavigateToStartPage()
@@ -33,6 +36,10 @@ namespace Pluto.Wpf.ViewModels
         private void NavigateToCurriculumPage()
         {
             regionManager.RequestNavigate("MainRegion", "CurriculumPage");
+        }
+        private void NavigateToTermsPage()
+        {
+            regionManager.RequestNavigate("MainRegion", "TermsPage");
         }
     }
 }

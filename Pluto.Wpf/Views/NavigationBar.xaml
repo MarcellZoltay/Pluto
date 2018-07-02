@@ -11,6 +11,7 @@
     <WrapPanel>
         <Button Content="Főoldal" Command="{Binding ElementName=navigationbar, Path=StartPageCommand}" />
         <Button Content="Tanterv" Command="{Binding ElementName=navigationbar, Path=CurriculumPageCommand}" />
+        <Button Content="Félévek" Command="{Binding ElementName=navigationbar, Path=TermsPageCommand}" />
     </WrapPanel>
     
 </UserControl>

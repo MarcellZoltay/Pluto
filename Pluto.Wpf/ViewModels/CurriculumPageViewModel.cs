@@ -48,7 +48,7 @@ namespace Pluto.Wpf.ViewModels
 
         }
 
-        private void NewSubjectOnClick(object o)
+        private void NewSubjectOnClick(object obj)
         {
             var dialogViewModel = new CreateOrEditSubjectDialogViewModel();
             if(dialogViewModel.ShowDialog() == true)
@@ -57,10 +57,10 @@ namespace Pluto.Wpf.ViewModels
 
                 _subjectService.AddSubject(subject);
                 var id = subject.SubjectId;
-                Subjects.Add(_subjectService.GetSubjectById(id));                
+                Subjects.Add(_subjectService.GetSubjectById(id));               
             }
         }
-        private void EditSubjectOnClick(object o)
+        private void EditSubjectOnClick(object obj)
         {
             var subject = Subjects.ElementAt(SelectedSubjectIndex);
 
@@ -75,12 +75,11 @@ namespace Pluto.Wpf.ViewModels
             SelectedSubjectIndex = -1;
         }
 
-        private void DeleteSubjectOnClick(object o)
+        private void DeleteSubjectOnClick(object obj)
         {
             var subject = Subjects.ElementAt(SelectedSubjectIndex);
 
             var result = MessageBox.Show("Are you sure you want to delete " + subject.Name, "Delete subject", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
-
             if (result == MessageBoxResult.OK)
             {
                 _subjectService.DeleteSubjectById(subject.SubjectId);
@@ -89,7 +88,7 @@ namespace Pluto.Wpf.ViewModels
             }
         }
 
-        private void OrderListOnClick(object o)
+        private void OrderListOnClick(object obj)
         {
             var subjects = new ObservableCollection<Subject>(Subjects.OrderBy(s => s.Name));
 
