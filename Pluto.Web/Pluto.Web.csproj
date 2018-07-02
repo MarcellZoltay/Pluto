@@ -169,6 +169,7 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\CurriculumController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TermsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -216,6 +217,10 @@
     <Content Include="Views\Curriculum\Edit.cshtml" />
     <Content Include="Views\Curriculum\Delete.cshtml" />
     <Content Include="Views\Curriculum\Create.cshtml" />
+    <Content Include="Views\Terms\Index.cshtml" />
+    <Content Include="Views\Terms\Create.cshtml" />
+    <Content Include="Views\Terms\Delete.cshtml" />
+    <Content Include="Views\Terms\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

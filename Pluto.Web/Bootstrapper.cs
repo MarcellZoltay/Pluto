@@ -24,6 +24,7 @@ namespace Pluto.Web
             // e.g. container.RegisterType<ITestService, TestService>();
 
             container.RegisterType<ISubjectService, SubjectService>();
+            container.RegisterType<ITermService, TermService>();
 
             return container;
         }
