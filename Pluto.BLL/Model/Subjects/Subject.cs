@@ -11,5 +11,6 @@ namespace Pluto.BLL.Model
         public int SubjectId { get; set; }
         public string Name { get; set; }
         public int Credit { get; set; }
+        public bool IsRegistered { get; set; }
     }
 }

@@ -77,6 +77,10 @@
     <Compile Include="Migrations\201807020823022_AddTermTable.Designer.cs">
       <DependentUpon>201807020823022_AddTermTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807030646580_AddSubjectIsRegistered.cs" />
+    <Compile Include="Migrations\201807030646580_AddSubjectIsRegistered.Designer.cs">
+      <DependentUpon>201807030646580_AddSubjectIsRegistered.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Subjects\Subject.cs" />
     <Compile Include="Model\Term.cs" />
@@ -108,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807020823022_AddTermTable.resx">
       <DependentUpon>201807020823022_AddTermTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807030646580_AddSubjectIsRegistered.resx">
+      <DependentUpon>201807030646580_AddSubjectIsRegistered.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
