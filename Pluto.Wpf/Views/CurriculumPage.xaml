@@ -22,6 +22,10 @@
             <Button Content="Edit subject" Command="{Binding EditSubjectCommand}"/>
             <Button Content="Delete subject" Command="{Binding DeleteSubjectCommand}" />
             <Button Content="Order list" Command="{Binding OrderListCommand}" />
+
+            <Button Content="Register subject" Command="{Binding RegisterSubjectCommand}"
+                    Margin="0 20 0 0" />
+            <Button Content="Unregister subject" Command="{Binding UnregisterSubjectCommand}" />
         </StackPanel>
 
         <Border Grid.Column="1" Grid.Row="1"
@@ -44,6 +48,14 @@
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock x:Name="Credit" Text="{Binding Credit}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Header="Registered">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox x:Name="Registered" IsChecked="{Binding IsRegisterd}" IsEnabled="False"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
