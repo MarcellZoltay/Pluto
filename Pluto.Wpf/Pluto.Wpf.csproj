@@ -60,6 +60,7 @@
     <Compile Include="ViewModels\CurriculumPageViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\CreateOrEditSubjectDialogViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\CreateOrEditTermDialogViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\RegisterSubjectDialogViewModel.cs" />
     <Compile Include="ViewModels\StartPageViewModel.cs" />
     <Compile Include="ViewModels\TermsPageViewModel.cs" />
     <Compile Include="Views\CurriculumPage.xaml.cs">
@@ -70,6 +71,9 @@
     </Compile>
     <Compile Include="Views\Dialogs\CreateOrEditTermDialog.xaml.cs">
       <DependentUpon>CreateOrEditTermDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\RegisterSubjectDialog.xaml.cs">
+      <DependentUpon>RegisterSubjectDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NavigationBar.xaml.cs">
       <DependentUpon>NavigationBar.xaml</DependentUpon>
@@ -89,6 +93,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Dialogs\CreateOrEditTermDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\RegisterSubjectDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -9,7 +9,7 @@ namespace Pluto.BLL.Services
 {
     public interface ITermService
     {
-        List<Term> GetTerms();
+        List<Term> GetTerms(Predicate<Term> predicate = null);
         Term GetTermById(int? id);
         void AddTerm(Term term);
         void UpdateTerm(Term term);

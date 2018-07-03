@@ -27,6 +27,8 @@ namespace Pluto.Wpf.ViewModels
 
 
         private ISubjectService _subjectService;
+        private ITermService _termService;
+        private ISubjectRegistrationService _subjectRegistrationService;
 
         public RelayCommand NewSubjectCommand { get; private set; }
         public RelayCommand EditSubjectCommand { get; private set; }
@@ -35,9 +37,13 @@ namespace Pluto.Wpf.ViewModels
         public RelayCommand RegisterSubjectCommand { get; private set; }
         public RelayCommand UnregisterSubjectCommand { get; private set; }
 
-        public CurriculumPageViewModel(ISubjectService subjectService)
+        public CurriculumPageViewModel(ISubjectService subjectService, 
+                                       ITermService termService,
+                                       ISubjectRegistrationService subjectRegistrationService)
         {
             _subjectService = subjectService;
+            _termService = termService;
+            _subjectRegistrationService = subjectRegistrationService;
 
             Subjects = new ObservableCollection<Subject>(_subjectService.GetSubjects());
             
@@ -98,9 +104,24 @@ namespace Pluto.Wpf.ViewModels
         }
         private void RegisterSubjectOnClick(object obj)
         {
+            var subject = Subjects.ElementAt(SelectedSubjectIndex);
 
+            if (subject.IsRegistered)
+            {
+                MessageBox.Show("This subject is already registered", "Register subject", MessageBoxButton.OK);
+            }
+            else
+            {
+                var activeTerms = _termService.GetTerms(t => t.IsActive);
+                var dialogViewModel = new RegisterSubjectDialogViewModel(subject.Name, activeTerms);
+                if (dialogViewModel.ShowDialog() == true)
+                {
+                    var selectedTerm = dialogViewModel.SelectedTerm;
 
-            MessageBox.Show("Do you want to register this subject?", "Register subject", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+                    // TODO: RegisterSubject implementalasa, subject.IsRegistered beallitasa, lista frissit?, navigation property-k
+                    _subjectRegistrationService.RegisterSubject(subject, selectedTerm);
+                }
+            }
 
             SelectedSubjectIndex = -1;
         }

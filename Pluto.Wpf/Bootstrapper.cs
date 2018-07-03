@@ -35,6 +35,7 @@ namespace Pluto.Wpf
 
             builder.RegisterType<SubjectService>().As<ISubjectService>();
             builder.RegisterType<TermService>().As<ITermService>();
+            builder.RegisterType<SubjectRegistrationService>().As<ISubjectRegistrationService>();
         }
     }
 }

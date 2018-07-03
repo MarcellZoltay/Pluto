@@ -11,13 +11,21 @@ namespace Pluto.BLL.Services
 {
     public class TermService : ITermService
     {
-        public List<Term> GetTerms()
+        public List<Term> GetTerms(Predicate<Term> predicate = null)
         {
             List<Term> terms;
 
             using (var db = new PlutoContext())
             {
-                terms = db.Terms.ToList();
+                if (predicate == null)
+                {
+                    terms = db.Terms.ToList();
+                }
+                else
+                {
+                    terms = db.Terms.ToList();
+                    terms = terms.FindAll(predicate);
+                }
             }
 
             return terms;
