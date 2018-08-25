@@ -19,7 +19,7 @@
 
         <StackPanel Grid.Row="1" VerticalAlignment="Stretch">
             <Button Content="New subject" Command="{Binding NewSubjectCommand}" />
-            <Button Content="Edit subject" Command="{Binding EditSubjectCommand}"/>
+            <Button Content="Edit subject" Command="{Binding EditSubjectCommand}" />
             <Button Content="Delete subject" Command="{Binding DeleteSubjectCommand}" />
             <Button Content="Order list" Command="{Binding OrderListCommand}" />
 
@@ -55,7 +55,7 @@
                         <GridViewColumn Header="Registered">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <CheckBox x:Name="Registered" IsChecked="{Binding IsRegisterd}" IsEnabled="False"/>
+                                    <CheckBox x:Name="Registered" IsChecked="{Binding IsRegistered}" IsEnabled="False"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

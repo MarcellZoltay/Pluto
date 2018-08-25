@@ -49,6 +49,7 @@ namespace Pluto.Wpf.ViewModels
             
             SelectedSubjectIndex = -1;
 
+
             NewSubjectCommand = new RelayCommand(NewSubjectOnClick);
             EditSubjectCommand = new RelayCommand(EditSubjectOnClick, p => SelectedSubjectIndex > -1);
             DeleteSubjectCommand = new RelayCommand(DeleteSubjectOnClick, p => SelectedSubjectIndex > -1);
@@ -57,6 +58,7 @@ namespace Pluto.Wpf.ViewModels
             UnregisterSubjectCommand = new RelayCommand(UnregisterSubjectOnClick, p => SelectedSubjectIndex > -1);
         }
 
+        
         private void NewSubjectOnClick(object obj)
         {
             var dialogViewModel = new CreateOrEditSubjectDialogViewModel();
