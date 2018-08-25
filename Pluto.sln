@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluto.Web", "Pluto.Web\Plut
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluto.Wpf", "Pluto.Wpf\Pluto.Wpf.csproj", "{931BB8DF-5BE2-460B-969B-D7EF38255E7E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pluto.DAL", "Pluto.DAL\Pluto.DAL.csproj", "{DFB075C3-A2A3-44C6-84C4-D2359F3F7B56}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,12 +29,16 @@ Global
 		{931BB8DF-5BE2-460B-969B-D7EF38255E7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{931BB8DF-5BE2-460B-969B-D7EF38255E7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{931BB8DF-5BE2-460B-969B-D7EF38255E7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFB075C3-A2A3-44C6-84C4-D2359F3F7B56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFB075C3-A2A3-44C6-84C4-D2359F3F7B56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFB075C3-A2A3-44C6-84C4-D2359F3F7B56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFB075C3-A2A3-44C6-84C4-D2359F3F7B56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35
 		SolutionGuid = {7473D730-83CF-4BBD-A3F9-4AAB5278347C}
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35
 	EndGlobalSection
 EndGlobal

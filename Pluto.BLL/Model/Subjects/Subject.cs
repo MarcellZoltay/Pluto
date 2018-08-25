@@ -6,11 +6,30 @@ using System.Threading.Tasks;
 
 namespace Pluto.BLL.Model
 {
-    public class Subject
+    public class Subject : MyBindableBase
     {
-        public int SubjectId { get; set; }
-        public string Name { get; set; }
-        public int Credit { get; set; }
-        public bool IsRegistered { get; set; }
+        private int subjectId;
+        public int SubjectId {
+            get { return subjectId; }
+            set { SetProperty(ref subjectId, value); }
+        }
+
+        private string name;
+        public string Name {
+            get { return name; }
+            set { SetProperty(ref name, value); }
+        }
+
+        private int credit;
+        public int Credit {
+            get { return credit; }
+            set { SetProperty(ref credit, value); }
+        }
+
+        private bool isRegistered;
+        public bool IsRegistered {
+            get { return isRegistered; }
+            set { SetProperty(ref isRegistered, value); }
+        }
     }
 }
