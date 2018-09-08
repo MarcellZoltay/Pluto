@@ -29,6 +29,7 @@ namespace Pluto.Wpf.ViewModels.Dialogs
             }
         }
         private CreateOrEditTermDialog view;
+
         public CreateOrEditTermDialogViewModel(Term term = null)
         {
             if (term == null)

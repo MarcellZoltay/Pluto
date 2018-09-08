@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace Pluto.Wpf.ViewModels
@@ -21,9 +22,21 @@ namespace Pluto.Wpf.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        public ObservableCollection<Term> Terms { get; private set; }
+        private ObservableCollection<Term> terms;
+        public ObservableCollection<Term> Terms
+        {
+            get { return terms; }
+            set { SetProperty(ref terms, value); }
+        }
 
         public int SelectedTermIndex { get; set; }
+
+        private bool _isLoading = true;
+        public bool IsLoading
+        {
+            get { return _isLoading; }
+            set { SetProperty(ref _isLoading, value); }
+        }
 
 
         private ITermService _termService;
@@ -36,14 +49,19 @@ namespace Pluto.Wpf.ViewModels
         {
             _termService = termService;
 
-            Terms = new ObservableCollection<Term>(_termService.GetTerms());
-
-            SelectedTermIndex = -1;
-
             NewTermCommand = new RelayCommand(NewTermOnClick);
             EditTermCommand = new RelayCommand(EditTermOnClick, p => SelectedTermIndex > -1);
             DeleteLastTermCommand = new RelayCommand(DeleteLastTermOnClick);
-        }       
+
+            SelectedTermIndex = -1;
+
+            Task.Factory.StartNew(async () => {
+                List<Term> terms = await _termService.GetTerms();
+                Terms = new ObservableCollection<Term>(terms);
+
+                IsLoading = false;
+            });
+        }
 
         private void NewTermOnClick(object obj)
         {
@@ -54,8 +72,7 @@ namespace Pluto.Wpf.ViewModels
                 term.Name = (Terms.Count+1).ToString() + ". term";
 
                 _termService.AddTerm(term);
-                var id = term.TermId;
-                Terms.Add(_termService.GetTermById(id));
+                Terms.Add(term);
             }
         }
         private void EditTermOnClick(object obj)
@@ -66,8 +83,6 @@ namespace Pluto.Wpf.ViewModels
             if(dialogViewModel.ShowDialog() == true)
             {
                 _termService.UpdateTerm(term);
-
-                var termList = new ObservableCollection<Term>(_termService.GetTerms());
             }
 
             SelectedTermIndex = -1;
@@ -78,7 +93,6 @@ namespace Pluto.Wpf.ViewModels
             if (result == MessageBoxResult.OK)
             {
                 _termService.DeleteLastTerm();
-
                 Terms.RemoveAt(Terms.Count - 1);
             }
         }

@@ -57,11 +57,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command\RelayCommand.cs" />
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="ViewModels\CurriculumPageViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\CreateOrEditSubjectDialogViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\CreateOrEditTermDialogViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\RegisterSubjectDialogViewModel.cs" />
     <Compile Include="ViewModels\StartPageViewModel.cs" />
+    <Compile Include="ViewModels\SubjectsPageViewModel.cs" />
     <Compile Include="ViewModels\TermsPageViewModel.cs" />
     <Compile Include="Views\CurriculumPage.xaml.cs">
       <DependentUpon>CurriculumPage.xaml</DependentUpon>
@@ -80,6 +82,9 @@
     </Compile>
     <Compile Include="Views\StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SubjectsPage.xaml.cs">
+      <DependentUpon>SubjectsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TermsPage.xaml.cs">
       <DependentUpon>TermsPage.xaml</DependentUpon>
@@ -119,6 +124,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\StartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SubjectsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

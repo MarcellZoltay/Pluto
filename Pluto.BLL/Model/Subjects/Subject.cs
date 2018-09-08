@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pluto.BLL.Model.RegisteredSubjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,6 +31,22 @@ namespace Pluto.BLL.Model
         public bool IsRegistered {
             get { return isRegistered; }
             set { SetProperty(ref isRegistered, value); }
+        }
+
+        private List<RegisteredSubject> registeredSubjects;
+
+        public Subject()
+        {
+            registeredSubjects = new List<RegisteredSubject>();
+        }
+
+        public void SetRegisteredSubject(RegisteredSubject registeredSubject)
+        {
+            registeredSubject.SubjectId = SubjectId;
+            registeredSubject.Name = Name;
+            registeredSubject.Credit = Credit;
+
+            registeredSubjects.Add(registeredSubject);
         }
     }
 }

@@ -19,6 +19,7 @@ namespace Pluto.Wpf.ViewModels
         public DelegateCommand NavigateToStartPageCommand { get; private set; }
         public DelegateCommand NavigateToCurriculumPageCommand { get; private set; }
         public DelegateCommand NavigateToTermsPageCommand { get; set; }
+        public DelegateCommand NavigateToSubjectsPageCommand { get; set; }
 
         public MainWindowViewModel(IRegionManager regionManager)
         {
@@ -27,6 +28,7 @@ namespace Pluto.Wpf.ViewModels
             NavigateToStartPageCommand = new DelegateCommand(NavigateToStartPage);
             NavigateToCurriculumPageCommand = new DelegateCommand(NavigateToCurriculumPage);
             NavigateToTermsPageCommand = new DelegateCommand(NavigateToTermsPage);
+            NavigateToSubjectsPageCommand = new DelegateCommand(NavigateToSubjectsPage);
         }
 
         private void NavigateToStartPage()
@@ -40,6 +42,10 @@ namespace Pluto.Wpf.ViewModels
         private void NavigateToTermsPage()
         {
             regionManager.RequestNavigate("MainRegion", "TermsPage");
+        }
+        private void NavigateToSubjectsPage()
+        {
+            regionManager.RequestNavigate("MainRegion", "SubjectsPage");
         }
     }
 }

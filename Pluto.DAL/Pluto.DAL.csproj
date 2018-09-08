@@ -47,11 +47,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\RegisteredSubjectEntities\RegisteredSubjectEntity.cs" />
     <Compile Include="Entities\SubjectEntities\SubjectEntity.cs" />
     <Compile Include="Entities\TermEntity.cs" />
     <Compile Include="Migrations\201807282131547_InitialMigration.cs" />
     <Compile Include="Migrations\201807282131547_InitialMigration.Designer.cs">
       <DependentUpon>201807282131547_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808291334402_AddRegisteredSubject.cs" />
+    <Compile Include="Migrations\201808291334402_AddRegisteredSubject.Designer.cs">
+      <DependentUpon>201808291334402_AddRegisteredSubject.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PlutoContext.cs" />
@@ -65,6 +70,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201807282131547_InitialMigration.resx">
       <DependentUpon>201807282131547_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808291334402_AddRegisteredSubject.resx">
+      <DependentUpon>201808291334402_AddRegisteredSubject.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

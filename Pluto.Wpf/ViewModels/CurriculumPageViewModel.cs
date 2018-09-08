@@ -9,6 +9,7 @@ using Pluto.BLL.Services;
 using Pluto.Wpf.ViewModels.Dialogs;
 using Pluto.Wpf.Command;
 using System.Windows;
+using System.Threading.Tasks;
 
 namespace Pluto.Wpf.ViewModels
 {
@@ -21,10 +22,21 @@ namespace Pluto.Wpf.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        public ObservableCollection<Subject> Subjects { get; private set; }
+        private ObservableCollection<Subject> subjects;
+        public ObservableCollection<Subject> Subjects
+        {
+            get { return subjects; }
+            set { SetProperty(ref subjects, value); }
+        }
 
         public int SelectedSubjectIndex { get; set; }
 
+        private bool _isLoading = true;
+        public bool IsLoading
+        {
+            get { return _isLoading; }
+            set { SetProperty(ref _isLoading, value); }
+        }
 
         private ISubjectService _subjectService;
         private ITermService _termService;
@@ -37,7 +49,7 @@ namespace Pluto.Wpf.ViewModels
         public RelayCommand RegisterSubjectCommand { get; private set; }
         public RelayCommand UnregisterSubjectCommand { get; private set; }
 
-        public CurriculumPageViewModel(ISubjectService subjectService, 
+        public CurriculumPageViewModel(ISubjectService subjectService,
                                        ITermService termService,
                                        ISubjectRegistrationService subjectRegistrationService)
         {
@@ -45,17 +57,21 @@ namespace Pluto.Wpf.ViewModels
             _termService = termService;
             _subjectRegistrationService = subjectRegistrationService;
 
-            Subjects = new ObservableCollection<Subject>(_subjectService.GetSubjects());
-            
-            SelectedSubjectIndex = -1;
-
-
             NewSubjectCommand = new RelayCommand(NewSubjectOnClick);
             EditSubjectCommand = new RelayCommand(EditSubjectOnClick, p => SelectedSubjectIndex > -1);
             DeleteSubjectCommand = new RelayCommand(DeleteSubjectOnClick, p => SelectedSubjectIndex > -1);
             OrderListCommand = new RelayCommand(OrderListOnClick);
             RegisterSubjectCommand = new RelayCommand(RegisterSubjectOnClick, p => SelectedSubjectIndex > -1);
             UnregisterSubjectCommand = new RelayCommand(UnregisterSubjectOnClick, p => SelectedSubjectIndex > -1);
+
+            SelectedSubjectIndex = -1;
+
+            Task.Factory.StartNew( async () => {
+                List<Subject> subjects = await _subjectService.GetSubjects();
+                Subjects = new ObservableCollection<Subject>(subjects);
+
+                IsLoading = false;
+            });
         }
 
         
@@ -66,9 +82,8 @@ namespace Pluto.Wpf.ViewModels
             {
                 var subject = dialogViewModel.Subject;
 
-                _subjectService.AddSubject(subject);
-                var id = subject.SubjectId;
-                Subjects.Add(_subjectService.GetSubjectById(id));               
+                _subjectService.AddSubject(subject);             
+                Subjects.Add(subject);
             }
         }
         private void EditSubjectOnClick(object obj)
@@ -79,8 +94,6 @@ namespace Pluto.Wpf.ViewModels
             if (dialogViewModel.ShowDialog() == true)
             {
                 _subjectService.UpdateSubject(subject);
-
-                var subjectList = new ObservableCollection<Subject>(_subjectService.GetSubjects());
             }
 
             SelectedSubjectIndex = -1;
@@ -93,7 +106,6 @@ namespace Pluto.Wpf.ViewModels
             if (result == MessageBoxResult.OK)
             {
                 _subjectService.DeleteSubjectById(subject.SubjectId);
-
                 Subjects.Remove(subject);
             }
         }
@@ -104,7 +116,7 @@ namespace Pluto.Wpf.ViewModels
             Subjects.Clear();
             Subjects.AddRange(subjects);
         }
-        private void RegisterSubjectOnClick(object obj)
+        private async void RegisterSubjectOnClick(object obj)
         {
             var subject = Subjects.ElementAt(SelectedSubjectIndex);
 
@@ -114,13 +126,12 @@ namespace Pluto.Wpf.ViewModels
             }
             else
             {
-                var activeTerms = _termService.GetTerms(t => t.IsActive);
+                var activeTerms = await _termService.GetTerms(t => t.IsActive);
                 var dialogViewModel = new RegisterSubjectDialogViewModel(subject.Name, activeTerms);
                 if (dialogViewModel.ShowDialog() == true)
                 {
                     var selectedTerm = dialogViewModel.SelectedTerm;
 
-                    // TODO: RegisterSubject implementalasa, subject.IsRegistered beallitasa, lista frissit?, navigation property-k
                     _subjectRegistrationService.RegisterSubject(subject, selectedTerm);
                 }
             }
@@ -129,9 +140,7 @@ namespace Pluto.Wpf.ViewModels
         }
         private void UnregisterSubjectOnClick(object obj)
         {
-
-
-            MessageBox.Show("Do you want to unregister this subject?", "Register subject", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            MessageBox.Show("Do you want to unregister this subject?", "Unregister subject", MessageBoxButton.OKCancel, MessageBoxImage.Question);
 
             SelectedSubjectIndex = -1;
         }

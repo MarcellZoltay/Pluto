@@ -1,4 +1,9 @@
-﻿using Pluto.BLL.Model;
+﻿using Pluto.BLL.Mappers;
+using Pluto.BLL.Model;
+using Pluto.BLL.Model.RegisteredSubjects;
+using Pluto.DAL;
+using Pluto.DAL.Entities.RegisteredSubjectEntities;
+using Pluto.DAL.Entities.SubjectEntities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,16 +15,39 @@ namespace Pluto.BLL.Services
 {
     public class SubjectRegistrationService : ISubjectRegistrationService
     {
-        public void RegisterSubject(Subject subject, Term selectedTerm)
+        public async void RegisterSubject(Subject subject, Term selectedTerm)
         {
-            //TODO: RegisteredSubject class csinalasa, hozzáadása a subject és a selectedTerm-hez is
-            subject.IsRegistered = true;
+            var registeredSubject = new RegisteredSubject();
 
-            //using (var db = new PlutoContext())
-            //{
-            //    db.Entry(subject).State = EntityState.Modified;
-            //    db.SaveChanges();
-            //}
+            var result = selectedTerm.RegisterSubject(registeredSubject);
+
+            if (result)
+            {
+                subject.SetRegisteredSubject(registeredSubject);
+                subject.IsRegistered = true;
+
+                await Task.Factory.StartNew(() =>
+                {
+                    using (var db = new PlutoContext())
+                    {
+                        var registeredSubjectEntity = new RegisteredSubjectEntity();
+                        registeredSubjectEntity.CreateRegisteredSubjectEntity(registeredSubject);
+
+                        registeredSubjectEntity.SubjectId = subject.SubjectId;
+                        registeredSubjectEntity.TermId = selectedTerm.TermId;
+
+                        db.RegisteredSubjects.Add(registeredSubjectEntity);
+
+                        SubjectEntity subjectEntity = db.Subjects.FirstOrDefault(e => e.Id == subject.SubjectId);
+                        subjectEntity.IsRegistered = subject.IsRegistered;
+                        db.Entry(subjectEntity).State = EntityState.Modified;
+
+                        db.SaveChanges();
+
+                        registeredSubject.RegisteredSubjectId = registeredSubjectEntity.Id;
+                    }
+                });
+            }
         }
     }
 }

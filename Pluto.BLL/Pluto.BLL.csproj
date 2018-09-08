@@ -67,8 +67,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappers\RegisteredSubjectToRegisteredSubjectEntityMapper.cs" />
+    <Compile Include="Mappers\SubjectToSubjectEntityMapper.cs" />
+    <Compile Include="Mappers\TermToTermEntityMapper.cs" />
     <Compile Include="Model\Model.cs" />
     <Compile Include="Model\MyBindableBase.cs" />
+    <Compile Include="Model\RegisteredSubjects\RegisteredSubject.cs" />
     <Compile Include="Model\Subjects\Subject.cs" />
     <Compile Include="Model\Term.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

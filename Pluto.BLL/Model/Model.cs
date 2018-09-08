@@ -1,6 +1,9 @@
-﻿using Pluto.DAL;
+﻿using Pluto.BLL.Model.RegisteredSubjects;
+using Pluto.DAL;
+using Pluto.DAL.Entities.RegisteredSubjectEntities;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,8 +26,8 @@ namespace Pluto.BLL.Model
 
             using (var context = new PlutoContext())
             {
-                MapSubjectEntities(context);
-                MapTermEntities(context);
+                LoadSubjectEntities(context);
+                LoadTermEntities(context);
             }
         }
         #endregion
@@ -32,7 +35,7 @@ namespace Pluto.BLL.Model
         public List<Subject> Subjects;
         public List<Term> Terms;
 
-        private void MapSubjectEntities(PlutoContext context)
+        private void LoadSubjectEntities(PlutoContext context)
         {
             var subjects = context.Subjects.ToList();
             foreach (var item in subjects)
@@ -47,17 +50,36 @@ namespace Pluto.BLL.Model
             }
         }
 
-        private void MapTermEntities(PlutoContext context)
+        private void LoadTermEntities(PlutoContext context)
         {
-            var terms = context.Terms.ToList();
-            foreach (var item in terms)
+            var terms = context.Terms.Include(t => t.RegisteredSubjectEntities);
+
+            foreach (var termEntity in terms)
             {
-                Terms.Add(new Term()
+                List<RegisteredSubject> registeredSubjects = new List<RegisteredSubject>();
+
+                foreach (var registeredSubjectEntity in termEntity.RegisteredSubjectEntities)
                 {
-                    TermId = item.Id,
-                    Name = item.Name,
-                    IsActive = item.IsActive
-                });
+                    var registeredSubject = new RegisteredSubject()
+                    {
+                        RegisteredSubjectId = registeredSubjectEntity.Id,
+                        Name = registeredSubjectEntity.Name,
+                        Credit = registeredSubjectEntity.Credit,
+                        SubjectId = registeredSubjectEntity.SubjectId,
+                        TermId = registeredSubjectEntity.TermId
+                    };
+
+                    registeredSubjects.Add(registeredSubject);
+                }
+
+                var term = new Term(registeredSubjects)
+                {
+                    TermId = termEntity.Id,
+                    Name = termEntity.Name,
+                    IsActive = termEntity.IsActive
+                };
+
+                Terms.Add(term);
             }
         }
     }
