@@ -4,37 +4,20 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Pluto.BLL.Mappers;
 using Pluto.BLL.Model;
+using Pluto.DAL;
+using Pluto.DAL.Entities;
 
 namespace Pluto.BLL.Services
 {
     public class TermService : ITermService
     {
-        public List<Term> GetTerms(Predicate<Term> predicate = null)
+        public async Task<List<Term>> GetTerms(Predicate<Term> predicate = null)
         {
-            //List<Term> terms = null;
-
-            //using (var db = new PlutoContext())
-            //{
-            //    if (predicate == null)
-            //    {
-            //        terms = db.Terms.ToList();
-            //    }
-            //    else
-            //    {
-            //        terms = db.Terms.ToList();
-            //        terms = terms.FindAll(predicate);
-            //    }
-            //}
-
-            if (predicate == null)
-            {
-                return Model.Model.Instance.Terms;
-            }
-            else
-            {
-                return Model.Model.Instance.Terms.FindAll(predicate);
-            }
+            return await Task.Factory.StartNew<List<Term>>(() => 
+                predicate == null ? Model.Model.Instance.Terms : Model.Model.Instance.Terms.FindAll(predicate)
+            );
         }
 
         public Term GetTermById(int? id)
@@ -49,34 +32,58 @@ namespace Pluto.BLL.Services
             return term;
         }
 
-        public void AddTerm(Term term)
+        public async void AddTerm(Term term)
         {
-            //using (var db = new PlutoContext())
-            //{
-            //    db.Entry(term).State = EntityState.Added;
-            //    db.SaveChanges();
-            //}
+            await Task.Factory.StartNew(() =>
+            {
+                Model.Model.Instance.Terms.Add(term);
+
+                using (var db = new PlutoContext())
+                {
+                    TermEntity termEntity = new TermEntity();
+
+                    termEntity.CreateTermEntity(term);
+
+                    db.Terms.Add(termEntity);
+                    db.SaveChanges();
+
+                    term.TermId = termEntity.Id;
+                }
+            });
         }
 
-        public void UpdateTerm(Term termToUpdate)
+        public async void UpdateTerm(Term termToUpdate)
         {
-            //using (var db = new PlutoContext())
-            //{
-            //    db.Entry(termToUpdate).State = EntityState.Modified;
-            //    db.SaveChanges();
-            //}
+            await Task.Factory.StartNew(() =>
+            {
+                var term = Model.Model.Instance.Terms.Find(t => t.TermId == termToUpdate.TermId);
+                term.IsActive = termToUpdate.IsActive;
+
+                using (var db = new PlutoContext())
+                {
+                    TermEntity termEntity = db.Terms.FirstOrDefault(e => e.Id == termToUpdate.TermId);
+
+                    termEntity.UpdateTermEntity(termToUpdate);
+
+                    db.Entry(termEntity).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+            });
         }
 
-        public void DeleteLastTerm()
+        public async void DeleteLastTerm()
         {
-            //using (var db = new PlutoContext())
-            //{
-            //    var termList = db.Terms.ToList();
-            //    var term = termList.ElementAt(termList.Count - 1);
+            await Task.Factory.StartNew(() =>
+            {
+                Model.Model.Instance.Terms.RemoveAt(Model.Model.Instance.Terms.Count - 1);
 
-            //    db.Entry(term).State = EntityState.Deleted;
-            //    db.SaveChanges();
-            //}
+                using (var db = new PlutoContext())
+                {
+                    var term = db.Terms.ToList().LastOrDefault();
+                    db.Entry(term).State = EntityState.Deleted;
+                    db.SaveChanges();
+                }
+            });
         }
     }
 }

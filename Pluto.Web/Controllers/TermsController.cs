@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -27,9 +28,10 @@ namespace Pluto.Web.Controllers
         }
 
         // GET: Terms/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
-            int count = _termService.GetTerms().Count;
+            var terms = await _termService.GetTerms();
+            int count = terms.Count;
             ViewBag.TermName = (count+1) + ". term";
             return View();
         }
@@ -37,13 +39,14 @@ namespace Pluto.Web.Controllers
         // POST: Terms/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IsActive")] Term term)
+        public async Task<ActionResult> Create([Bind(Include = "IsActive")] Term term)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    int count = _termService.GetTerms().Count;
+                    var terms = await _termService.GetTerms();
+                    int count = terms.Count;
                     term.Name = (count + 1) + ". term";
                     _termService.AddTerm(term);
 

@@ -1,4 +1,5 @@
 ﻿using Pluto.DAL.Entities;
+using Pluto.DAL.Entities.RegisteredSubjectEntities;
 using Pluto.DAL.Entities.SubjectEntities;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace Pluto.DAL
 
         public DbSet<SubjectEntity> Subjects { get; set; }
         public DbSet<TermEntity> Terms { get; set; }
+        public DbSet<RegisteredSubjectEntity> RegisteredSubjects { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -26,6 +28,7 @@ namespace Pluto.DAL
 
             modelBuilder.Entity<SubjectEntity>().ToTable("Subject");
             modelBuilder.Entity<TermEntity>().ToTable("Term");
+            modelBuilder.Entity<RegisteredSubjectEntity>().ToTable("RegisteredSubject");
         }
     }
 }

@@ -32,6 +32,7 @@ namespace Pluto.Wpf
             builder.RegisterTypeForNavigation<StartPage>();
             builder.RegisterTypeForNavigation<CurriculumPage>();
             builder.RegisterTypeForNavigation<TermsPage>();
+            builder.RegisterTypeForNavigation<SubjectsPage>();
 
             builder.RegisterType<SubjectService>().As<ISubjectService>();
             builder.RegisterType<TermService>().As<ITermService>();
