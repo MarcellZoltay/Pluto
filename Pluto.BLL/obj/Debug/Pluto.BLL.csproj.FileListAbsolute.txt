@@ -1,0 +1,47 @@
+D:\Szoftver projektek\Pluto\Pluto\Pluto.BLL\bin\Debug\Pluto.BLL.dll.config
+D:\Szoftver projektek\Pluto\Pluto\Pluto.BLL\bin\Debug\Pluto.BLL.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.BLL\bin\Debug\Pluto.BLL.pdb
+D:\Szoftver projektek\Pluto\Pluto\Pluto.BLL\bin\Debug\EntityFramework.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.BLL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.BLL\bin\Debug\EntityFramework.xml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.BLL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.BLL\obj\Debug\Pluto.BLL.csprojAssemblyReference.cache
+D:\Szoftver projektek\Pluto\Pluto\Pluto.BLL\obj\Debug\Pluto.BLL.csproj.CoreCompileInputs.cache
+D:\Szoftver projektek\Pluto\Pluto\Pluto.BLL\obj\Debug\Pluto.BLL.csproj.CopyComplete
+D:\Szoftver projektek\Pluto\Pluto\Pluto.BLL\obj\Debug\Pluto.BLL.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.BLL\obj\Debug\Pluto.BLL.pdb
+D:\Szoftver projektek\Pluto\Pluto\Pluto.BLL\bin\Debug\Pluto.DAL.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.BLL\bin\Debug\Pluto.DAL.pdb
+D:\Szoftver projektek\Pluto\Pluto\Pluto.BLL\bin\Debug\Pluto.DAL.dll.config
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\Pluto.BLL.dll.config
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\Pluto.BLL.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\Pluto.BLL.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\EntityFramework.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\Pluto.DAL.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\Pluto.DAL.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\Pluto.DAL.dll.config
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\EntityFramework.xml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\obj\Debug\Pluto.BLL.csprojAssemblyReference.cache
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\obj\Debug\Pluto.BLL.csproj.CoreCompileInputs.cache
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\obj\Debug\Pluto.BLL.csproj.CopyComplete
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\obj\Debug\Pluto.BLL.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\obj\Debug\Pluto.BLL.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\CommonServiceLocator.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\Unity.Abstractions.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\Unity.Configuration.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\Unity.Container.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\Unity.Interception.Configuration.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\Unity.Interception.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\Unity.RegistrationByConvention.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\Unity.ServiceLocation.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\CommonServiceLocator.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\Unity.Abstractions.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\Unity.Configuration.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\Unity.Container.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\Unity.Interception.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\Unity.Interception.Configuration.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\Unity.RegistrationByConvention.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.BLL\bin\Debug\Unity.ServiceLocation.pdb

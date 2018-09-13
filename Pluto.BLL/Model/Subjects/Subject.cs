@@ -34,6 +34,10 @@ namespace Pluto.BLL.Model
         }
 
         private List<RegisteredSubject> registeredSubjects;
+        public List<RegisteredSubject> RegisteredSubjects
+        {
+            get { return registeredSubjects; }
+        }
 
         public Subject()
         {
@@ -45,8 +49,17 @@ namespace Pluto.BLL.Model
             registeredSubject.SubjectId = SubjectId;
             registeredSubject.Name = Name;
             registeredSubject.Credit = Credit;
-
+        }
+        public void Register(RegisteredSubject registeredSubject)
+        {
             registeredSubjects.Add(registeredSubject);
+        }
+        public void Unregister(RegisteredSubject registeredSubject)
+        {
+            registeredSubjects.Remove(registeredSubject);
+
+            if(registeredSubjects.Count == 0)
+                IsRegistered = false;
         }
     }
 }

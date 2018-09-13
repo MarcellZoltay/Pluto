@@ -1,0 +1,100 @@
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\bin\Debug\Pluto.Wpf.exe
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\bin\Debug\Pluto.Wpf.pdb
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\bin\Debug\Autofac.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\bin\Debug\EntityFramework.SqlServer.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\bin\Debug\EntityFramework.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\bin\Debug\Prism.Autofac.Wpf.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\bin\Debug\Prism.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\bin\Debug\Prism.Wpf.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\bin\Debug\System.Windows.Interactivity.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\bin\Debug\Pluto.BLL.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\bin\Debug\Pluto.BLL.pdb
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\bin\Debug\Pluto.BLL.dll.config
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Pluto.Wpf.csprojAssemblyReference.cache
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\CurriculumPage.baml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\StartPage.baml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\CurriculumPage.g.cs
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\MainWindow.g.cs
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\NavigationBar.g.cs
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\StartPage.g.cs
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\App.g.cs
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Pluto.Wpf_MarkupCompile.cache
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Pluto.Wpf_MarkupCompile.lref
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\MainWindow.baml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\NavigationBar.baml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Pluto.Wpf.g.resources
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Pluto.Wpf.Properties.Resources.resources
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Pluto.Wpf.csproj.GenerateResource.cache
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Pluto.Wpf.csproj.CoreCompileInputs.cache
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Pluto.Wpf.csproj.CopyComplete
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Pluto.Wpf.exe
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Pluto.Wpf.pdb
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\bin\Debug\Pluto.Wpf.exe.config
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\Dialogs\CreateOrEditSubjectDialog.g.cs
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\Dialogs\CreateOrEditSubjectDialog.baml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\Dialogs\CreateOrEditTermDialog.baml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\Dialogs\RegisterSubjectDialog.baml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\TermsPage.baml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\Dialogs\CreateOrEditTermDialog.g.cs
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\Dialogs\RegisterSubjectDialog.g.cs
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\TermsPage.g.cs
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\bin\Debug\Pluto.DAL.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\bin\Debug\Pluto.DAL.pdb
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\bin\Debug\Pluto.DAL.dll.config
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\SubjectsPage.baml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\SubjectsPage.g.cs
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\bin\Debug\Pluto.Wpf.exe.config
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\bin\Debug\Pluto.Wpf.exe
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\bin\Debug\Pluto.Wpf.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\bin\Debug\Autofac.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\bin\Debug\EntityFramework.SqlServer.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\bin\Debug\EntityFramework.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\bin\Debug\Prism.Autofac.Wpf.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\bin\Debug\Prism.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\bin\Debug\Prism.Wpf.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\bin\Debug\System.Windows.Interactivity.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\bin\Debug\Pluto.BLL.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\bin\Debug\Pluto.DAL.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\bin\Debug\Pluto.BLL.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\bin\Debug\Pluto.BLL.dll.config
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\bin\Debug\Pluto.DAL.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\bin\Debug\Pluto.DAL.dll.config
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Pluto.Wpf.csprojAssemblyReference.cache
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\CurriculumPage.baml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\Dialogs\CreateOrEditSubjectDialog.baml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\Dialogs\CreateOrEditTermDialog.baml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\Dialogs\RegisterSubjectDialog.baml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\StartPage.baml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\SubjectsPage.baml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\TermsPage.baml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\CurriculumPage.g.cs
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\Dialogs\CreateOrEditSubjectDialog.g.cs
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\Dialogs\CreateOrEditTermDialog.g.cs
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\Dialogs\RegisterSubjectDialog.g.cs
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\MainWindow.g.cs
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\NavigationBar.g.cs
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\StartPage.g.cs
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\SubjectsPage.g.cs
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\TermsPage.g.cs
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\App.g.cs
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Pluto.Wpf_MarkupCompile.cache
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Pluto.Wpf_MarkupCompile.lref
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\MainWindow.baml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\NavigationBar.baml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Pluto.Wpf.g.resources
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Pluto.Wpf.Properties.Resources.resources
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Pluto.Wpf.csproj.GenerateResource.cache
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Pluto.Wpf.csproj.CoreCompileInputs.cache
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Pluto.Wpf.csproj.CopyComplete
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Pluto.Wpf.exe
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Pluto.Wpf.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\bin\Debug\Unity.Container.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\bin\Debug\Unity.Abstractions.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\bin\Debug\Unity.Container.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\bin\Debug\Unity.Abstractions.pdb

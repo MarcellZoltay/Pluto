@@ -28,30 +28,42 @@ namespace Pluto.BLL.Model
             set { SetProperty(ref isActive, value); }
         }
 
-        private ObservableCollection<RegisteredSubject> registeredSubjects;
-        public IReadOnlyCollection<RegisteredSubject> RegisteredSubjects
+        private List<RegisteredSubject> registeredSubjects;
+        public List<RegisteredSubject> RegisteredSubjects
         {
             get { return registeredSubjects; }
         }
 
         public Term()
         {
-            registeredSubjects = new ObservableCollection<RegisteredSubject>();
+            registeredSubjects = new List<RegisteredSubject>();
         }
         public Term(List<RegisteredSubject> registeredSubjects)
         {
-            this.registeredSubjects = new ObservableCollection<RegisteredSubject>(registeredSubjects);
+            this.registeredSubjects = new List<RegisteredSubject>(registeredSubjects);
         }
 
         public bool RegisterSubject(RegisteredSubject registeredSubject)
         {
             if (isActive)
             {
+                foreach (var subject in registeredSubjects)
+                {
+                    if (subject.SubjectId == registeredSubject.SubjectId)
+                        return false;
+                }
+
                 registeredSubjects.Add(registeredSubject);
+                registeredSubject.TermId = termId;
+
                 return true;
             }
 
             return false;
+        }
+        public void UnregisterSubject(RegisteredSubject registeredSubject)
+        {
+            registeredSubjects.Remove(registeredSubject);
         }
     }
 }

@@ -14,6 +14,8 @@ namespace Pluto.BLL.Mappers
         {
             registeredSubjectEntity.Name = registeredSubject.Name;
             registeredSubjectEntity.Credit = registeredSubject.Credit;
+            registeredSubjectEntity.SubjectId = registeredSubject.SubjectId;
+            registeredSubjectEntity.TermId = registeredSubject.TermId;
         }
     }
 }

@@ -1,0 +1,30 @@
+D:\Szoftver projektek\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.csprojAssemblyReference.cache
+D:\Szoftver projektek\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.csproj.CoreCompileInputs.cache
+D:\Szoftver projektek\Pluto\Pluto\Pluto.DAL\bin\Debug\Pluto.DAL.dll.config
+D:\Szoftver projektek\Pluto\Pluto\Pluto.DAL\bin\Debug\Pluto.DAL.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.DAL\bin\Debug\Pluto.DAL.pdb
+D:\Szoftver projektek\Pluto\Pluto\Pluto.DAL\bin\Debug\EntityFramework.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.DAL\bin\Debug\EntityFramework.xml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.csproj.CopyComplete
+D:\Szoftver projektek\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.pdb
+D:\Szoftver projektek\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.Migrations.InitialMigration.resources
+D:\Szoftver projektek\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.csproj.GenerateResource.cache
+D:\Szoftver projektek\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.Migrations.AddRegisteredSubject.resources
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\bin\Debug\Pluto.DAL.dll.config
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\bin\Debug\Pluto.DAL.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\bin\Debug\Pluto.DAL.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\bin\Debug\EntityFramework.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\bin\Debug\EntityFramework.xml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.csprojAssemblyReference.cache
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.Migrations.InitialMigration.resources
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.Migrations.AddRegisteredSubject.resources
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.csproj.GenerateResource.cache
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.csproj.CoreCompileInputs.cache
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.csproj.CopyComplete
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.pdb

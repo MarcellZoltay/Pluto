@@ -68,8 +68,9 @@ namespace Pluto.Wpf.ViewModels
 
             Task.Factory.StartNew( async () => {
                 List<Subject> subjects = await _subjectService.GetSubjects();
-                Subjects = new ObservableCollection<Subject>(subjects);
-
+                Subjects = new ObservableCollection<Subject>();
+                Subjects.AddRange(subjects);
+                
                 IsLoading = false;
             });
         }
@@ -111,8 +112,8 @@ namespace Pluto.Wpf.ViewModels
         }
         private void OrderListOnClick(object obj)
         {
-            var subjects = new ObservableCollection<Subject>(Subjects.OrderBy(s => s.Name));
-
+            var subjects = new List<Subject>(Subjects.OrderBy(s => s.Name));
+        
             Subjects.Clear();
             Subjects.AddRange(subjects);
         }
@@ -140,7 +141,20 @@ namespace Pluto.Wpf.ViewModels
         }
         private void UnregisterSubjectOnClick(object obj)
         {
-            MessageBox.Show("Do you want to unregister this subject?", "Unregister subject", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            var subject = Subjects.ElementAt(SelectedSubjectIndex);
+
+            if (!subject.IsRegistered)
+            {
+                MessageBox.Show("This subject is unregistered", "Unregister subject", MessageBoxButton.OK);
+            }
+            else
+            {
+                var result = MessageBox.Show("Do you want to unregister this subject?", "Unregister subject", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+                if(result == MessageBoxResult.OK)
+                {
+                    _subjectRegistrationService.UnregisterSubject(subject);
+                }
+            }
 
             SelectedSubjectIndex = -1;
         }

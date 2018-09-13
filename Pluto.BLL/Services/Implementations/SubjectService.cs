@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Pluto.BLL.Mappers;
 using Pluto.BLL.Model;
-using Pluto.DAL;
-using Pluto.DAL.Entities.SubjectEntities;
 
 namespace Pluto.BLL.Services
 {
@@ -15,7 +11,7 @@ namespace Pluto.BLL.Services
     {
         public async Task<List<Subject>> GetSubjects()
         {
-            return await Task.Factory.StartNew<List<Subject>>(() => Model.Model.Instance.Subjects);
+            return await Task.Factory.StartNew<List<Subject>>(() => Model.Model.Instance.GetSubjects());
         }
 
         public Subject GetSubjectById(int? id)
@@ -27,54 +23,23 @@ namespace Pluto.BLL.Services
             //    subject = db.Subjects.Find(id);
             //}
 
-            return Model.Model.Instance.Subjects.Find(s => s.SubjectId == id);
+            //return Model.Model.Instance.Subjects.Find(s => s.SubjectId == id);
+            return null;
         }
 
         public async void AddSubject(Subject subject)
         {
-            await Task.Factory.StartNew(() =>
-            {
-                using (var db = new PlutoContext())
-                {
-                    SubjectEntity subjectEntity = new SubjectEntity();
-
-                    subjectEntity.CreateSubjectEntity(subject);
-
-                    db.Subjects.Add(subjectEntity);
-                    db.SaveChanges();
-
-                    subject.SubjectId = subjectEntity.Id;
-                }
-            });
+            await Task.Factory.StartNew(() => Model.Model.Instance.AddSubject(subject));
         }
 
         public async void UpdateSubject(Subject subjectToUpdate)
         {
-            await Task.Factory.StartNew(() =>
-            {
-                using (var db = new PlutoContext())
-                {
-                    SubjectEntity subjectEntity = db.Subjects.FirstOrDefault(e => e.Id == subjectToUpdate.SubjectId);
-
-                    subjectEntity.UpdateSubjectEntity(subjectToUpdate);
-
-                    db.Entry(subjectEntity).State = EntityState.Modified;
-                    db.SaveChanges();
-                }
-            });
+            await Task.Factory.StartNew(() => Model.Model.Instance.UpdateSubject(subjectToUpdate));
         }
 
-        public async void DeleteSubjectById(int id)
+        public async void DeleteSubjectById(int subjectId)
         {
-            await Task.Factory.StartNew(() =>
-            {
-                using (var db = new PlutoContext())
-                {
-                    var subject = db.Subjects.FirstOrDefault(e => e.Id == id);
-                    db.Entry(subject).State = EntityState.Deleted;
-                    db.SaveChanges();
-                }
-            });
+            await Task.Factory.StartNew(() => Model.Model.Instance.DeleteSubjectById(subjectId));
         }
     }
 }

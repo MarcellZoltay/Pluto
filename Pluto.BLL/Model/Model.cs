@@ -1,12 +1,15 @@
-﻿using Pluto.BLL.Model.RegisteredSubjects;
+﻿using Pluto.BLL.Mappers;
+using Pluto.BLL.Model.RegisteredSubjects;
 using Pluto.DAL;
 using Pluto.DAL.Entities.RegisteredSubjectEntities;
+using Pluto.DAL.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Unity;
 
 namespace Pluto.BLL.Model
 {
@@ -21,26 +24,29 @@ namespace Pluto.BLL.Model
 
         private Model()
         {
-            Subjects = new List<Subject>();
-            Terms = new List<Term>();
+            subjectEntityService = UnityBootstrapper.UnityBootstrapperInstance.Container.Resolve<ISubjectEntityService>();
+            termEntityService = UnityBootstrapper.UnityBootstrapperInstance.Container.Resolve<ITermEntityService>();
 
-            using (var context = new PlutoContext())
-            {
-                LoadSubjectEntities(context);
-                LoadTermEntities(context);
-            }
+            subjects = new List<Subject>();
+            terms = new List<Term>();
+
+            LoadSubjectEntities();
+            LoadTermEntities();
         }
         #endregion
 
-        public List<Subject> Subjects;
-        public List<Term> Terms;
+        private ISubjectEntityService subjectEntityService;
+        private ITermEntityService termEntityService;
 
-        private void LoadSubjectEntities(PlutoContext context)
+        private List<Subject> subjects;
+        private List<Term> terms;
+
+        private void LoadSubjectEntities()
         {
-            var subjects = context.Subjects.ToList();
-            foreach (var item in subjects)
+            var subjectEntities = subjectEntityService.GetSubjectEntities();
+            foreach (var item in subjectEntities)
             {
-                Subjects.Add(new Subject()
+                subjects.Add(new Subject()
                 {
                     SubjectId = item.Id,
                     Name = item.Name,
@@ -49,12 +55,11 @@ namespace Pluto.BLL.Model
                 });
             }
         }
-
-        private void LoadTermEntities(PlutoContext context)
+        private void LoadTermEntities()
         {
-            var terms = context.Terms.Include(t => t.RegisteredSubjectEntities);
+            var termEntities = termEntityService.GetTermEntities();
 
-            foreach (var termEntity in terms)
+            foreach (var termEntity in termEntities)
             {
                 List<RegisteredSubject> registeredSubjects = new List<RegisteredSubject>();
 
@@ -79,8 +84,56 @@ namespace Pluto.BLL.Model
                     IsActive = termEntity.IsActive
                 };
 
-                Terms.Add(term);
+                terms.Add(term);
             }
+        }
+
+        
+        public List<Term> GetTerms(Predicate<Term> predicate)
+        {
+            return predicate == null ? terms : terms.FindAll(predicate);
+        }
+        public void AddTerm(Term term)
+        {
+            var entity = term.CreateTermEntity();
+            term.TermId = termEntityService.AddTermEntity(entity);
+
+            terms.Add(term);
+        }
+        public void UpdateTerm(Term termToUpdate)
+        {
+            var entity = termToUpdate.UpdateTermEntity();
+            termEntityService.UpdateTermEntity(entity);
+        }
+        public void DeleteLastTerm()
+        {
+            termEntityService.DeleteLastTermEntity();
+
+            terms.RemoveAt(terms.Count - 1);
+        }
+
+
+        public List<Subject> GetSubjects()
+        {
+            return subjects;
+        }
+        public void AddSubject(Subject subject)
+        {
+            var entity = subject.CreateSubjectEntity();
+            subject.SubjectId = subjectEntityService.AddSubjectEntity(entity);
+
+            subjects.Add(subject);
+        }
+        public void UpdateSubject(Subject subjectToUpdate)
+        {
+            var entity = subjectToUpdate.UpdateSubjectEntity();
+            subjectEntityService.UpdateSubjectEntity(entity);
+        }
+        public void DeleteSubjectById(int subjectId)
+        {
+            subjectEntityService.DeleteSubjectEntityById(subjectId);
+
+            subjects.Remove(subjects.Find(s => s.SubjectId == subjectId));
         }
     }
 }

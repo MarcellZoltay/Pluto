@@ -1,0 +1,226 @@
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\ApplicationInsights.config
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Pluto.Web.dll.config
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Pluto.Web.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Pluto.Web.pdb
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\csc.exe
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\csc.exe.config
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\csc.rsp
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\csi.exe
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\csi.exe.config
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\csi.rsp
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\Microsoft.Win32.Primitives.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.AppContext.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Collections.Immutable.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Console.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Diagnostics.Process.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.IO.Compression.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.IO.FileSystem.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.IO.Pipes.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Reflection.Metadata.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Security.AccessControl.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Security.Claims.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Security.Principal.Windows.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Threading.Thread.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.ValueTuple.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Xml.XmlDocument.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Xml.XPath.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\vbc.exe
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\vbc.exe.config
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\vbc.rsp
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\VBCSCompiler.exe
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\roslyn\VBCSCompiler.exe.config
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Antlr3.Runtime.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Microsoft.AI.DependencyCollector.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Microsoft.AI.Web.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Microsoft.AI.WindowsServer.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Microsoft.ApplicationInsights.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Microsoft.Web.Infrastructure.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Newtonsoft.Json.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Pluto.BLL.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\System.Diagnostics.DiagnosticSource.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\System.Web.Helpers.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\System.Web.Mvc.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\System.Web.Optimization.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\System.Web.Razor.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\System.Web.WebPages.Deployment.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\System.Web.WebPages.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\System.Web.WebPages.Razor.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\WebGrease.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\EntityFramework.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Pluto.BLL.pdb
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Pluto.BLL.dll.config
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\System.Web.Helpers.xml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\System.Web.Mvc.xml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\System.Web.Optimization.xml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\System.Web.Razor.xml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\System.Web.WebPages.xml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\System.Web.WebPages.Deployment.xml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\System.Web.WebPages.Razor.xml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Newtonsoft.Json.xml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Antlr3.Runtime.pdb
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\System.Diagnostics.DiagnosticSource.xml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Microsoft.AI.DependencyCollector.xml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Microsoft.AI.WindowsServer.xml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Microsoft.AI.Web.xml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\EntityFramework.xml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\obj\Debug\Pluto.Web.csprojAssemblyReference.cache
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\obj\Debug\Pluto.Web.csproj.CoreCompileInputs.cache
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\obj\Debug\Pluto.Web.csproj.CopyComplete
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\obj\Debug\Pluto.Web.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\obj\Debug\Pluto.Web.pdb
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\EntityFramework.SqlServer.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Microsoft.Practices.ServiceLocation.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Microsoft.Practices.Unity.Configuration.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Microsoft.Practices.Unity.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Unity.Mvc3.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\EntityFramework.SqlServer.xml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Microsoft.Practices.ServiceLocation.pdb
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Microsoft.Practices.ServiceLocation.xml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Microsoft.Practices.Unity.xml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Microsoft.Practices.Unity.Configuration.xml
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Pluto.DAL.dll
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Pluto.DAL.pdb
+D:\Szoftver projektek\Pluto\Pluto\Pluto.Web\bin\Pluto.DAL.dll.config
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\ApplicationInsights.config
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Pluto.Web.dll.config
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Pluto.Web.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Pluto.Web.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\csc.exe
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\csc.exe.config
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\csc.rsp
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\csi.exe
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\csi.exe.config
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\csi.rsp
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.AppContext.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Collections.Immutable.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Console.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Diagnostics.Process.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.IO.Compression.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.IO.FileSystem.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.IO.Pipes.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Reflection.Metadata.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Security.AccessControl.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Security.Claims.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Threading.Thread.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.ValueTuple.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Xml.XPath.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\vbc.exe
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\vbc.exe.config
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\vbc.rsp
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\VBCSCompiler.exe
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\roslyn\VBCSCompiler.exe.config
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Antlr3.Runtime.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\EntityFramework.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\EntityFramework.SqlServer.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Microsoft.AI.DependencyCollector.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Microsoft.AI.Web.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Microsoft.AI.WindowsServer.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Microsoft.ApplicationInsights.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Microsoft.Practices.ServiceLocation.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Microsoft.Practices.Unity.Configuration.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Microsoft.Practices.Unity.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Microsoft.Web.Infrastructure.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Newtonsoft.Json.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Pluto.BLL.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\System.Web.Helpers.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\System.Web.Mvc.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\System.Web.Optimization.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\System.Web.Razor.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\System.Web.WebPages.Deployment.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\System.Web.WebPages.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\System.Web.WebPages.Razor.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Unity.Mvc3.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\WebGrease.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Pluto.DAL.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Pluto.BLL.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Pluto.BLL.dll.config
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\EntityFramework.xml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\EntityFramework.SqlServer.xml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Microsoft.Practices.ServiceLocation.xml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Microsoft.Practices.Unity.xml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Microsoft.Practices.Unity.Configuration.xml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\System.Web.Helpers.xml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\System.Web.Mvc.xml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\System.Web.Optimization.xml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\System.Web.Razor.xml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\System.Web.WebPages.xml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\System.Web.WebPages.Deployment.xml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\System.Web.WebPages.Razor.xml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Newtonsoft.Json.xml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Antlr3.Runtime.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Microsoft.AI.DependencyCollector.xml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Microsoft.AI.WindowsServer.xml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Microsoft.AI.Web.xml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Pluto.DAL.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Pluto.DAL.dll.config
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\obj\Debug\Pluto.Web.csprojAssemblyReference.cache
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\obj\Debug\Pluto.Web.csproj.CoreCompileInputs.cache
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\obj\Debug\Pluto.Web.csproj.CopyComplete
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\obj\Debug\Pluto.Web.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\obj\Debug\Pluto.Web.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Unity.Container.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Unity.Abstractions.dll
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Unity.Container.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Web\bin\Unity.Abstractions.pdb
