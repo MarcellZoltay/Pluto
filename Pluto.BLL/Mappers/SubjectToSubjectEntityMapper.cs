@@ -10,17 +10,24 @@ namespace Pluto.BLL.Mappers
 {
     public static class SubjectToSubjectEntityMapper
     {
-        public static void CreateSubjectEntity(this SubjectEntity subjectEntity, Subject subject)
+        public static SubjectEntity CreateSubjectEntity(this Subject subject)
         {
+            var subjectEntity = new SubjectEntity();
             subjectEntity.Name = subject.Name;
             subjectEntity.Credit = subject.Credit;
             // IsRegistered nem kell, mivel csak utolag lehet felvenni
+
+            return subjectEntity;
         }
 
-        public static void UpdateSubjectEntity(this SubjectEntity subjectEntity, Subject subject)
+        public static SubjectEntity UpdateSubjectEntity(this Subject subject)
         {
+            var subjectEntity = new SubjectEntity();
+            subjectEntity.Id = subject.SubjectId;
             subjectEntity.Name = subject.Name;
             subjectEntity.Credit = subject.Credit;
+
+            return subjectEntity;
         }
     }
 }

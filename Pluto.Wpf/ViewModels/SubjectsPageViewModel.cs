@@ -34,7 +34,8 @@ namespace Pluto.Wpf.ViewModels
 
             Task.Factory.StartNew(async () => {
                 List<Term> terms = await _termService.GetTerms();
-                Terms = new ObservableCollection<Term>(terms);
+                Terms = new ObservableCollection<Term>();
+                Terms.AddRange(terms);
             });
         }
     }

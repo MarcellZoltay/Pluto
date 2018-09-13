@@ -10,5 +10,6 @@ namespace Pluto.BLL.Services
     public interface ISubjectRegistrationService
     {
         void RegisterSubject(Subject subject, Term selectedTerm);
+        void UnregisterSubject(Subject subject);
     }
 }

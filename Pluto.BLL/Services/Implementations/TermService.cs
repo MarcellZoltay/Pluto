@@ -15,9 +15,7 @@ namespace Pluto.BLL.Services
     {
         public async Task<List<Term>> GetTerms(Predicate<Term> predicate = null)
         {
-            return await Task.Factory.StartNew<List<Term>>(() => 
-                predicate == null ? Model.Model.Instance.Terms : Model.Model.Instance.Terms.FindAll(predicate)
-            );
+            return await Task.Factory.StartNew<List<Term>>(() => Model.Model.Instance.GetTerms(predicate));
         }
 
         public Term GetTermById(int? id)
@@ -34,56 +32,17 @@ namespace Pluto.BLL.Services
 
         public async void AddTerm(Term term)
         {
-            await Task.Factory.StartNew(() =>
-            {
-                Model.Model.Instance.Terms.Add(term);
-
-                using (var db = new PlutoContext())
-                {
-                    TermEntity termEntity = new TermEntity();
-
-                    termEntity.CreateTermEntity(term);
-
-                    db.Terms.Add(termEntity);
-                    db.SaveChanges();
-
-                    term.TermId = termEntity.Id;
-                }
-            });
+            await Task.Factory.StartNew(() => Model.Model.Instance.AddTerm(term));
         }
 
         public async void UpdateTerm(Term termToUpdate)
         {
-            await Task.Factory.StartNew(() =>
-            {
-                var term = Model.Model.Instance.Terms.Find(t => t.TermId == termToUpdate.TermId);
-                term.IsActive = termToUpdate.IsActive;
-
-                using (var db = new PlutoContext())
-                {
-                    TermEntity termEntity = db.Terms.FirstOrDefault(e => e.Id == termToUpdate.TermId);
-
-                    termEntity.UpdateTermEntity(termToUpdate);
-
-                    db.Entry(termEntity).State = EntityState.Modified;
-                    db.SaveChanges();
-                }
-            });
+            await Task.Factory.StartNew(() => Model.Model.Instance.UpdateTerm(termToUpdate));
         }
 
         public async void DeleteLastTerm()
         {
-            await Task.Factory.StartNew(() =>
-            {
-                Model.Model.Instance.Terms.RemoveAt(Model.Model.Instance.Terms.Count - 1);
-
-                using (var db = new PlutoContext())
-                {
-                    var term = db.Terms.ToList().LastOrDefault();
-                    db.Entry(term).State = EntityState.Deleted;
-                    db.SaveChanges();
-                }
-            });
+            await Task.Factory.StartNew(() => Model.Model.Instance.DeleteLastTerm());
         }
     }
 }

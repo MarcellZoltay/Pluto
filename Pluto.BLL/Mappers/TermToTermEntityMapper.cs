@@ -10,15 +10,23 @@ namespace Pluto.BLL.Mappers
 {
     public static class TermToTermEntityMapper
     {
-        public static void CreateTermEntity(this TermEntity termEntity, Term term)
+        public static TermEntity CreateTermEntity(this Term term)
         {
+            var termEntity = new TermEntity();
             termEntity.Name = term.Name;
             termEntity.IsActive = term.IsActive;
+
+            return termEntity;
         }
 
-        public static void UpdateTermEntity(this TermEntity termEntity, Term term)
+        public static TermEntity UpdateTermEntity(this Term term)
         {
+            var termEntity = new TermEntity();
+            termEntity.Id = term.TermId;
+            termEntity.Name = term.Name;
             termEntity.IsActive = term.IsActive;
+
+            return termEntity;
         }
     }
 }
