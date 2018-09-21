@@ -50,13 +50,17 @@ namespace Pluto.BLL.Services
             return false;
         }
 
-        public async Task CloseTermAsync(Term termToClose)
+        public async Task<bool> CloseTermAsync(Term termToClose)
         {
             if (termToClose.IsActive && !termToClose.IsClosed)
             {
                 termToClose.Close();
-                await Task.Factory.StartNew(() => Model.DataManager.Instance.UpdateTerm(termToClose));
+                await Task.Factory.StartNew(() => Model.DataManager.Instance.CloseTerm(termToClose));
+
+                return true;
             }
+
+            return false;
         }
     }
 }

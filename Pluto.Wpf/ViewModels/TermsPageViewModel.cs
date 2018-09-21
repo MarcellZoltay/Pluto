@@ -112,7 +112,9 @@ namespace Pluto.Wpf.ViewModels
             var result = MessageBox.Show("Are you sure you want to close this term?", "Close term", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
             if (result == MessageBoxResult.OK)
             {
-                await _termService.CloseTermAsync(term);
+                var canBeClosed = await _termService.CloseTermAsync(term);
+                if(!canBeClosed)
+                    MessageBox.Show("This term cannot be closed!", "Close term", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
     }
