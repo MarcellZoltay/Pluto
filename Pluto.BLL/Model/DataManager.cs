@@ -90,6 +90,15 @@ namespace Pluto.BLL.Model
            terms.Remove(termtToDelete);
            termMapperService.DeleteTerm(termtToDelete);
         }
+        public void CloseTerm(Term termToClose)
+        {
+            termMapperService.UpdateTerm(termToClose);
+            foreach (var item in termToClose.RegisteredSubjects)
+            {
+                registeredSubjectMapperService.UpdateRegisteredSubject(item);
+                subjectMapperService.UpdateSubject(item.Subject);
+            }
+        }
 
 
         public List<Subject> GetSubjects()
@@ -117,10 +126,10 @@ namespace Pluto.BLL.Model
             registeredSubjects.Add(registeredSubject);
             registeredSubjectMapperService.AddRegisteredSubject(registeredSubject);
         }
-        //public void UpdateRegisteredSubject(RegisteredSubject registeredSubjectToUpdate)
-        //{
-        //    registeredSubjectMapperService.UpdateRegisteredSubject(registeredSubjectToUpdate);
-        //}
+        public void UpdateRegisteredSubject(RegisteredSubject registeredSubjectToUpdate)
+        {
+            registeredSubjectMapperService.UpdateRegisteredSubject(registeredSubjectToUpdate);
+        }
         public void DeleteRegisteredSubject(RegisteredSubject registeredSubjectToDelete)
         {
             registeredSubjects.Remove(registeredSubjectToDelete);

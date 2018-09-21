@@ -14,6 +14,6 @@ namespace Pluto.BLL.Services
         Task AddTermAsync(Term term);
         Task UpdateTermAsync(Term termToUpdate);
         Task<bool> DeleteLastTermAsync();
-        Task CloseTermAsync(Term termToClose);
+        Task<bool> CloseTermAsync(Term termToClose);
     }
 }
