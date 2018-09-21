@@ -22,8 +22,8 @@ namespace Pluto.Wpf.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        private ObservableCollection<Term> terms;
-        public ObservableCollection<Term> Terms
+        private AsyncObservableCollection<Term> terms;
+        public AsyncObservableCollection<Term> Terms
         {
             get { return terms; }
             set { SetProperty(ref terms, value); }
@@ -44,6 +44,7 @@ namespace Pluto.Wpf.ViewModels
         public RelayCommand NewTermCommand { get; private set; }
         public RelayCommand EditTermCommand { get; private set; }
         public RelayCommand DeleteLastTermCommand { get; private set; }
+        public RelayCommand CloseTermCommand { get; private set; }
 
         public TermsPageViewModel(ITermService termService)
         {
@@ -51,50 +52,67 @@ namespace Pluto.Wpf.ViewModels
 
             NewTermCommand = new RelayCommand(NewTermOnClick);
             EditTermCommand = new RelayCommand(EditTermOnClick, p => SelectedTermIndex > -1);
-            DeleteLastTermCommand = new RelayCommand(DeleteLastTermOnClick);
+            DeleteLastTermCommand = new RelayCommand(DeleteLastTermOnClick, p => Terms.Count > 0);
+            CloseTermCommand = new RelayCommand(CloseTermOnClick, p => SelectedTermIndex > -1);
 
             SelectedTermIndex = -1;
 
+            Terms = new AsyncObservableCollection<Term>();
+
             Task.Factory.StartNew(async () => {
-                List<Term> terms = await _termService.GetTerms();
-                Terms = new ObservableCollection<Term>();
+                List<Term> terms = await _termService.GetTermsAsync();
+                //Terms = new ObservableCollection<Term>();
                 Terms.AddRange(terms);
 
                 IsLoading = false;
             });
         }
 
-        private void NewTermOnClick(object obj)
+        private async void NewTermOnClick(object obj)
         {
-            var dialogViewModel = new CreateOrEditTermDialogViewModel();
+            var termName = (Terms.Count + 1).ToString() + ". term";
+            var dialogViewModel = new CreateOrEditTermDialogViewModel(termName);
             if(dialogViewModel.ShowDialog() == true)
             {
-                var term = dialogViewModel.Term;
-                term.Name = (Terms.Count+1).ToString() + ". term";
+                var term = new Term(dialogViewModel.TermName, dialogViewModel.TermIsActive);
 
-                _termService.AddTerm(term);
                 Terms.Add(term);
+                await _termService.AddTermAsync(term);
             }
         }
-        private void EditTermOnClick(object obj)
+        private async void EditTermOnClick(object obj)
         {
             var term = Terms.ElementAt(SelectedTermIndex);
 
-            var dialogViewModel = new CreateOrEditTermDialogViewModel(term);
+            var dialogViewModel = new CreateOrEditTermDialogViewModel(term.Name, term.IsActive);
             if(dialogViewModel.ShowDialog() == true)
             {
-                _termService.UpdateTerm(term);
-            }
+                term.IsActive = dialogViewModel.TermIsActive;
+                SelectedTermIndex = -1;
 
-            SelectedTermIndex = -1;
+                await _termService.UpdateTermAsync(term);
+            }
         }
-        private void DeleteLastTermOnClick(object obj)
+        private async void DeleteLastTermOnClick(object obj)
         {
-            var result = MessageBox.Show("Are you sure you want to delete the last term ", "Delete term", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            var result = MessageBox.Show("Are you sure you want to delete the last term?", "Delete term", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
             if (result == MessageBoxResult.OK)
             {
-                _termService.DeleteLastTerm();
-                Terms.RemoveAt(Terms.Count - 1);
+                var deletable = await _termService.DeleteLastTermAsync();
+                if(deletable)
+                    Terms.RemoveAt(Terms.Count - 1);
+                else
+                    MessageBox.Show("This term cannot be deleted! Only not closed and empty term can be deleted.", "Delete term", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+        private async void CloseTermOnClick(object obj)
+        {
+            var term = Terms.ElementAt(SelectedTermIndex);
+
+            var result = MessageBox.Show("Are you sure you want to close this term?", "Close term", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.OK)
+            {
+                await _termService.CloseTermAsync(term);
             }
         }
     }

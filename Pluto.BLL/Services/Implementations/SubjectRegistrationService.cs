@@ -1,5 +1,4 @@
-﻿using Pluto.BLL.Mappers;
-using Pluto.BLL.Model;
+﻿using Pluto.BLL.Model;
 using Pluto.BLL.Model.RegisteredSubjects;
 using Pluto.DAL;
 using Pluto.DAL.Entities.RegisteredSubjectEntities;
@@ -15,71 +14,39 @@ namespace Pluto.BLL.Services
 {
     public class SubjectRegistrationService : ISubjectRegistrationService
     {
-        public async void RegisterSubject(Subject subject, Term selectedTerm)
+        public async Task RegisterSubjectAsync(Subject subject, Term selectedTerm)
         {
-            var registeredSubject = new RegisteredSubject();
-
-            subject.SetRegisteredSubject(registeredSubject);
+            var registeredSubject = subject.Register();
 
             var result = selectedTerm.RegisterSubject(registeredSubject);
 
             if (result)
             {
-                subject.Register(registeredSubject);
-                subject.IsRegistered = true;
-
-                await Task.Factory.StartNew(() =>
-                {
-                    using (var db = new PlutoContext())
-                    {
-                        var registeredSubjectEntity = new RegisteredSubjectEntity();
-                        registeredSubjectEntity.CreateRegisteredSubjectEntity(registeredSubject);
-
-                        db.RegisteredSubjects.Add(registeredSubjectEntity);
-
-                        SubjectEntity subjectEntity = db.Subjects.FirstOrDefault(e => e.Id == subject.SubjectId);
-                        subjectEntity.IsRegistered = subject.IsRegistered;
-                        db.Entry(subjectEntity).State = EntityState.Modified;
-
-                        db.SaveChanges();
-
-                        registeredSubject.RegisteredSubjectId = registeredSubjectEntity.Id;
-                    }
-                });
+                await Task.Factory.StartNew(() => Model.DataManager.Instance.AddRegisteredSubject(registeredSubject));
+                await Task.Factory.StartNew(() => Model.DataManager.Instance.UpdateSubject(subject));
+            }
+            else
+            {
+                subject.RollbackRegistration(registeredSubject);
             }
         }
 
-        public async void UnregisterSubject(Subject subject)
+        public async Task<bool> UnregisterSubjectAsync(Subject subject)
         {
-            //var registeredSubject = subject.R
+            var actualRegsiteredSubject = subject.ActualRegisteredSubject;
+            var result = subject.Unregister();
 
-            //if (result)
-            //{
-            //    subject.SetRegisteredSubject(registeredSubject);
-            //    subject.IsRegistered = true;
+            if (result)
+            {
+                await Task.Factory.StartNew(() => Model.DataManager.Instance.DeleteRegisteredSubject(actualRegsiteredSubject));
+                await Task.Factory.StartNew(() => Model.DataManager.Instance.UpdateSubject(subject));
 
-            //    await Task.Factory.StartNew(() =>
-            //    {
-            //        using (var db = new PlutoContext())
-            //        {
-            //            var registeredSubjectEntity = new RegisteredSubjectEntity();
-            //            registeredSubjectEntity.CreateRegisteredSubjectEntity(registeredSubject);
-
-            //            registeredSubjectEntity.SubjectId = subject.SubjectId;
-            //            registeredSubjectEntity.TermId = selectedTerm.TermId;
-
-            //            db.RegisteredSubjects.Add(registeredSubjectEntity);
-
-            //            SubjectEntity subjectEntity = db.Subjects.FirstOrDefault(e => e.Id == subject.SubjectId);
-            //            subjectEntity.IsRegistered = subject.IsRegistered;
-            //            db.Entry(subjectEntity).State = EntityState.Modified;
-
-            //            db.SaveChanges();
-
-            //            registeredSubject.RegisteredSubjectId = registeredSubjectEntity.Id;
-            //        }
-            //    });
-            //}
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

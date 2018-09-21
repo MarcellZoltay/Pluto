@@ -11,7 +11,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <TreeView Name="trvMenu" ItemsSource="{Binding Terms}">
+        <TreeView Name="trvMenu" ItemsSource="{Binding Terms, Mode=OneWay}">
             <TreeView.Resources>
                 <HierarchicalDataTemplate DataType="{x:Type modelTerm:Term}" ItemsSource="{Binding RegisteredSubjects}">
                     <TextBlock Text="{Binding Name}" />

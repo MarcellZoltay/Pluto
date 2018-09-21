@@ -17,6 +17,7 @@ namespace Pluto.DAL.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public bool IsActive { get; set; }
+        public bool IsClosed { get; set; }
 
         public virtual ICollection<RegisteredSubjectEntity> RegisteredSubjectEntities { get; set; }
     }

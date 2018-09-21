@@ -19,6 +19,7 @@ namespace Pluto.DAL.Entities.RegisteredSubjectEntities
 
         public string Name { get; set; }
         public int Credit { get; set; }
+        public bool IsClosed { get; set; }
 
         public virtual SubjectEntity SubjectEntity { get; set; }
         public virtual TermEntity TermEntity { get; set; }

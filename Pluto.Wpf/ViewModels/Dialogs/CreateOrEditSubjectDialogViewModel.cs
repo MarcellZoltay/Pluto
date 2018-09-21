@@ -15,7 +15,8 @@ namespace Pluto.Wpf.ViewModels.Dialogs
         public string Title { get; private set; }
         public string ButtonContent { get; private set; }
 
-        public Subject Subject { get; private set; }
+        public string SubjectName { get; set; }
+        public int SubjectCredit { get; set; }
 
         public DelegateCommand CreateSaveCommand { get; private set; }
         public DelegateCommand BackCommand { get; private set; }
@@ -32,21 +33,26 @@ namespace Pluto.Wpf.ViewModels.Dialogs
         }
         private CreateOrEditSubjectDialog view;
 
-        public CreateOrEditSubjectDialogViewModel(Subject subject = null)
+        public CreateOrEditSubjectDialogViewModel()
         {
-            if(subject == null)
-            {
-                Title = "Create subject";
-                ButtonContent = "Create";
-                Subject = new Subject();
-            }
-            else
-            {
-                Title = "Edit subject";
-                ButtonContent = "Save";
-                Subject = subject;
-            }
+            Title = "Create subject";
+            ButtonContent = "Create";
 
+            InitCommands();
+        }
+        public CreateOrEditSubjectDialogViewModel(string name, int credit)
+        {
+            Title = "Edit subject";
+            ButtonContent = "Save";
+
+            InitCommands();
+
+            SubjectName = name;
+            SubjectCredit = credit;
+        }
+
+        private void InitCommands()
+        {
             CreateSaveCommand = new DelegateCommand(CreateSaveOnClick);
             BackCommand = new DelegateCommand(BackOnClick);
         }

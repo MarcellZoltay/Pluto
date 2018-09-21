@@ -9,9 +9,9 @@ namespace Pluto.BLL.Services
 {
     public class SubjectService : ISubjectService
     {
-        public async Task<List<Subject>> GetSubjects()
+        public async Task<List<Subject>> GetSubjectsAsync()
         {
-            return await Task.Factory.StartNew<List<Subject>>(() => Model.Model.Instance.GetSubjects());
+            return await Task.Factory.StartNew<List<Subject>>(() => Model.DataManager.Instance.GetSubjects());
         }
 
         public Subject GetSubjectById(int? id)
@@ -27,19 +27,25 @@ namespace Pluto.BLL.Services
             return null;
         }
 
-        public async void AddSubject(Subject subject)
+        public async Task AddSubjectAsync(Subject subject)
         {
-            await Task.Factory.StartNew(() => Model.Model.Instance.AddSubject(subject));
+            await Task.Factory.StartNew(() => Model.DataManager.Instance.AddSubject(subject));
         }
 
-        public async void UpdateSubject(Subject subjectToUpdate)
+        public async Task UpdateSubjectAsync(Subject subjectToUpdate)
         {
-            await Task.Factory.StartNew(() => Model.Model.Instance.UpdateSubject(subjectToUpdate));
+            await Task.Factory.StartNew(() => Model.DataManager.Instance.UpdateSubject(subjectToUpdate));
         }
 
-        public async void DeleteSubjectById(int subjectId)
+        public async Task<bool> DeleteSubjectAsync(Subject subjectToDelete)
         {
-            await Task.Factory.StartNew(() => Model.Model.Instance.DeleteSubjectById(subjectId));
+            if (subjectToDelete.IsDeletable)
+            {
+                await Task.Factory.StartNew(() => Model.DataManager.Instance.DeleteSubject(subjectToDelete));
+                return true;
+            }
+
+            return false;
         }
     }
 }

@@ -12,6 +12,6 @@ namespace Pluto.DAL.Services.Interfaces
         List<TermEntity> GetTermEntities();
         int AddTermEntity(TermEntity termEntity);
         void UpdateTermEntity(TermEntity termEntityToUpdate);
-        void DeleteLastTermEntity();
+        void DeleteTermEntity(TermEntity termEntityToDelete);
     }
 }

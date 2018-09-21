@@ -22,7 +22,7 @@ namespace Pluto.Web.Controllers
         // GET: Curriculum
         public ActionResult Index()
         {
-            var subjects = _subjectService.GetSubjects();
+            var subjects = _subjectService.GetSubjectsAsync();
             return View(subjects);
         }
 
@@ -41,7 +41,7 @@ namespace Pluto.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _subjectService.AddSubject(subject);
+                    _subjectService.AddSubjectAsync(subject);
 
                     return RedirectToAction("Index");
                 }
@@ -84,7 +84,7 @@ namespace Pluto.Web.Controllers
             {
                 try
                 {
-                    _subjectService.UpdateSubject(subjectToUpdate);
+                    _subjectService.UpdateSubjectAsync(subjectToUpdate);
 
                     return RedirectToAction("Index");
                 }
@@ -124,7 +124,7 @@ namespace Pluto.Web.Controllers
         {
             try
             {
-                _subjectService.DeleteSubjectById(id);
+                //_subjectService.DeleteSubjectById(id);
             }
             catch (DataException)
             {

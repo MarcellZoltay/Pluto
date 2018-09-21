@@ -1,4 +1,6 @@
 ﻿using Pluto.BLL.Services;
+using Pluto.BLL.Services.Implementations;
+using Pluto.BLL.Services.Interfaces;
 using Pluto.DAL.Services.Implementations;
 using Pluto.DAL.Services.Interfaces;
 using System;
@@ -23,8 +25,13 @@ namespace Pluto.BLL
         {
             container = new UnityContainer();
 
+            container.RegisterType<ISubjectMapperService, SubjectMapperService>();
+            container.RegisterType<ITermMapperService, TermMapperService>();
+            container.RegisterType<IRegisteredSubjectMapperService, RegisteredSubjectMapperService>();
+
             container.RegisterType<ISubjectEntityService, SubjectEntityService>();
             container.RegisterType<ITermEntityService, TermEntityService>();
+            container.RegisterType<IRegisteredSubjectEntityService, RegisteredSubjectEntityService>();
         }
         #endregion
 

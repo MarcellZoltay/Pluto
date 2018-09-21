@@ -1,21 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Pluto.BLL.Mappers;
 using Pluto.BLL.Model;
-using Pluto.DAL;
-using Pluto.DAL.Entities;
 
 namespace Pluto.BLL.Services
 {
     public class TermService : ITermService
     {
-        public async Task<List<Term>> GetTerms(Predicate<Term> predicate = null)
+        public async Task<List<Term>> GetTermsAsync(Predicate<Term> predicate = null)
         {
-            return await Task.Factory.StartNew<List<Term>>(() => Model.Model.Instance.GetTerms(predicate));
+            return await Task.Factory.StartNew<List<Term>>(() => Model.DataManager.Instance.GetTerms(predicate));
         }
 
         public Term GetTermById(int? id)
@@ -30,19 +26,37 @@ namespace Pluto.BLL.Services
             return term;
         }
 
-        public async void AddTerm(Term term)
+        public async Task AddTermAsync(Term term)
         {
-            await Task.Factory.StartNew(() => Model.Model.Instance.AddTerm(term));
+            await Task.Factory.StartNew(() => Model.DataManager.Instance.AddTerm(term));
         }
 
-        public async void UpdateTerm(Term termToUpdate)
+        public async Task UpdateTermAsync(Term termToUpdate)
         {
-            await Task.Factory.StartNew(() => Model.Model.Instance.UpdateTerm(termToUpdate));
+            await Task.Factory.StartNew(() => Model.DataManager.Instance.UpdateTerm(termToUpdate));
         }
 
-        public async void DeleteLastTerm()
+        public async Task<bool> DeleteLastTermAsync()
         {
-            await Task.Factory.StartNew(() => Model.Model.Instance.DeleteLastTerm());
+            var terms = Model.DataManager.Instance.GetTerms(null);
+            var term = terms.ElementAt(terms.Count - 1);
+
+            if (term.IsDeletable)
+            {
+                await Task.Factory.StartNew(() => Model.DataManager.Instance.DeleteTerm(term));
+                return true;
+            }
+
+            return false;
+        }
+
+        public async Task CloseTermAsync(Term termToClose)
+        {
+            if (termToClose.IsActive && !termToClose.IsClosed)
+            {
+                termToClose.Close();
+                await Task.Factory.StartNew(() => Model.DataManager.Instance.UpdateTerm(termToClose));
+            }
         }
     }
 }

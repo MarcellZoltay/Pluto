@@ -28,15 +28,30 @@ namespace Pluto.BLL.Model
             set { SetProperty(ref isActive, value); }
         }
 
+        private bool isClosed;
+        public bool IsClosed
+        {
+            get { return isClosed; }
+            private set { SetProperty(ref isClosed, value); }
+        }
+
+        public bool IsDeletable
+        {
+            get { return !IsClosed && registeredSubjects.Count == 0; }
+        }
+
         private List<RegisteredSubject> registeredSubjects;
         public List<RegisteredSubject> RegisteredSubjects
         {
             get { return registeredSubjects; }
         }
 
-        public Term()
+        public Term(string name, bool isActive)
         {
+            Name = name;
+            IsActive = isActive;
             registeredSubjects = new List<RegisteredSubject>();
+            IsClosed = false;
         }
         public Term(List<RegisteredSubject> registeredSubjects)
         {
@@ -45,25 +60,46 @@ namespace Pluto.BLL.Model
 
         public bool RegisterSubject(RegisteredSubject registeredSubject)
         {
-            if (isActive)
+            if (isActive && !IsClosed)
             {
-                foreach (var subject in registeredSubjects)
-                {
-                    if (subject.SubjectId == registeredSubject.SubjectId)
-                        return false;
-                }
-
                 registeredSubjects.Add(registeredSubject);
-                registeredSubject.TermId = termId;
+                registeredSubject.Term = this;
 
                 return true;
             }
 
             return false;
         }
-        public void UnregisterSubject(RegisteredSubject registeredSubject)
+        public bool UnregisterSubject(RegisteredSubject registeredSubject)
         {
-            registeredSubjects.Remove(registeredSubject);
+            if (IsActive && !IsClosed)
+            {
+                registeredSubjects.Remove(registeredSubject);
+
+                return true;
+            }
+
+            return false;
+        }
+
+        public void Close()
+        {
+            foreach (var subject in registeredSubjects)
+            {
+                subject.Close();
+            }
+
+            IsClosed = true;
+        }
+
+        public void Load(int termId, bool isClosed)
+        {
+            TermId = termId;
+            IsClosed = isClosed;
+        }
+        public void SetAssociations(RegisteredSubject registeredSubject)
+        {
+            RegisteredSubjects.Add(registeredSubject);
         }
     }
 }

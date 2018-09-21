@@ -28,3 +28,4 @@ C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.csproj.CoreCo
 C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.csproj.CopyComplete
 C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.dll
 C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.Migrations.UpdateModelItems.resources

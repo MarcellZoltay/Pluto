@@ -13,7 +13,8 @@ namespace Pluto.Wpf.ViewModels.Dialogs
         public string Title { get; private set; }
         public string ButtonContent { get; private set; }
 
-        public Term Term { get; private set; }
+        public string TermName { get; private set; }
+        public bool TermIsActive { get; set; }
 
         public DelegateCommand CreateSaveCommand { get; private set; }
         public DelegateCommand BackCommand { get; private set; }
@@ -30,21 +31,28 @@ namespace Pluto.Wpf.ViewModels.Dialogs
         }
         private CreateOrEditTermDialog view;
 
-        public CreateOrEditTermDialogViewModel(Term term = null)
+        public CreateOrEditTermDialogViewModel(string name)
         {
-            if (term == null)
-            {
-                Title = "Create term";
-                ButtonContent = "Create";
-                Term = new Term();
-            }
-            else
-            {
-                Title = "Edit term";
-                ButtonContent = "Save";
-                Term = term;
-            }
+            Title = "Create term";
+            ButtonContent = "Create";
 
+            InitCommands();
+
+            TermName = name;
+        }
+        public CreateOrEditTermDialogViewModel(string name, bool isActive)
+        {
+            Title = "Edit term";
+            ButtonContent = "Save";
+
+            InitCommands();
+
+            TermName = name;
+            TermIsActive = isActive;
+        }
+
+        private void InitCommands()
+        {
             CreateSaveCommand = new DelegateCommand(CreateSaveOnClick);
             BackCommand = new DelegateCommand(BackOnClick);
         }

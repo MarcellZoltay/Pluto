@@ -53,9 +53,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ModelTest\SubjectTest.cs" />
+    <Compile Include="ModelTest\TermTest.cs" />
+    <Compile Include="ModelTest\RegisteredSubjectTest.cs" />
     <Compile Include="SubjectRegistrationServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SubjectServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
