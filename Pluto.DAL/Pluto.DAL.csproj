@@ -58,12 +58,18 @@
     <Compile Include="Migrations\201808291334402_AddRegisteredSubject.Designer.cs">
       <DependentUpon>201808291334402_AddRegisteredSubject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809201717224_UpdateModelItems.cs" />
+    <Compile Include="Migrations\201809201717224_UpdateModelItems.Designer.cs">
+      <DependentUpon>201809201717224_UpdateModelItems.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PlutoContext.cs" />
     <Compile Include="PlutoInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Implementations\RegisteredSubjectEntityService.cs" />
     <Compile Include="Services\Implementations\SubjectEntityService.cs" />
     <Compile Include="Services\Implementations\TermEntityService.cs" />
+    <Compile Include="Services\Interfaces\IRegisteredSubjectEntityService.cs" />
     <Compile Include="Services\Interfaces\ISubjectEntityService.cs" />
     <Compile Include="Services\Interfaces\ITermEntityService.cs" />
   </ItemGroup>
@@ -77,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808291334402_AddRegisteredSubject.resx">
       <DependentUpon>201808291334402_AddRegisteredSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809201717224_UpdateModelItems.resx">
+      <DependentUpon>201809201717224_UpdateModelItems.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

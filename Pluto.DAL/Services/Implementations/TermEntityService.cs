@@ -15,7 +15,7 @@ namespace Pluto.DAL.Services.Implementations
         {
             using (var db = new PlutoContext())
             {
-                return db.Terms.Include(t => t.RegisteredSubjectEntities).ToList();
+                return db.Terms.ToList();
             }
         }
 
@@ -39,12 +39,11 @@ namespace Pluto.DAL.Services.Implementations
             }
         }
 
-        public void DeleteLastTermEntity()
+        public void DeleteTermEntity(TermEntity termEntityToDelete)
         {
             using (var db = new PlutoContext())
             {
-                var term = db.Terms.ToList().LastOrDefault();
-                db.Entry(term).State = EntityState.Deleted;
+                db.Entry(termEntityToDelete).State = EntityState.Deleted;
                 db.SaveChanges();
             }
         }

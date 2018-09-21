@@ -22,7 +22,7 @@ namespace Pluto.Web.Controllers
         // GET: Terms
         public ActionResult Index()
         {
-            var terms = _termService.GetTerms();
+            var terms = _termService.GetTermsAsync();
 
             return View(terms);
         }
@@ -30,7 +30,7 @@ namespace Pluto.Web.Controllers
         // GET: Terms/Create
         public async Task<ActionResult> Create()
         {
-            var terms = await _termService.GetTerms();
+            var terms = await _termService.GetTermsAsync();
             int count = terms.Count;
             ViewBag.TermName = (count+1) + ". term";
             return View();
@@ -45,10 +45,10 @@ namespace Pluto.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var terms = await _termService.GetTerms();
+                    var terms = await _termService.GetTermsAsync();
                     int count = terms.Count;
                     term.Name = (count + 1) + ". term";
-                    _termService.AddTerm(term);
+                    _termService.AddTermAsync(term);
 
                     return RedirectToAction("Index");
                 }
@@ -91,7 +91,7 @@ namespace Pluto.Web.Controllers
             {
                 try
                 {
-                    _termService.UpdateTerm(termToUpdate);
+                    _termService.UpdateTermAsync(termToUpdate);
 
                     return RedirectToAction("Index");
                 }
@@ -120,7 +120,7 @@ namespace Pluto.Web.Controllers
         {
             try
             {
-                _termService.DeleteLastTerm();
+                _termService.DeleteLastTermAsync();
             }
             catch
             {

@@ -22,8 +22,8 @@ namespace Pluto.Wpf.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        private ObservableCollection<Subject> subjects;
-        public ObservableCollection<Subject> Subjects
+        private AsyncObservableCollection<Subject> subjects;
+        public AsyncObservableCollection<Subject> Subjects
         {
             get { return subjects; }
             set { SetProperty(ref subjects, value); }
@@ -66,9 +66,11 @@ namespace Pluto.Wpf.ViewModels
 
             SelectedSubjectIndex = -1;
 
-            Task.Factory.StartNew( async () => {
-                List<Subject> subjects = await _subjectService.GetSubjects();
-                Subjects = new ObservableCollection<Subject>();
+            Subjects = new AsyncObservableCollection<Subject>();
+
+            Task.Factory.StartNew(async () => {
+                List<Subject> subjects = await _subjectService.GetSubjectsAsync();
+                //Subjects = new ObservableCollection<Subject>();
                 Subjects.AddRange(subjects);
                 
                 IsLoading = false;
@@ -76,38 +78,45 @@ namespace Pluto.Wpf.ViewModels
         }
 
         
-        private void NewSubjectOnClick(object obj)
+        private async void NewSubjectOnClick(object obj)
         {
             var dialogViewModel = new CreateOrEditSubjectDialogViewModel();
             if(dialogViewModel.ShowDialog() == true)
             {
-                var subject = dialogViewModel.Subject;
+                var subject = new Subject(dialogViewModel.SubjectName, dialogViewModel.SubjectCredit);
 
-                _subjectService.AddSubject(subject);             
                 Subjects.Add(subject);
+                await _subjectService.AddSubjectAsync(subject);             
             }
         }
-        private void EditSubjectOnClick(object obj)
+        private async void EditSubjectOnClick(object obj)
         {
             var subject = Subjects.ElementAt(SelectedSubjectIndex);
 
-            var dialogViewModel = new CreateOrEditSubjectDialogViewModel(subject);
+            var dialogViewModel = new CreateOrEditSubjectDialogViewModel(subject.Name, subject.Credit);
             if (dialogViewModel.ShowDialog() == true)
             {
-                _subjectService.UpdateSubject(subject);
-            }
+                subject.Name = dialogViewModel.SubjectName;
+                subject.Credit = dialogViewModel.SubjectCredit;
 
-            SelectedSubjectIndex = -1;
+                SelectedSubjectIndex = -1;
+
+                await _subjectService.UpdateSubjectAsync(subject);
+            }
         }
-        private void DeleteSubjectOnClick(object obj)
+        private async void DeleteSubjectOnClick(object obj)
         {
             var subject = Subjects.ElementAt(SelectedSubjectIndex);
 
-            var result = MessageBox.Show("Are you sure you want to delete " + subject.Name, "Delete subject", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            var result = MessageBox.Show("Are you sure you want to delete " + subject.Name + "?", "Delete subject", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
             if (result == MessageBoxResult.OK)
             {
-                _subjectService.DeleteSubjectById(subject.SubjectId);
-                Subjects.Remove(subject);
+                var deletable = await _subjectService.DeleteSubjectAsync(subject);
+
+                if (deletable)
+                    Subjects.Remove(subject);
+                else
+                    MessageBox.Show("This subject cannot be deleted!", "Delete term", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
         private void OrderListOnClick(object obj)
@@ -123,40 +132,35 @@ namespace Pluto.Wpf.ViewModels
 
             if (subject.IsRegistered)
             {
-                MessageBox.Show("This subject is already registered", "Register subject", MessageBoxButton.OK);
+                MessageBox.Show("This subject is already registered.", "Register subject", MessageBoxButton.OK);
             }
             else
             {
-                var activeTerms = await _termService.GetTerms(t => t.IsActive);
+                var activeTerms = await _termService.GetTermsAsync(t => t.IsActive && !t.IsClosed);
                 var dialogViewModel = new RegisterSubjectDialogViewModel(subject.Name, activeTerms);
                 if (dialogViewModel.ShowDialog() == true)
                 {
                     var selectedTerm = dialogViewModel.SelectedTerm;
+                    SelectedSubjectIndex = -1;
 
-                    _subjectRegistrationService.RegisterSubject(subject, selectedTerm);
+                    await _subjectRegistrationService.RegisterSubjectAsync(subject, selectedTerm);
                 }
             }
-
-            SelectedSubjectIndex = -1;
         }
-        private void UnregisterSubjectOnClick(object obj)
+        private async void UnregisterSubjectOnClick(object obj)
         {
             var subject = Subjects.ElementAt(SelectedSubjectIndex);
 
-            if (!subject.IsRegistered)
+            var result = MessageBox.Show("Do you want to unregister this subject?", "Unregister subject", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            if(result == MessageBoxResult.OK)
             {
-                MessageBox.Show("This subject is unregistered", "Unregister subject", MessageBoxButton.OK);
-            }
-            else
-            {
-                var result = MessageBox.Show("Do you want to unregister this subject?", "Unregister subject", MessageBoxButton.OKCancel, MessageBoxImage.Question);
-                if(result == MessageBoxResult.OK)
-                {
-                    _subjectRegistrationService.UnregisterSubject(subject);
-                }
-            }
+                var canBeUnregistered = await _subjectRegistrationService.UnregisterSubjectAsync(subject);
 
-            SelectedSubjectIndex = -1;
+                if (!canBeUnregistered)
+                    MessageBox.Show("This subject is unregistered.", "Unregister subject", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                SelectedSubjectIndex = -1;
+            }
         }
 
     }

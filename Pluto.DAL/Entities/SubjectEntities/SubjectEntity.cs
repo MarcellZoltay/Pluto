@@ -18,6 +18,7 @@ namespace Pluto.DAL.Entities.SubjectEntities
         public string Name { get; set; }
         public int Credit { get; set; }
         public bool IsRegistered { get; set; }
+        public int ActualRegisteredSubjectId { get; set; }
 
         public virtual ICollection<RegisteredSubjectEntity> RegisteredSubjectEntities { get; set; }
     }

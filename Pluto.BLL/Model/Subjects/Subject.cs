@@ -1,9 +1,5 @@
 ﻿using Pluto.BLL.Model.RegisteredSubjects;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Pluto.BLL.Model
 {
@@ -30,36 +26,84 @@ namespace Pluto.BLL.Model
         private bool isRegistered;
         public bool IsRegistered {
             get { return isRegistered; }
-            set { SetProperty(ref isRegistered, value); }
+            set
+            {
+                SetProperty(ref isRegistered, value);
+                if (value == false)
+                {
+                    ActualRegisteredSubject = null;
+                    ActualRegisteredSubjectId = 0;
+                }
+            }
         }
 
-        private List<RegisteredSubject> registeredSubjects;
-        public List<RegisteredSubject> RegisteredSubjects
+        public bool IsDeletable
         {
-            get { return registeredSubjects; }
+            get
+            {
+                return RegisteredSubjects.Count == 0;
+            }
         }
 
-        public Subject()
+        public int ActualRegisteredSubjectId { get; private set; }
+        public RegisteredSubject ActualRegisteredSubject { get; private set; }
+
+        public List<RegisteredSubject> RegisteredSubjects { get; private set; }
+
+        public Subject(string name, int credit)
         {
-            registeredSubjects = new List<RegisteredSubject>();
+            Name = name;
+            Credit = credit;
+            RegisteredSubjects = new List<RegisteredSubject>();
         }
 
-        public void SetRegisteredSubject(RegisteredSubject registeredSubject)
+        public RegisteredSubject Register()
         {
-            registeredSubject.SubjectId = SubjectId;
-            registeredSubject.Name = Name;
-            registeredSubject.Credit = Credit;
-        }
-        public void Register(RegisteredSubject registeredSubject)
-        {
-            registeredSubjects.Add(registeredSubject);
-        }
-        public void Unregister(RegisteredSubject registeredSubject)
-        {
-            registeredSubjects.Remove(registeredSubject);
+            if (IsRegistered)
+                return null;
 
-            if(registeredSubjects.Count == 0)
-                IsRegistered = false;
+            var registeredSubject = new RegisteredSubject(this);
+
+            RegisteredSubjects.Add(registeredSubject);
+            ActualRegisteredSubject = registeredSubject;
+            IsRegistered = true;
+
+            return registeredSubject;
+        }
+        public void RollbackRegistration(RegisteredSubject registeredSubject)
+        {
+            RegisteredSubjects.Remove(registeredSubject);
+            IsRegistered = false;
+        }
+        public bool Unregister()
+        {
+            if (IsRegistered)
+            {
+                bool result = ActualRegisteredSubject.Unregister();
+                if (result)
+                {
+                    RegisteredSubjects.Remove(ActualRegisteredSubject);
+                    IsRegistered = false;
+
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public void Load(int subjectId, bool isRegistered, int actualRegisteredSubjectId)
+        {
+            SubjectId = subjectId;
+            IsRegistered = isRegistered;
+            ActualRegisteredSubjectId = actualRegisteredSubjectId;
+        }
+        public void SetAssociations(RegisteredSubject registeredSubject, RegisteredSubject actualRegisteredSubject)
+        {
+            RegisteredSubjects.Add(registeredSubject);
+
+            if(actualRegisteredSubject != null)
+                ActualRegisteredSubject = actualRegisteredSubject;
         }
     }
 }

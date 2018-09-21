@@ -12,6 +12,6 @@ namespace Pluto.DAL.Services.Interfaces
         List<SubjectEntity> GetSubjectEntities();
         int AddSubjectEntity(SubjectEntity subjectEntity);
         void UpdateSubjectEntity(SubjectEntity subjectEntityToUpdate);
-        void DeleteSubjectEntityById(int subjectEntityId);
+        void DeleteSubjectEntity(SubjectEntity subjectEntityToDelete);
     }
 }

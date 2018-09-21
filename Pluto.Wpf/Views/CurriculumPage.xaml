@@ -32,9 +32,9 @@
 
         <StackPanel Grid.Row="1" VerticalAlignment="Stretch">
             <Button Content="New subject" Command="{Binding NewSubjectCommand}" />
-            <Button Content="Edit subject" Command="{Binding EditSubjectCommand}" />
+            <!--<Button Content="Edit subject" Command="{Binding EditSubjectCommand}" />-->
             <Button Content="Delete subject" Command="{Binding DeleteSubjectCommand}" />
-            <Button Content="Order list" Command="{Binding OrderListCommand}" />
+            <!--<Button Content="Order list" Command="{Binding OrderListCommand}" />-->
 
             <Button Content="Register subject" Command="{Binding RegisterSubjectCommand}"
                     Margin="0 20 0 0" />
