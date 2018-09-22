@@ -34,9 +34,9 @@ namespace Pluto.Wpf
             builder.RegisterTypeForNavigation<TermsPage>();
             builder.RegisterTypeForNavigation<SubjectsPage>();
 
-            builder.RegisterType<SubjectService>().As<ISubjectService>();
-            builder.RegisterType<TermService>().As<ITermService>();
-            builder.RegisterType<SubjectRegistrationService>().As<ISubjectRegistrationService>();
+            builder.RegisterType<SubjectService>().As<ISubjectService>().SingleInstance();
+            builder.RegisterType<TermService>().As<ITermService>().SingleInstance();
+            builder.RegisterType<SubjectRegistrationService>().As<ISubjectRegistrationService>().SingleInstance();
         }
     }
 }

@@ -4,14 +4,23 @@
              xmlns:prism="http://prismlibrary.com/"
              xmlns:modelTerm="clr-namespace:Pluto.BLL.Model;assembly=Pluto.BLL"
              xmlns:modelRegisteredSubject="clr-namespace:Pluto.BLL.Model.RegisteredSubjects;assembly=Pluto.BLL"
+             xmlns:converter="clr-namespace:Pluto.Wpf.Converters"
              prism:ViewModelLocator.AutoWireViewModel="True">
+
+    <UserControl.Resources>
+        <converter:BoolToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <TreeView Name="trvMenu" ItemsSource="{Binding Terms, Mode=OneWay}">
+        <Label Grid.Column="1" Content="Loading..." Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"
+               HorizontalAlignment="Left"/>
+        
+        <TreeView Name="trvMenu" ItemsSource="{Binding Terms}">
             <TreeView.Resources>
                 <HierarchicalDataTemplate DataType="{x:Type modelTerm:Term}" ItemsSource="{Binding RegisteredSubjects}">
                     <TextBlock Text="{Binding Name}" />

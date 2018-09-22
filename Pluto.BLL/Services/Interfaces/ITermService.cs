@@ -9,6 +9,8 @@ namespace Pluto.BLL.Services
 {
     public interface ITermService
     {
+        event EventHandler TermsChanged;
+
         Task<List<Term>> GetTermsAsync(Predicate<Term> predicate = null);
         Term GetTermById(int? id);
         Task AddTermAsync(Term term);

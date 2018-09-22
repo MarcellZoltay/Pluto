@@ -40,8 +40,8 @@ namespace Pluto.BLL.Model
             get { return !IsClosed && registeredSubjects.Count == 0; }
         }
 
-        private List<RegisteredSubject> registeredSubjects;
-        public List<RegisteredSubject> RegisteredSubjects
+        private ObservableCollection<RegisteredSubject> registeredSubjects;
+        public ObservableCollection<RegisteredSubject> RegisteredSubjects
         {
             get { return registeredSubjects; }
         }
@@ -50,12 +50,8 @@ namespace Pluto.BLL.Model
         {
             Name = name;
             IsActive = isActive;
-            registeredSubjects = new List<RegisteredSubject>();
+            registeredSubjects = new ObservableCollection<RegisteredSubject>();
             IsClosed = false;
-        }
-        public Term(List<RegisteredSubject> registeredSubjects)
-        {
-            this.registeredSubjects = new List<RegisteredSubject>(registeredSubjects);
         }
 
         public bool RegisterSubject(RegisteredSubject registeredSubject)
