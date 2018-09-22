@@ -43,10 +43,8 @@ namespace Pluto.BLL.Services
 
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            
+            return false;
         }
     }
 }

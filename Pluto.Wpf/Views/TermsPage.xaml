@@ -42,7 +42,7 @@
                 BorderBrush="Black" BorderThickness="1.5" CornerRadius="10"
                 Margin="0 0 10 3" Padding="10">
             
-            <ListView ItemsSource="{Binding Terms}"
+            <ListView ItemsSource="{Binding Terms, IsAsync=True}"
                       SelectedIndex="{Binding SelectedTermIndex, Mode=TwoWay}">
                 <ListView.Resources>
                     <!--<Style TargetType="GridViewColumnHeader">

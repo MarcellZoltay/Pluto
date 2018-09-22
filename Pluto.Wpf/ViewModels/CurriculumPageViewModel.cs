@@ -1,6 +1,4 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using System;
+﻿using Prism.Mvvm;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -9,6 +7,8 @@ using Pluto.BLL.Services;
 using Pluto.Wpf.ViewModels.Dialogs;
 using Pluto.Wpf.Command;
 using System.Windows;
+using System.Windows.Threading;
+using System;
 using System.Threading.Tasks;
 
 namespace Pluto.Wpf.ViewModels
@@ -22,8 +22,8 @@ namespace Pluto.Wpf.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        private AsyncObservableCollection<Subject> subjects;
-        public AsyncObservableCollection<Subject> Subjects
+        private ObservableCollection<Subject> subjects;
+        public ObservableCollection<Subject> Subjects
         {
             get { return subjects; }
             set { SetProperty(ref subjects, value); }
@@ -66,15 +66,24 @@ namespace Pluto.Wpf.ViewModels
 
             SelectedSubjectIndex = -1;
 
-            Subjects = new AsyncObservableCollection<Subject>();
+            Subjects = new ObservableCollection<Subject>();
 
-            Task.Factory.StartNew(async () => {
-                List<Subject> subjects = await _subjectService.GetSubjectsAsync();
-                //Subjects = new ObservableCollection<Subject>();
-                Subjects.AddRange(subjects);
+            //Task.Factory.StartNew(async () =>
+            //{
+            //    List<Subject> subjects = await _subjectService.GetSubjectsAsync();
+            //    //Subjects = new ObservableCollection<Subject>();
+            //    Subjects.AddRange(subjects);
                 
+            //    IsLoading = false;
+            //});
+
+            Dispatcher.CurrentDispatcher.InvokeAsync( new Action( async () => 
+            {
+                List<Subject> subjects = await _subjectService.GetSubjectsAsync();
+                Subjects.AddRange(subjects);
+
                 IsLoading = false;
-            });
+            }));
         }
 
         

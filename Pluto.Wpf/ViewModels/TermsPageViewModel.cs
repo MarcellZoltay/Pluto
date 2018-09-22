@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace Pluto.Wpf.ViewModels
 {
@@ -22,8 +23,8 @@ namespace Pluto.Wpf.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        private AsyncObservableCollection<Term> terms;
-        public AsyncObservableCollection<Term> Terms
+        private ObservableCollection<Term> terms;
+        public ObservableCollection<Term> Terms
         {
             get { return terms; }
             set { SetProperty(ref terms, value); }
@@ -57,15 +58,24 @@ namespace Pluto.Wpf.ViewModels
 
             SelectedTermIndex = -1;
 
-            Terms = new AsyncObservableCollection<Term>();
+            Terms = new ObservableCollection<Term>();
 
-            Task.Factory.StartNew(async () => {
+            //Task.Factory.StartNew(async () =>
+            //{
+            //    List<Term> terms = await _termService.GetTermsAsync();
+            //    //Terms = new ObservableCollection<Term>();
+            //    Terms.AddRange(terms);
+
+            //    IsLoading = false;
+            //});
+
+            Dispatcher.CurrentDispatcher.InvokeAsync(new Action(async () =>
+            {
                 List<Term> terms = await _termService.GetTermsAsync();
-                //Terms = new ObservableCollection<Term>();
                 Terms.AddRange(terms);
 
                 IsLoading = false;
-            });
+            }));
         }
 
         private async void NewTermOnClick(object obj)

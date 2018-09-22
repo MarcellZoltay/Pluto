@@ -45,7 +45,7 @@
                 BorderBrush="Black" BorderThickness="1.5" CornerRadius="10"
                 Margin="0 0 10 3" Padding="10">
 
-            <ListView Name="lvSubjects" ItemsSource="{Binding Subjects}"
+            <ListView Name="lvSubjects" ItemsSource="{Binding Subjects, IsAsync=True}"
                       SelectedIndex="{Binding SelectedSubjectIndex, Mode=TwoWay}">
                 <ListView.View>
                     <GridView>

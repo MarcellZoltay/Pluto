@@ -9,6 +9,8 @@ namespace Pluto.BLL.Services
 {
     public class TermService : ITermService
     {
+        public event EventHandler TermsChanged;
+
         public async Task<List<Term>> GetTermsAsync(Predicate<Term> predicate = null)
         {
             return await Task.Factory.StartNew<List<Term>>(() => Model.DataManager.Instance.GetTerms(predicate));
@@ -29,6 +31,8 @@ namespace Pluto.BLL.Services
         public async Task AddTermAsync(Term term)
         {
             await Task.Factory.StartNew(() => Model.DataManager.Instance.AddTerm(term));
+
+            TermsChanged?.Invoke(this, null);
         }
 
         public async Task UpdateTermAsync(Term termToUpdate)
@@ -44,6 +48,9 @@ namespace Pluto.BLL.Services
             if (term.IsDeletable)
             {
                 await Task.Factory.StartNew(() => Model.DataManager.Instance.DeleteTerm(term));
+
+                TermsChanged?.Invoke(this, null);
+
                 return true;
             }
 
