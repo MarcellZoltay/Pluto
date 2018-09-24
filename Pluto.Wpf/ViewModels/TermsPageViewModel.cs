@@ -60,22 +60,17 @@ namespace Pluto.Wpf.ViewModels
 
             Terms = new ObservableCollection<Term>();
 
-            //Task.Factory.StartNew(async () =>
-            //{
-            //    List<Term> terms = await _termService.GetTermsAsync();
-            //    //Terms = new ObservableCollection<Term>();
-            //    Terms.AddRange(terms);
-
-            //    IsLoading = false;
-            //});
-
-            Dispatcher.CurrentDispatcher.InvokeAsync(new Action(async () =>
+            var currentDispatcher = Dispatcher.CurrentDispatcher;
+            Task.Factory.StartNew(async () =>
             {
                 List<Term> terms = await _termService.GetTermsAsync();
-                Terms.AddRange(terms);
 
-                IsLoading = false;
-            }));
+                await currentDispatcher.InvokeAsync(new Action(() =>
+                {
+                    Terms.AddRange(terms);
+                    IsLoading = false;
+                }));
+            });
         }
 
         private async void NewTermOnClick(object obj)

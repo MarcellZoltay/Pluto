@@ -68,24 +68,18 @@ namespace Pluto.Wpf.ViewModels
 
             Subjects = new ObservableCollection<Subject>();
 
-            //Task.Factory.StartNew(async () =>
-            //{
-            //    List<Subject> subjects = await _subjectService.GetSubjectsAsync();
-            //    //Subjects = new ObservableCollection<Subject>();
-            //    Subjects.AddRange(subjects);
-                
-            //    IsLoading = false;
-            //});
-
-            Dispatcher.CurrentDispatcher.InvokeAsync( new Action( async () => 
+            var currentDispatcher = Dispatcher.CurrentDispatcher;
+            Task.Factory.StartNew(async () =>
             {
                 List<Subject> subjects = await _subjectService.GetSubjectsAsync();
-                Subjects.AddRange(subjects);
 
-                IsLoading = false;
-            }));
+                await currentDispatcher.InvokeAsync(new Action( () =>
+                {
+                    Subjects.AddRange(subjects);
+                    IsLoading = false;
+                }));
+            });
         }
-
         
         private async void NewSubjectOnClick(object obj)
         {
