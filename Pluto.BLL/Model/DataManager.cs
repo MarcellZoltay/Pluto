@@ -120,6 +120,10 @@ namespace Pluto.BLL.Model
             subjectMapperService.DeleteSubject(subjectToDelete);
         }
 
+        public List<RegisteredSubject> GetRegisteredSubjects()
+        {
+            return registeredSubjects;
+        }
         public void AddRegisteredSubject(RegisteredSubject registeredSubject)
         {
             registeredSubjects.Add(registeredSubject);

@@ -1,5 +1,6 @@
 ﻿using Pluto.BLL.Model;
 using Pluto.BLL.Model.RegisteredSubjects;
+using Pluto.BLL.Services.Interfaces;
 using Pluto.DAL;
 using Pluto.DAL.Entities.RegisteredSubjectEntities;
 using Pluto.DAL.Entities.SubjectEntities;
@@ -12,8 +13,15 @@ using System.Threading.Tasks;
 
 namespace Pluto.BLL.Services
 {
-    public class SubjectRegistrationService : ISubjectRegistrationService
+    public class RegisteredSubjectService : IRegisteredSubjectService
     {
+        public event EventHandler RegisteredSubjectsChanged;
+
+        public async Task<List<RegisteredSubject>> GetRegisteredSubjectsAsync()
+        {
+            return await Task.Factory.StartNew(() => Model.DataManager.Instance.GetRegisteredSubjects());
+        }
+
         public async Task RegisterSubjectAsync(Subject subject, Term selectedTerm)
         {
             var registeredSubject = subject.Register();
@@ -24,6 +32,8 @@ namespace Pluto.BLL.Services
             {
                 await Task.Factory.StartNew(() => Model.DataManager.Instance.AddRegisteredSubject(registeredSubject));
                 await Task.Factory.StartNew(() => Model.DataManager.Instance.UpdateSubject(subject));
+
+                RegisteredSubjectsChanged?.Invoke(this, null);
             }
             else
             {
@@ -41,10 +51,13 @@ namespace Pluto.BLL.Services
                 await Task.Factory.StartNew(() => Model.DataManager.Instance.DeleteRegisteredSubject(actualRegsiteredSubject));
                 await Task.Factory.StartNew(() => Model.DataManager.Instance.UpdateSubject(subject));
 
+                RegisteredSubjectsChanged?.Invoke(this, null);
+
                 return true;
             }
             
             return false;
         }
+        
     }
 }

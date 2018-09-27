@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Threading;
 using System;
 using System.Threading.Tasks;
+using Pluto.BLL.Services.Interfaces;
 
 namespace Pluto.Wpf.ViewModels
 {
@@ -40,7 +41,7 @@ namespace Pluto.Wpf.ViewModels
 
         private ISubjectService _subjectService;
         private ITermService _termService;
-        private ISubjectRegistrationService _subjectRegistrationService;
+        private IRegisteredSubjectService _registeredSubjectService;
 
         public RelayCommand NewSubjectCommand { get; private set; }
         public RelayCommand EditSubjectCommand { get; private set; }
@@ -51,11 +52,11 @@ namespace Pluto.Wpf.ViewModels
 
         public CurriculumPageViewModel(ISubjectService subjectService,
                                        ITermService termService,
-                                       ISubjectRegistrationService subjectRegistrationService)
+                                       IRegisteredSubjectService registeredSubjectService)
         {
             _subjectService = subjectService;
             _termService = termService;
-            _subjectRegistrationService = subjectRegistrationService;
+            _registeredSubjectService = registeredSubjectService;
 
             NewSubjectCommand = new RelayCommand(NewSubjectOnClick);
             EditSubjectCommand = new RelayCommand(EditSubjectOnClick, p => SelectedSubjectIndex > -1);
@@ -73,7 +74,7 @@ namespace Pluto.Wpf.ViewModels
             {
                 List<Subject> subjects = await _subjectService.GetSubjectsAsync();
 
-                await currentDispatcher.InvokeAsync(new Action( () =>
+                currentDispatcher.Invoke(new Action( () =>
                 {
                     Subjects.AddRange(subjects);
                     IsLoading = false;
@@ -146,7 +147,7 @@ namespace Pluto.Wpf.ViewModels
                     var selectedTerm = dialogViewModel.SelectedTerm;
                     SelectedSubjectIndex = -1;
 
-                    await _subjectRegistrationService.RegisterSubjectAsync(subject, selectedTerm);
+                    await _registeredSubjectService.RegisterSubjectAsync(subject, selectedTerm);
                 }
             }
         }
@@ -157,7 +158,7 @@ namespace Pluto.Wpf.ViewModels
             var result = MessageBox.Show("Do you want to unregister this subject?", "Unregister subject", MessageBoxButton.OKCancel, MessageBoxImage.Question);
             if(result == MessageBoxResult.OK)
             {
-                var canBeUnregistered = await _subjectRegistrationService.UnregisterSubjectAsync(subject);
+                var canBeUnregistered = await _registeredSubjectService.UnregisterSubjectAsync(subject);
 
                 if (!canBeUnregistered)
                     MessageBox.Show("This subject is unregistered.", "Unregister subject", MessageBoxButton.OK, MessageBoxImage.Warning);

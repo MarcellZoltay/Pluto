@@ -19,16 +19,48 @@
 
         <Label Grid.Column="1" Content="Loading..." Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"
                HorizontalAlignment="Left"/>
-        
-        <TreeView Name="trvMenu" ItemsSource="{Binding Terms}">
-            <TreeView.Resources>
-                <HierarchicalDataTemplate DataType="{x:Type modelTerm:Term}" ItemsSource="{Binding RegisteredSubjects}">
-                    <TextBlock Text="{Binding Name}" />
-                </HierarchicalDataTemplate>
-                <DataTemplate DataType="{x:Type modelRegisteredSubject:RegisteredSubject}">
-                    <TextBlock Text="{Binding Name}" />
-                </DataTemplate>
-            </TreeView.Resources>
-        </TreeView>
+
+        <ListView Name="lvRegsiteredSubjects" ItemsSource="{Binding RegisteredSubjects}">
+            <ListView.View>
+                <GridView>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style TargetType="GridViewColumnHeader">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+
+                    <GridViewColumn>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock x:Name="Name" Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+            
+            <ListView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.ContainerStyle>
+                        <Style TargetType="{x:Type GroupItem}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <Expander IsExpanded="True">
+                                            <Expander.Header>
+                                                <TextBlock Text="{Binding Name}"/>
+                                            </Expander.Header>
+                                            <ItemsPresenter />
+                                        </Expander>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </GroupStyle.ContainerStyle>
+                </GroupStyle>
+            </ListView.GroupStyle>
+        </ListView>
+
+        <Label Grid.Column="1" Content="{Binding ElementName=lvRegsiteredSubjects, Path=SelectedItem.Name}" />
     </Grid>
 </UserControl>
