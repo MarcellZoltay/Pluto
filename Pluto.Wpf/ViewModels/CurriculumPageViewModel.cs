@@ -101,7 +101,15 @@ namespace Pluto.Wpf.ViewModels
             if (dialogViewModel.ShowDialog() == true)
             {
                 subject.Name = dialogViewModel.SubjectName;
-                subject.Credit = dialogViewModel.SubjectCredit;
+
+                try
+                {
+                    subject.Credit = dialogViewModel.SubjectCredit;
+                }
+                catch (InvalidOperationException e)
+                {
+                    MessageBox.Show(e.Message, "Edit subject", MessageBoxButton.OK);
+                }
 
                 SelectedSubjectIndex = -1;
 
