@@ -1,12 +1,16 @@
 ﻿using Pluto.BLL.Model;
+using Pluto.BLL.Model.RegisteredSubjects;
 using Pluto.BLL.Services;
+using Pluto.BLL.Services.Interfaces;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Threading;
 
 namespace Pluto.Wpf.ViewModels
@@ -20,13 +24,6 @@ namespace Pluto.Wpf.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        private ObservableCollection<Term> terms;
-        public ObservableCollection<Term> Terms
-        {
-            get { return terms; }
-            set { SetProperty(ref terms, value); }
-        }
-
         private bool _isLoading = true;
         public bool IsLoading
         {
@@ -34,39 +31,48 @@ namespace Pluto.Wpf.ViewModels
             set { SetProperty(ref _isLoading, value); }
         }
 
-        private ITermService _termService;
-
-        public SubjectsPageViewModel(ITermService termService)
+        private ObservableCollection<RegisteredSubject> registeredSubjects;
+        public ObservableCollection<RegisteredSubject> RegisteredSubjects
         {
-            _termService = termService;
-            _termService.TermsChanged += _termService_TermsChanged;
+            get { return registeredSubjects; }
+            set { SetProperty(ref registeredSubjects, value); }
+        }
 
-            Terms = new ObservableCollection<Term>();
+        private IRegisteredSubjectService _registeredSubjectService;
+
+        public SubjectsPageViewModel(IRegisteredSubjectService regsiteredSubjectService)
+        {
+            
+            _registeredSubjectService = regsiteredSubjectService;
+            _registeredSubjectService.RegisteredSubjectsChanged += _registeredSubjectService_RegisteredSubjectsChanged; ;
+
+            RegisteredSubjects = new ObservableCollection<RegisteredSubject>();
 
             var currentDispatcher = Dispatcher.CurrentDispatcher;
             Task.Factory.StartNew( async () =>
             {
-                List<Term> terms = await _termService.GetTermsAsync();
+                List<RegisteredSubject> registeredSubjects = await _registeredSubjectService.GetRegisteredSubjectsAsync();
 
-                await currentDispatcher.InvokeAsync(new Action(() =>
+                currentDispatcher.Invoke(new Action(() =>
                 {
-                    Terms.AddRange(terms);
+                    RegisteredSubjects.AddRange(registeredSubjects);
+
                     IsLoading = false;
                 }));
             });
         }
 
-        private async void _termService_TermsChanged(object sender, EventArgs e)
+        private async void _registeredSubjectService_RegisteredSubjectsChanged(object sender, EventArgs e)
         {
             var currentDispatcher = Dispatcher.CurrentDispatcher;
-            await Task.Factory.StartNew( async () =>
+            await Task.Factory.StartNew(async () =>
             {
-                List<Term> terms = await _termService.GetTermsAsync();
+                List<RegisteredSubject> registeredSubjects = await _registeredSubjectService.GetRegisteredSubjectsAsync();
 
-                await currentDispatcher.InvokeAsync(new Action(() =>
+                currentDispatcher.Invoke(new Action(() =>
                 {
-                    Terms.Clear();
-                    Terms.AddRange(terms);
+                    RegisteredSubjects.Clear();
+                    RegisteredSubjects.AddRange(registeredSubjects);
                 }));
             });
         }

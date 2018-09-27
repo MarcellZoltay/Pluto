@@ -32,7 +32,7 @@
 
         <StackPanel Grid.Row="1" VerticalAlignment="Stretch">
             <Button Content="New subject" Command="{Binding NewSubjectCommand}" />
-            <!--<Button Content="Edit subject" Command="{Binding EditSubjectCommand}" />-->
+            <Button Content="Edit subject" Command="{Binding EditSubjectCommand}" />
             <Button Content="Delete subject" Command="{Binding DeleteSubjectCommand}" />
             <!--<Button Content="Order list" Command="{Binding OrderListCommand}" />-->
 
@@ -45,7 +45,7 @@
                 BorderBrush="Black" BorderThickness="1.5" CornerRadius="10"
                 Margin="0 0 10 3" Padding="10">
 
-            <ListView Name="lvSubjects" ItemsSource="{Binding Subjects, IsAsync=True}"
+            <ListView Name="lvSubjects" ItemsSource="{Binding Subjects}"
                       SelectedIndex="{Binding SelectedSubjectIndex, Mode=TwoWay}">
                 <ListView.View>
                     <GridView>

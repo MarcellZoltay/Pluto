@@ -65,7 +65,7 @@ namespace Pluto.Wpf.ViewModels
             {
                 List<Term> terms = await _termService.GetTermsAsync();
 
-                await currentDispatcher.InvokeAsync(new Action(() =>
+                currentDispatcher.Invoke(new Action(() =>
                 {
                     Terms.AddRange(terms);
                     IsLoading = false;

@@ -12,7 +12,7 @@ namespace TestBLL
         [TestMethod]
         public void RegisterSubjectToActiveOpenTermTest()
         {
-            SubjectRegistrationService subjectRegistrationService = new SubjectRegistrationService();
+            RegisteredSubjectService subjectRegistrationService = new RegisteredSubjectService();
 
             Subject subject = new Subject("TestSubject", 4) { SubjectId = 1 };
             Term term = new Term("TestTerm", true) { TermId = 1 };
@@ -27,7 +27,7 @@ namespace TestBLL
         [TestMethod]
         public void RegisterSubjectToActiveClosedTermTest()
         {
-            SubjectRegistrationService subjectRegistrationService = new SubjectRegistrationService();
+            RegisteredSubjectService subjectRegistrationService = new RegisteredSubjectService();
 
             Subject subject = new Subject("TestSubject", 4) { SubjectId = 1 };
             Term term = new Term("TestTerm", true) { TermId = 1 };
@@ -42,7 +42,7 @@ namespace TestBLL
         [TestMethod]
         public void RegisterSubjectToPassiveTermTest()
         {
-            SubjectRegistrationService subjectRegistrationService = new SubjectRegistrationService();
+            RegisteredSubjectService subjectRegistrationService = new RegisteredSubjectService();
 
             Subject subject = new Subject("TestSubject", 4) { SubjectId = 1 };
             Term term = new Term("TestTerm", false) { TermId = 1 };
@@ -56,7 +56,7 @@ namespace TestBLL
         [TestMethod]
         public void UnregisterSubjectTermActiveOpenTest()
         {
-            SubjectRegistrationService subjectRegistrationService = new SubjectRegistrationService();
+            RegisteredSubjectService subjectRegistrationService = new RegisteredSubjectService();
 
             Subject subject = new Subject("TestSubject", 4) { SubjectId = 1 };
             Term term = new Term("TestTerm", true) { TermId = 1 };
@@ -73,7 +73,7 @@ namespace TestBLL
         [TestMethod]
         public void UnregisterSubjectTermActiveClosedTest()
         {
-            SubjectRegistrationService subjectRegistrationService = new SubjectRegistrationService();
+            RegisteredSubjectService subjectRegistrationService = new RegisteredSubjectService();
 
             Subject subject = new Subject("TestSubject", 4) { SubjectId = 1 };
             Term term = new Term("TestTerm", true) { TermId = 1 };

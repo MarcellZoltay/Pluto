@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace Pluto.Wpf.Views
 {
@@ -10,6 +11,10 @@ namespace Pluto.Wpf.Views
         public SubjectsPage()
         {
             InitializeComponent();
+
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lvRegsiteredSubjects.ItemsSource);
+            PropertyGroupDescription groupDescription = new PropertyGroupDescription("Term.Name");
+            view.GroupDescriptions.Add(groupDescription);
         }
     }
 }

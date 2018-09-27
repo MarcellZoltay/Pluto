@@ -4,6 +4,7 @@ using Prism.Modularity;
 using Autofac;
 using Prism.Autofac;
 using Pluto.BLL.Services;
+using Pluto.BLL.Services.Interfaces;
 
 namespace Pluto.Wpf
 {
@@ -36,7 +37,7 @@ namespace Pluto.Wpf
 
             builder.RegisterType<SubjectService>().As<ISubjectService>().SingleInstance();
             builder.RegisterType<TermService>().As<ITermService>().SingleInstance();
-            builder.RegisterType<SubjectRegistrationService>().As<ISubjectRegistrationService>().SingleInstance();
+            builder.RegisterType<RegisteredSubjectService>().As<IRegisteredSubjectService>().SingleInstance();
         }
     }
 }
