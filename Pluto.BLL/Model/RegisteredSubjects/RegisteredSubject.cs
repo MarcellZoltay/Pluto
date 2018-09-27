@@ -58,6 +58,7 @@ namespace Pluto.BLL.Model.RegisteredSubjects
             {
                 SetProperty(ref subject, value);
                 subjectId = value.SubjectId;
+                subject.PropertyChanged += Subject_PropertyChanged;
             }
         }
         private Term term;
@@ -77,6 +78,17 @@ namespace Pluto.BLL.Model.RegisteredSubjects
             Subject = subject;
             Name = subject.Name;
             Credit = subject.Credit;
+        }
+
+        private void Subject_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case nameof(Name): Name = ((Subject)sender).Name;
+                    break;
+                case nameof(Credit): Credit = ((Subject)sender).Credit;
+                    break;
+            }
         }
 
         public void Close()

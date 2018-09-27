@@ -113,6 +113,11 @@ namespace Pluto.BLL.Model
         public void UpdateSubject(Subject subjectToUpdate)
         {
             subjectMapperService.UpdateSubject(subjectToUpdate);
+
+            foreach (var item in subjectToUpdate.RegisteredSubjects)
+            {
+                UpdateRegisteredSubject(item);
+            }
         }
         public void DeleteSubject(Subject subjectToDelete)
         {

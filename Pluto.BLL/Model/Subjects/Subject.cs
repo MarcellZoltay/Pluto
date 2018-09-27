@@ -1,4 +1,5 @@
 ﻿using Pluto.BLL.Model.RegisteredSubjects;
+using System;
 using System.Collections.Generic;
 
 namespace Pluto.BLL.Model
@@ -14,13 +15,19 @@ namespace Pluto.BLL.Model
         private string name;
         public string Name {
             get { return name; }
-            set { SetProperty(ref name, value); }
+            set { SetProperty(ref name, value, nameof(Name)); }
         }
 
         private int credit;
         public int Credit {
             get { return credit; }
-            set { SetProperty(ref credit, value); }
+            set
+            {
+                if (value != credit && RegisteredSubjects.Exists(s => s.IsClosed))
+                    throw new InvalidOperationException("This subject has closed item.");
+
+                SetProperty(ref credit, value, nameof(Credit));
+            }
         }
 
         private bool isRegistered;
@@ -52,9 +59,9 @@ namespace Pluto.BLL.Model
 
         public Subject(string name, int credit)
         {
+            RegisteredSubjects = new List<RegisteredSubject>();
             Name = name;
             Credit = credit;
-            RegisteredSubjects = new List<RegisteredSubject>();
         }
 
         public RegisteredSubject Register()
