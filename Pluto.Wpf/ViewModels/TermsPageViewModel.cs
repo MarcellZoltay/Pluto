@@ -92,10 +92,17 @@ namespace Pluto.Wpf.ViewModels
             var dialogViewModel = new CreateOrEditTermDialogViewModel(term.Name, term.IsActive);
             if(dialogViewModel.ShowDialog() == true)
             {
-                term.IsActive = dialogViewModel.TermIsActive;
+                try
+                {
+                    term.IsActive = dialogViewModel.TermIsActive;
+                    await _termService.UpdateTermAsync(term);
+                }
+                catch (InvalidOperationException e)
+                {
+                    MessageBox.Show(e.Message, "Edit term", MessageBoxButton.OK);
+                }
+                
                 SelectedTermIndex = -1;
-
-                await _termService.UpdateTermAsync(term);
             }
         }
         private async void DeleteLastTermOnClick(object obj)

@@ -152,5 +152,47 @@ namespace TestBLL.ModelTest
 
             Assert.AreEqual(false, term.IsDeletable);
         }
+
+        [TestMethod]
+        public void TermSetActiveFromPassiveTest()
+        {
+            Term term = new Term("Test term", false);
+
+            term.IsActive = true;
+
+            Assert.AreEqual(true, term.IsActive);
+        }
+
+        [TestMethod]
+        public void TermSetPassiveFromActiveNotClosedEmptyTest() {
+            Term term = new Term("Test term", true);
+
+            term.IsActive = false;
+
+            Assert.AreEqual(false, term.IsActive);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void TermSetPassiveFromActiveClosedEmptyTest()
+        {
+            Term term = new Term("Test term", true);
+
+            term.Close();
+            term.IsActive = false;
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void TermSetPassiveFromActiveNotClosedNotEmptyTest()
+        {
+            Subject subject = new Subject("TestSubject", 2);
+            RegisteredSubject registeredSubject = new RegisteredSubject(subject);
+            Term term = new Term("Test term", true);
+
+            term.RegisterSubject(registeredSubject);
+
+            term.IsActive = false;
+        }
     }
 }
