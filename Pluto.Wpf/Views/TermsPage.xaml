@@ -33,7 +33,7 @@
         <StackPanel Grid.Row="1" Orientation="Horizontal"
                     VerticalAlignment="Center">
             <Button Content="New term" Command="{Binding NewTermCommand}" />
-            <!--<Button Content="Edit term" Command="{Binding EditTermCommand}" />-->
+            <Button Content="Edit term" Command="{Binding EditTermCommand}" />
             <Button Content="Delete last term" Command="{Binding DeleteLastTermCommand}" />
             <Button Content="Close term" Command="{Binding CloseTermCommand}" />
         </StackPanel>

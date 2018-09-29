@@ -25,14 +25,29 @@ namespace Pluto.BLL.Model
         private bool isActive;
         public bool IsActive {
             get { return isActive; }
-            set { SetProperty(ref isActive, value); }
+            set
+            {
+                if (isActive == true && value == false)
+                {
+                    if(IsClosed)
+                        throw new InvalidOperationException("This term has closed.");
+                    else if (RegisteredSubjects.Count != 0)
+                        throw new InvalidOperationException("This term has registered subjects.");
+                }
+
+                SetProperty(ref isActive, value);
+            }
         }
 
         private bool isClosed;
         public bool IsClosed
         {
             get { return isClosed; }
-            private set { SetProperty(ref isClosed, value); }
+            private set
+            {
+                if(IsActive)
+                    SetProperty(ref isClosed, value);
+            }
         }
 
         public bool IsDeletable
