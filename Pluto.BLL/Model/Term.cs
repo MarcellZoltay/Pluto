@@ -61,6 +61,13 @@ namespace Pluto.BLL.Model
             get { return registeredSubjects; }
         }
 
+        private int registeredCredits;
+        public int RegisteredCredits
+        {
+            get { return registeredCredits; }
+            private set { SetProperty(ref registeredCredits, value); }
+        }
+
         public Term(string name, bool isActive)
         {
             Name = name;
@@ -76,6 +83,8 @@ namespace Pluto.BLL.Model
                 registeredSubjects.Add(registeredSubject);
                 registeredSubject.Term = this;
 
+                RegisteredCredits += registeredSubject.Credit;
+
                 return true;
             }
 
@@ -86,6 +95,8 @@ namespace Pluto.BLL.Model
             if (IsActive && !IsClosed)
             {
                 registeredSubjects.Remove(registeredSubject);
+
+                RegisteredCredits -= registeredSubject.Credit;
 
                 return true;
             }
@@ -111,6 +122,8 @@ namespace Pluto.BLL.Model
         public void SetAssociations(RegisteredSubject registeredSubject)
         {
             RegisteredSubjects.Add(registeredSubject);
+
+            RegisteredCredits += registeredSubject.Credit;
         }
     }
 }

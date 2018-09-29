@@ -52,6 +52,7 @@ namespace Pluto.Wpf.ViewModels
             Task.Factory.StartNew( async () =>
             {
                 List<RegisteredSubject> registeredSubjects = await _registeredSubjectService.GetRegisteredSubjectsAsync();
+                registeredSubjects = new List<RegisteredSubject>(registeredSubjects.OrderBy(s => s.Term.Name));
 
                 currentDispatcher.Invoke(new Action(() =>
                 {
@@ -68,6 +69,7 @@ namespace Pluto.Wpf.ViewModels
             await Task.Factory.StartNew(async () =>
             {
                 List<RegisteredSubject> registeredSubjects = await _registeredSubjectService.GetRegisteredSubjectsAsync();
+                registeredSubjects = new List<RegisteredSubject>(registeredSubjects.OrderBy(s => s.Term.Name));
 
                 currentDispatcher.Invoke(new Action(() =>
                 {

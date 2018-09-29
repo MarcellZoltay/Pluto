@@ -10,17 +10,13 @@
     </UserControl.Resources>
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto" MinWidth="200" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" MinHeight="50" />
             <RowDefinition Height="auto" MinHeight="50" MaxHeight="50" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Column="1" >
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
@@ -38,44 +34,47 @@
             <Button Content="Close term" Command="{Binding CloseTermCommand}" />
         </StackPanel>
 
-        <Border Grid.ColumnSpan="2" Grid.Row="2"
+        <Border Grid.Row="2"
                 BorderBrush="Black" BorderThickness="1.5" CornerRadius="10"
-                Margin="0 0 10 3" Padding="10">
-            
+                Margin="10 0 10 3" Padding="10">
+
             <ListView ItemsSource="{Binding Terms}"
-                      SelectedIndex="{Binding SelectedTermIndex, Mode=TwoWay}">
-                <ListView.Resources>
-                    <!--<Style TargetType="GridViewColumnHeader">
-                        <Setter Property="Visibility" Value="Collapsed" />
-                    </Style>-->
-                </ListView.Resources>
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Name">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock x:Name="Name" Text="{Binding Name}" />
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
+                      SelectedIndex="{Binding SelectedTermIndex, Mode=TwoWay}"
+                      HorizontalContentAlignment="Stretch">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Black" BorderThickness="1"
+                                Margin="5" Padding="5">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
 
-                        <GridViewColumn Header="Active">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox x:Name="Active" IsChecked="{Binding IsActive}" IsEnabled="False"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name}" />
+                                    <CheckBox Content="Active" IsChecked="{Binding IsActive}" IsEnabled="False" />
+                                    <CheckBox Content="Closed" IsChecked="{Binding IsClosed, Mode=OneWay}" IsEnabled="False" />
+                                </StackPanel>
 
-                        <GridViewColumn Header="Closed">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox x:Name="Closed" IsChecked="{Binding IsClosed, Mode=OneWay}" IsEnabled="False"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                    </GridView>
-                </ListView.View>
+                                <TextBlock Grid.Row="1">
+                                    <Run Text="Felvett kredit: "/>
+                                    <Run Text="{Binding RegisteredCredits, Mode=OneWay}"/>
+                                </TextBlock>
+                            
+                                <ListView Grid.Row="2" ItemsSource="{Binding RegisteredSubjects}"
+                                          HorizontalContentAlignment="Stretch">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Grid.Column="0" Text="{Binding Name}"/>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
         </Border>
     </Grid>
