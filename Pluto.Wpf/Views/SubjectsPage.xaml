@@ -21,23 +21,11 @@
                HorizontalAlignment="Left"/>
 
         <ListView Name="lvRegsiteredSubjects" ItemsSource="{Binding RegisteredSubjects}">
-            <ListView.View>
-                <GridView>
-                    <GridView.ColumnHeaderContainerStyle>
-                        <Style TargetType="GridViewColumnHeader">
-                            <Setter Property="Visibility" Value="Collapsed" />
-                        </Style>
-                    </GridView.ColumnHeaderContainerStyle>
-
-                    <GridViewColumn>
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock x:Name="Name" Text="{Binding Name}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
             
             <ListView.GroupStyle>
                 <GroupStyle>
