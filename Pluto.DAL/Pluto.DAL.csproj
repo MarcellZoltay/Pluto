@@ -62,6 +62,14 @@
     <Compile Include="Migrations\201809201717224_UpdateModelItems.Designer.cs">
       <DependentUpon>201809201717224_UpdateModelItems.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809301024065_IsCompletedAddedToRegisteredSubjectEntity.cs" />
+    <Compile Include="Migrations\201809301024065_IsCompletedAddedToRegisteredSubjectEntity.Designer.cs">
+      <DependentUpon>201809301024065_IsCompletedAddedToRegisteredSubjectEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809301026326_IsCompletedAddedToSubjectEntity.cs" />
+    <Compile Include="Migrations\201809301026326_IsCompletedAddedToSubjectEntity.Designer.cs">
+      <DependentUpon>201809301026326_IsCompletedAddedToSubjectEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PlutoContext.cs" />
     <Compile Include="PlutoInitializer.cs" />
@@ -86,6 +94,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809201717224_UpdateModelItems.resx">
       <DependentUpon>201809201717224_UpdateModelItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809301024065_IsCompletedAddedToRegisteredSubjectEntity.resx">
+      <DependentUpon>201809301024065_IsCompletedAddedToRegisteredSubjectEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809301026326_IsCompletedAddedToSubjectEntity.resx">
+      <DependentUpon>201809301026326_IsCompletedAddedToSubjectEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -59,7 +59,7 @@
                                 </StackPanel>
 
                                 <TextBlock Grid.Row="1">
-                                    <Run Text="Felvett kredit: "/>
+                                    <Run Text="Registered credits: "/>
                                     <Run Text="{Binding RegisteredCredits, Mode=OneWay}"/>
                                 </TextBlock>
                             
@@ -67,7 +67,18 @@
                                           HorizontalContentAlignment="Stretch">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Grid.Column="0" Text="{Binding Name}"/>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+                                                
+                                                <TextBlock Grid.Column="0" Text="{Binding Name}"/>
+                                                <TextBlock Grid.Column="1" Text="{Binding Credit}"/>
+                                                <CheckBox Grid.Column="2" Content="Completed" IsChecked="{Binding IsCompleted}"
+                                                          IsEnabled="False"/>
+                                            </Grid>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>

@@ -33,19 +33,16 @@ namespace Pluto.BLL.Services.Implementations
             
             return subjects;
         }
-
         public void AddSubject(Subject subject)
         {
             var subjectEntity = ConvertToEntity(subject);
             subject.SubjectId = subjectEntityService.AddSubjectEntity(subjectEntity);
         }
-
         public void UpdateSubject(Subject subjectToUpdate)
         {
             var subjectEntity = ConvertToEntity(subjectToUpdate);
             subjectEntityService.UpdateSubjectEntity(subjectEntity);
         }
-
         public void DeleteSubject(Subject subjectToDelete)
         {
             var subjectEntity = ConvertToEntity(subjectToDelete);
@@ -60,14 +57,16 @@ namespace Pluto.BLL.Services.Implementations
                 Name = subject.Name,
                 Credit = subject.Credit,
                 IsRegistered = subject.IsRegistered,
-                ActualRegisteredSubjectId = subject.ActualRegisteredSubject == null ? 0 : subject.ActualRegisteredSubject.RegisteredSubjectId
+                ActualRegisteredSubjectId = subject.ActualRegisteredSubject == null ? 0 : subject.ActualRegisteredSubject.RegisteredSubjectId,
+                IsCompleted = subject.IsCompleted
             };
         }
 
         private Subject ConvertToModel(SubjectEntity subjectEntity)
         {
             var subject = new Subject(subjectEntity.Name, subjectEntity.Credit);
-            subject.Load(subjectEntity.Id, subjectEntity.IsRegistered, subjectEntity.ActualRegisteredSubjectId);
+            subject.Load(subjectEntity.Id, subjectEntity.IsRegistered, subjectEntity.IsCompleted, subjectEntity.ActualRegisteredSubjectId);
+
             return subject;
         }
     }

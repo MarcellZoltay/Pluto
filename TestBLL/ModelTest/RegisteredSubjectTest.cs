@@ -12,7 +12,7 @@ namespace TestBLL.ModelTest
         public void CreateRegisteredSubjectTest()
         {
             Subject subject = new Subject("TestSubject", 2) { SubjectId = 1 };
-            RegisteredSubject registeredSubject = new RegisteredSubject(subject);
+            RegisteredSubject registeredSubject = subject.Register();
 
             Assert.AreEqual(subject, registeredSubject.Subject);
             Assert.AreEqual(subject.SubjectId, registeredSubject.SubjectId);
@@ -24,7 +24,7 @@ namespace TestBLL.ModelTest
         public void SetTermToRegisteredSubjectTest()
         {
             Subject subject = new Subject("TestSubject", 2) { SubjectId = 1 };
-            RegisteredSubject registeredSubject = new RegisteredSubject(subject);
+            RegisteredSubject registeredSubject = subject.Register();
             Term term = new Term("TestTerm", true) { TermId = 1 };
 
             registeredSubject.Term = term;
@@ -37,12 +37,45 @@ namespace TestBLL.ModelTest
         public void CloseRegisteredSubjectTest()
         {
             Subject subject = new Subject("TestSubject", 2) { SubjectId = 1 };
-            RegisteredSubject registeredSubject = new RegisteredSubject(subject);
-
+            RegisteredSubject registeredSubject = subject.Register();
             registeredSubject.Close();
 
             Assert.AreEqual(true, registeredSubject.IsClosed);
             Assert.AreEqual(false, subject.IsRegistered);
+        }
+
+        [TestMethod]
+        public void SetCompletedTrueNotClosedTest()
+        {
+            Subject subject = new Subject("TestSubject", 2) { SubjectId = 1 };
+            RegisteredSubject registeredSubject = subject.Register();
+
+            registeredSubject.IsCompleted = true;
+
+            Assert.AreEqual(true, registeredSubject.IsCompleted);
+        }
+
+        [TestMethod]
+        public void SetCompletedTrueClosedTest()
+        {
+            Subject subject = new Subject("TestSubject", 2) { SubjectId = 1 };
+            RegisteredSubject registeredSubject = subject.Register();
+
+            registeredSubject.Close();
+            registeredSubject.IsCompleted = true;
+
+            Assert.AreEqual(false, registeredSubject.IsCompleted);
+        }
+
+        [TestMethod]
+        public void SetCompletedSetSubjectCompleted()
+        {
+            Subject subject = new Subject("TestSubject", 2) { SubjectId = 1 };
+            RegisteredSubject registeredSubject = subject.Register();
+
+            registeredSubject.IsCompleted = true;
+
+            Assert.AreEqual(true, subject.IsCompleted);
         }
     }
 }

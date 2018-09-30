@@ -46,9 +46,17 @@ namespace Pluto.BLL.Model
 
         public bool IsDeletable
         {
-            get
+            get { return RegisteredSubjects.Count == 0; }
+        }
+
+        private bool isCompleted;
+        public bool IsCompleted
+        {
+            get { return isCompleted; }
+            set
             {
-                return RegisteredSubjects.Count == 0;
+                if (IsRegistered)
+                    SetProperty(ref isCompleted, value);
             }
         }
 
@@ -66,7 +74,7 @@ namespace Pluto.BLL.Model
 
         public RegisteredSubject Register()
         {
-            if (IsRegistered)
+            if (IsRegistered || IsCompleted)
                 return null;
 
             var registeredSubject = new RegisteredSubject(this);
@@ -79,12 +87,15 @@ namespace Pluto.BLL.Model
         }
         public void RollbackRegistration(RegisteredSubject registeredSubject)
         {
-            RegisteredSubjects.Remove(registeredSubject);
-            IsRegistered = false;
+            if (registeredSubject != null)
+            {
+                RegisteredSubjects.Remove(registeredSubject);
+                IsRegistered = false;
+            }
         }
         public bool Unregister()
         {
-            if (IsRegistered)
+            if (IsRegistered && !IsCompleted)
             {
                 bool result = ActualRegisteredSubject.Unregister();
                 if (result)
@@ -99,10 +110,11 @@ namespace Pluto.BLL.Model
             return false;
         }
 
-        public void Load(int subjectId, bool isRegistered, int actualRegisteredSubjectId)
+        public void Load(int subjectId, bool isRegistered, bool isCompleted, int actualRegisteredSubjectId)
         {
             SubjectId = subjectId;
             IsRegistered = isRegistered;
+            this.isCompleted = isCompleted;
             ActualRegisteredSubjectId = actualRegisteredSubjectId;
         }
         public void SetAssociations(RegisteredSubject registeredSubject, RegisteredSubject actualRegisteredSubject)

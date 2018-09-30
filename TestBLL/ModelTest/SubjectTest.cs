@@ -83,31 +83,97 @@ namespace TestBLL.ModelTest
         }
 
         [TestMethod]
-        public void SubjectIsDeletableWithTwoRegistrationsOpenLastTest()
+        public void SubjectCompletedNotRegisteredTest()
         {
-            Subject subject = new Subject("TestSubject", 2);
-            var registeredSubject = subject.Register();
+            Subject subject = new Subject("TestSubject", 2) { SubjectId = 1 };
 
-            registeredSubject.Close();
+            subject.IsCompleted = true;
+
+            Assert.AreEqual(false, subject.IsCompleted);
+        }
+
+        [TestMethod]
+        public void SubjectCompletedRegisteredTest()
+        {
+            Subject subject = new Subject("TestSubject", 2) { SubjectId = 1 };
 
             subject.Register();
+            subject.IsCompleted = true;
+
+            Assert.AreEqual(true, subject.IsCompleted);
+        }
+
+        [TestMethod]
+        public void SubjectIsDeletableCompletedTest()
+        {
+            Subject subject = new Subject("TestSubject", 2) { SubjectId = 1 };
+
+            subject.Register();
+            subject.IsCompleted = true;
 
             Assert.AreEqual(false, subject.IsDeletable);
         }
 
         [TestMethod]
-        public void SubjectIsDeletableWithTwoRegistrationsClosedLastTest()
+        public void SubjectIsDeletableCompletedClosedRegisteredSubjectTest()
+        {
+            Subject subject = new Subject("TestSubject", 2) { SubjectId = 1 };
+            RegisteredSubject registeredSubject = subject.Register();
+
+            subject.IsCompleted = true;
+            registeredSubject.Close();
+
+            Assert.AreEqual(false, subject.IsDeletable);
+        }
+
+        [TestMethod]
+        public void UnregisterCompletedSubject()
         {
             Subject subject = new Subject("TestSubject", 2);
-            var registeredSubject_1 = subject.Register();
+            RegisteredSubject registereSubject = subject.Register();
 
-            registeredSubject_1.Close();
+            registereSubject.IsCompleted = true;
+
+            var result = subject.Unregister();
+
+            Assert.AreEqual(false, result);
+        }
+
+        [TestMethod]
+        public void UnregisterIncompletedSubject()
+        {
+            Subject subject = new Subject("TestSubject", 2);
+            RegisteredSubject registeredSubject = subject.Register();
+            Term term = new Term("1. félév", true);
+
+            term.RegisterSubject(registeredSubject);
+
+            registeredSubject.IsCompleted = true;
+            registeredSubject.IsCompleted = false;
+
+            var result = subject.Unregister();
+
+            Assert.AreEqual(true, result);
+        }
+
+        [TestMethod]
+        public void RegisterCompletedUnregisteredSubject()
+        {
+            Subject subject = new Subject("TestSubject", 2);
+            RegisteredSubject registeredSubject_1 = subject.Register();
+            Term term = new Term("1. félév", true);
+
+            term.RegisterSubject(registeredSubject_1);
+
+            registeredSubject_1.IsCompleted = true;
+
+            term.Close();
 
             var registeredSubject_2 = subject.Register();
 
-            registeredSubject_2.Close();
-
-            Assert.AreEqual(false, subject.IsDeletable);
+            Assert.AreEqual(false, subject.IsRegistered);
+            Assert.AreEqual(true, subject.IsCompleted);
+            Assert.AreEqual(null, registeredSubject_2);
         }
     }
 }

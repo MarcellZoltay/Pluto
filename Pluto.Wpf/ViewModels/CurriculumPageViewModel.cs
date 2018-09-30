@@ -146,6 +146,10 @@ namespace Pluto.Wpf.ViewModels
             {
                 MessageBox.Show("This subject is already registered.", "Register subject", MessageBoxButton.OK);
             }
+            else if (subject.IsCompleted)
+            {
+                MessageBox.Show("This subject is completed.", "Register subject", MessageBoxButton.OK);
+            }
             else
             {
                 var activeTerms = await _termService.GetTermsAsync(t => t.IsActive && !t.IsClosed);
@@ -169,7 +173,7 @@ namespace Pluto.Wpf.ViewModels
                 var canBeUnregistered = await _registeredSubjectService.UnregisterSubjectAsync(subject);
 
                 if (!canBeUnregistered)
-                    MessageBox.Show("This subject is unregistered.", "Unregister subject", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("This subject is unregistered or completed.", "Unregister subject", MessageBoxButton.OK, MessageBoxImage.Warning);
 
                 SelectedSubjectIndex = -1;
             }

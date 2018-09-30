@@ -33,19 +33,16 @@ namespace Pluto.BLL.Services.Implementations
 
             return registeredSubjects;
         }
-
         public void AddRegisteredSubject(RegisteredSubject registeredSubject)
         {
             var subjectEntity = ConvertToEntity(registeredSubject);
             registeredSubject.RegisteredSubjectId = registeredSubjectEntityService.AddRegisteredSubjectEntity(subjectEntity);
         }
-
         public void UpdateRegisteredSubject(RegisteredSubject registeredSubjectToUpdate)
         {
             var subjectEntity = ConvertToEntity(registeredSubjectToUpdate);
             registeredSubjectEntityService.UpdateRegisteredSubjectEntity(subjectEntity);
         }
-
         public void DeleteRegisteredSubject(RegisteredSubject registeredSubjectToDelete)
         {
             var subjectEntity = ConvertToEntity(registeredSubjectToDelete);
@@ -61,7 +58,8 @@ namespace Pluto.BLL.Services.Implementations
                 TermId = registeredSubject.TermId,
                 Name = registeredSubject.Name,
                 Credit = registeredSubject.Credit,
-                IsClosed = registeredSubject.IsClosed
+                IsClosed = registeredSubject.IsClosed,
+                IsCompleted = registeredSubject.IsCompleted
             };
         }
 
@@ -73,7 +71,8 @@ namespace Pluto.BLL.Services.Implementations
                 Name = registeredSubjectEntity.Name,
                 Credit = registeredSubjectEntity.Credit
             };
-            registereSubject.Load(registeredSubjectEntity.SubjectId, registeredSubjectEntity.TermId, registeredSubjectEntity.IsClosed);
+            registereSubject.Load(registeredSubjectEntity.SubjectId, registeredSubjectEntity.TermId, registeredSubjectEntity.IsCompleted, registeredSubjectEntity.IsClosed);
+
             return registereSubject;
         }
     }

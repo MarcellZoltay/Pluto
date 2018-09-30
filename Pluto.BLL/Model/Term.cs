@@ -78,7 +78,7 @@ namespace Pluto.BLL.Model
 
         public bool RegisterSubject(RegisteredSubject registeredSubject)
         {
-            if (isActive && !IsClosed)
+            if (isActive && !IsClosed && registeredSubject != null)
             {
                 registeredSubjects.Add(registeredSubject);
                 registeredSubject.Term = this;

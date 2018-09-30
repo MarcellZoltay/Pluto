@@ -33,19 +33,16 @@ namespace Pluto.BLL.Services.Implementations
 
             return terms;
         }
-
         public void AddTerm(Term term)
         {
             var termEntity = ConvertToEntity(term);
             term.TermId = termEntityService.AddTermEntity(termEntity);
         }
-
         public void UpdateTerm(Term termToUpdate)
         {
             var termEntity = ConvertToEntity(termToUpdate);
             termEntityService.UpdateTermEntity(termEntity);
         }
-
         public void DeleteTerm(Term termToDelete)
         {
             var termEntity = ConvertToEntity(termToDelete);
@@ -67,6 +64,7 @@ namespace Pluto.BLL.Services.Implementations
         {
             var term = new Term(termEntity.Name, termEntity.IsActive);
             term.Load(termEntity.Id, termEntity.IsClosed);
+
             return term;
         }
     }

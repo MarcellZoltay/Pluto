@@ -61,6 +61,7 @@ namespace Pluto.BLL.Model.RegisteredSubjects
                 subject.PropertyChanged += Subject_PropertyChanged;
             }
         }
+
         private Term term;
         public Term Term
         {
@@ -69,6 +70,22 @@ namespace Pluto.BLL.Model.RegisteredSubjects
             {
                 SetProperty(ref term, value);
                 termId = value.TermId;
+            }
+        }
+
+        private bool isCompleted;
+        public bool IsCompleted
+        {
+            get { return isCompleted; }
+            set
+            {
+                if (!IsClosed)
+                {
+                    SetProperty(ref isCompleted, value);
+
+                    if (Subject != null)
+                        Subject.IsCompleted = value;
+                }
             }
         }
 
@@ -104,10 +121,11 @@ namespace Pluto.BLL.Model.RegisteredSubjects
             return false;
         }
 
-        public void Load(int subjectId, int termId, bool isClosed)
+        public void Load(int subjectId, int termId, bool isCompleted, bool isClosed)
         {
             SubjectId = subjectId;
             TermId = termId;
+            IsCompleted = isCompleted;
             IsClosed = isClosed;
         }
         public void SetAssociations(Subject subject, Term term)
