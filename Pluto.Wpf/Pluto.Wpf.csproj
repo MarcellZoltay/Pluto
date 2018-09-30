@@ -58,6 +58,7 @@
     </ApplicationDefinition>
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\ListviewSelectedItemToVisibilityConverter.cs" />
     <Compile Include="ViewModels\CurriculumPageViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\CreateOrEditSubjectDialogViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\CreateOrEditTermDialogViewModel.cs" />

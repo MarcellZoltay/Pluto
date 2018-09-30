@@ -29,3 +29,5 @@ C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.csproj.CopyCo
 C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.dll
 C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.pdb
 C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.Migrations.UpdateModelItems.resources
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.Migrations.IsCompletedAddedToRegisteredSubjectEntity.resources
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.Migrations.IsCompletedAddedToSubjectEntity.resources

@@ -8,7 +8,8 @@
              prism:ViewModelLocator.AutoWireViewModel="True">
 
     <UserControl.Resources>
-        <converter:BoolToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <converter:BoolToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <converter:ListviewSelectedItemToVisibilityConverter x:Key="ListviewSelectedItemToVisibilityConverter"/>
     </UserControl.Resources>
     
     <Grid>
@@ -16,11 +17,16 @@
             <ColumnDefinition Width="200" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
         <Label Grid.Column="1" Content="Loading..." Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"
                HorizontalAlignment="Left"/>
 
-        <ListView Name="lvRegsiteredSubjects" ItemsSource="{Binding RegisteredSubjects}">
+        <ListView Grid.RowSpan="2" Name="lvRegsiteredSubjects" ItemsSource="{Binding RegisteredSubjects}"
+                  SelectedItem="{Binding SelectedRegisteredSubject, Mode=OneWayToSource}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}"/>
@@ -50,5 +56,11 @@
         </ListView>
 
         <Label Grid.Column="1" Content="{Binding ElementName=lvRegsiteredSubjects, Path=SelectedItem.Name}" />
+
+        <CheckBox Grid.Column="1" Grid.Row="1" VerticalAlignment="Top"
+                  Content="Completed"
+                  IsChecked="{Binding ElementName=lvRegsiteredSubjects, Path=SelectedItem.IsCompleted, Mode=TwoWay}" 
+                  Visibility="{Binding ElementName=lvRegsiteredSubjects, Path=SelectedItem, Converter={StaticResource ListviewSelectedItemToVisibilityConverter}}"
+                  Command="{Binding CompletedCheckboxCheckChangedCommand}"/>
     </Grid>
 </UserControl>

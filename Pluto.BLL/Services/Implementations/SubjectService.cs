@@ -31,12 +31,10 @@ namespace Pluto.BLL.Services
         {
             await Task.Factory.StartNew(() => Model.DataManager.Instance.AddSubject(subject));
         }
-
         public async Task UpdateSubjectAsync(Subject subjectToUpdate)
         {
             await Task.Factory.StartNew(() => Model.DataManager.Instance.UpdateSubject(subjectToUpdate));
         }
-
         public async Task<bool> DeleteSubjectAsync(Subject subjectToDelete)
         {
             if (subjectToDelete.IsDeletable)

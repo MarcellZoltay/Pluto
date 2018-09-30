@@ -13,6 +13,7 @@ namespace Pluto.BLL.Services.Interfaces
         event EventHandler RegisteredSubjectsChanged;
 
         Task<List<RegisteredSubject>> GetRegisteredSubjectsAsync();
+        Task SetRegisteredSubjectCompletionAsync(RegisteredSubject registeredSubjectToSet);
 
         Task RegisterSubjectAsync(Subject subject, Term selectedTerm);
         Task<bool> UnregisterSubjectAsync(Subject subject);

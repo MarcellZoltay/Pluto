@@ -21,6 +21,10 @@ namespace Pluto.BLL.Services
         {
             return await Task.Factory.StartNew(() => Model.DataManager.Instance.GetRegisteredSubjects());
         }
+        public async Task SetRegisteredSubjectCompletionAsync(RegisteredSubject registeredSubjectToSet)
+        {
+            await Task.Factory.StartNew(() => Model.DataManager.Instance.SetRegisteredSubjectCompletion(registeredSubjectToSet));
+        }
 
         public async Task RegisterSubjectAsync(Subject subject, Term selectedTerm)
         {
@@ -40,7 +44,6 @@ namespace Pluto.BLL.Services
                 subject.RollbackRegistration(registeredSubject);
             }
         }
-
         public async Task<bool> UnregisterSubjectAsync(Subject subject)
         {
             var actualRegsiteredSubject = subject.ActualRegisteredSubject;
@@ -58,6 +61,5 @@ namespace Pluto.BLL.Services
             
             return false;
         }
-        
     }
 }

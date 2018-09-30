@@ -34,12 +34,10 @@ namespace Pluto.BLL.Services
 
             TermsChanged?.Invoke(this, null);
         }
-
         public async Task UpdateTermAsync(Term termToUpdate)
         {
             await Task.Factory.StartNew(() => Model.DataManager.Instance.UpdateTerm(termToUpdate));
         }
-
         public async Task<bool> DeleteLastTermAsync()
         {
             var terms = Model.DataManager.Instance.GetTerms(null);
@@ -56,7 +54,6 @@ namespace Pluto.BLL.Services
 
             return false;
         }
-
         public async Task<bool> CloseTermAsync(Term termToClose)
         {
             if (termToClose.IsActive && !termToClose.IsClosed)

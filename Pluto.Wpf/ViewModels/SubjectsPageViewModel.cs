@@ -2,6 +2,7 @@
 using Pluto.BLL.Model.RegisteredSubjects;
 using Pluto.BLL.Services;
 using Pluto.BLL.Services.Interfaces;
+using Pluto.Wpf.Command;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
@@ -38,13 +39,18 @@ namespace Pluto.Wpf.ViewModels
             set { SetProperty(ref registeredSubjects, value); }
         }
 
+        public RegisteredSubject SelectedRegisteredSubject { get; set; }
+
         private IRegisteredSubjectService _registeredSubjectService;
 
-        public SubjectsPageViewModel(IRegisteredSubjectService regsiteredSubjectService)
+        public RelayCommand CompletedCheckboxCheckChangedCommand { get; private set; }
+
+        public SubjectsPageViewModel(IRegisteredSubjectService registeredSubjectService)
         {
-            
-            _registeredSubjectService = regsiteredSubjectService;
+            _registeredSubjectService = registeredSubjectService;
             _registeredSubjectService.RegisteredSubjectsChanged += _registeredSubjectService_RegisteredSubjectsChanged; ;
+
+            CompletedCheckboxCheckChangedCommand = new RelayCommand(CompletedCheckboxOnCheckChanged);
 
             RegisteredSubjects = new ObservableCollection<RegisteredSubject>();
 
@@ -77,6 +83,11 @@ namespace Pluto.Wpf.ViewModels
                     RegisteredSubjects.AddRange(registeredSubjects);
                 }));
             });
+        }
+
+        private async void CompletedCheckboxOnCheckChanged(object obj)
+        {
+            await _registeredSubjectService.SetRegisteredSubjectCompletionAsync(SelectedRegisteredSubject);
         }
     }
 }
