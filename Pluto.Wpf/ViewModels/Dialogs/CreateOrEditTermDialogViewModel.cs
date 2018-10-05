@@ -1,5 +1,4 @@
-﻿using Pluto.BLL.Model;
-using Pluto.Wpf.Views.Dialogs;
+﻿using Pluto.Wpf.Views.Dialogs;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;

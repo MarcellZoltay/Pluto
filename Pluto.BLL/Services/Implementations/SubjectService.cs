@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Pluto.BLL.Model.Subjects;
+using Pluto.BLL.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Pluto.BLL.Model;
 
-namespace Pluto.BLL.Services
+namespace Pluto.BLL.Services.Implementations
 {
     public class SubjectService : ISubjectService
     {
@@ -13,20 +14,6 @@ namespace Pluto.BLL.Services
         {
             return await Task.Factory.StartNew<List<Subject>>(() => Model.DataManager.Instance.GetSubjects());
         }
-
-        public Subject GetSubjectById(int? id)
-        {
-            //Subject subject = null;
-
-            //using (var db = new PlutoContext())
-            //{
-            //    subject = db.Subjects.Find(id);
-            //}
-
-            //return Model.Model.Instance.Subjects.Find(s => s.SubjectId == id);
-            return null;
-        }
-
         public async Task AddSubjectAsync(Subject subject)
         {
             await Task.Factory.StartNew(() => Model.DataManager.Instance.AddSubject(subject));

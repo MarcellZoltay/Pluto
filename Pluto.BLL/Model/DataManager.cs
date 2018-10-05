@@ -1,9 +1,9 @@
 ﻿using Pluto.BLL.Model.RegisteredSubjects;
+using Pluto.BLL.Model.Subjects;
 using Pluto.BLL.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity;
 
 namespace Pluto.BLL.Model
 {
@@ -18,9 +18,9 @@ namespace Pluto.BLL.Model
 
         private DataManager()
         {
-            subjectMapperService = UnityBootstrapper.UnityBootstrapperInstance.Container.Resolve<ISubjectMapperService>();
-            termMapperService = UnityBootstrapper.UnityBootstrapperInstance.Container.Resolve<ITermMapperService>();
-            registeredSubjectMapperService = UnityBootstrapper.UnityBootstrapperInstance.Container.Resolve<IRegisteredSubjectMapperService>();
+            subjectMapperService = UnityBootstrapper.UnityBootstrapperInstance.Resolve<ISubjectMapperService>();
+            termMapperService = UnityBootstrapper.UnityBootstrapperInstance.Resolve<ITermMapperService>();
+            registeredSubjectMapperService = UnityBootstrapper.UnityBootstrapperInstance.Resolve<IRegisteredSubjectMapperService>();
 
             subjects = new List<Subject>();
             terms = new List<Term>();

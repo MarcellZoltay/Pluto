@@ -1,14 +1,14 @@
 ﻿using Pluto.Wpf.Views;
 using System.Windows;
 using Prism.Modularity;
-using Autofac;
-using Prism.Autofac;
-using Pluto.BLL.Services;
+using Microsoft.Practices.Unity;
+using Prism.Unity;
+using Pluto.BLL.Services.Implementations;
 using Pluto.BLL.Services.Interfaces;
 
 namespace Pluto.Wpf
 {
-    class Bootstrapper : AutofacBootstrapper
+    class Bootstrapper : UnityBootstrapper
     {
         protected override DependencyObject CreateShell()
         {
@@ -26,18 +26,18 @@ namespace Pluto.Wpf
             //moduleCatalog.AddModule(typeof(YOUR_MODULE));
         }
 
-        protected override void ConfigureContainerBuilder(ContainerBuilder builder)
+        protected override void ConfigureContainer()
         {
-            base.ConfigureContainerBuilder(builder);
+            base.ConfigureContainer();
 
-            builder.RegisterTypeForNavigation<StartPage>();
-            builder.RegisterTypeForNavigation<CurriculumPage>();
-            builder.RegisterTypeForNavigation<TermsPage>();
-            builder.RegisterTypeForNavigation<SubjectsPage>();
+            Container.RegisterTypeForNavigation<StartPage>();
+            Container.RegisterTypeForNavigation<CurriculumPage>();
+            Container.RegisterTypeForNavigation<TermsPage>();
+            Container.RegisterTypeForNavigation<SubjectsPage>();
 
-            builder.RegisterType<SubjectService>().As<ISubjectService>().SingleInstance();
-            builder.RegisterType<TermService>().As<ITermService>().SingleInstance();
-            builder.RegisterType<RegisteredSubjectService>().As<IRegisteredSubjectService>().SingleInstance();
+            Container.RegisterType<ISubjectService, SubjectService>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<ITermService, TermService>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<IRegisteredSubjectService, RegisteredSubjectService>(new ContainerControlledLifetimeManager());
         }
     }
 }

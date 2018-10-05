@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Pluto.BLL.Model
+namespace Pluto.BLL.Model.Subjects
 {
     public class Subject : MyBindableBase
     {

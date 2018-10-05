@@ -7,12 +7,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              x:Name="navigationbar">
-    
+
     <WrapPanel>
         <Button Content="Főoldal" Command="{Binding ElementName=navigationbar, Path=StartPageCommand}" />
         <Button Content="Tanterv" Command="{Binding ElementName=navigationbar, Path=CurriculumPageCommand}" />
         <Button Content="Félévek" Command="{Binding ElementName=navigationbar, Path=TermsPageCommand}" />
         <Button Content="Tantárgyak" Command="{Binding ElementName=navigationbar, Path=SubjectsPageCommand}" />
     </WrapPanel>
-    
+
 </UserControl>

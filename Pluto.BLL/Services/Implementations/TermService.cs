@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Pluto.BLL.Model;
+using Pluto.BLL.Services.Interfaces;
 
-namespace Pluto.BLL.Services
+namespace Pluto.BLL.Services.Implementations
 {
     public class TermService : ITermService
     {
@@ -15,19 +16,6 @@ namespace Pluto.BLL.Services
         {
             return await Task.Factory.StartNew<List<Term>>(() => Model.DataManager.Instance.GetTerms(predicate));
         }
-
-        public Term GetTermById(int? id)
-        {
-            Term term = null;
-
-            //using (var db = new PlutoContext())
-            //{
-            //    term = db.Terms.Find(id);
-            //}
-
-            return term;
-        }
-
         public async Task AddTermAsync(Term term)
         {
             await Task.Factory.StartNew(() => Model.DataManager.Instance.AddTerm(term));

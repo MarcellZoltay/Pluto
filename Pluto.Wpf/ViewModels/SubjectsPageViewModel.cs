@@ -1,6 +1,4 @@
-﻿using Pluto.BLL.Model;
-using Pluto.BLL.Model.RegisteredSubjects;
-using Pluto.BLL.Services;
+﻿using Pluto.BLL.Model.RegisteredSubjects;
 using Pluto.BLL.Services.Interfaces;
 using Pluto.Wpf.Command;
 using Prism.Commands;
@@ -8,10 +6,8 @@ using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Threading;
 
 namespace Pluto.Wpf.ViewModels
@@ -48,14 +44,14 @@ namespace Pluto.Wpf.ViewModels
         public SubjectsPageViewModel(IRegisteredSubjectService registeredSubjectService)
         {
             _registeredSubjectService = registeredSubjectService;
-            _registeredSubjectService.RegisteredSubjectsChanged += _registeredSubjectService_RegisteredSubjectsChanged; ;
+            _registeredSubjectService.RegisteredSubjectsChanged += _registeredSubjectService_RegisteredSubjectsChanged;
 
             CompletedCheckboxCheckChangedCommand = new RelayCommand(CompletedCheckboxOnCheckChanged);
 
             RegisteredSubjects = new ObservableCollection<RegisteredSubject>();
 
             var currentDispatcher = Dispatcher.CurrentDispatcher;
-            Task.Factory.StartNew( async () =>
+            Task.Factory.StartNew(async () =>
             {
                 List<RegisteredSubject> registeredSubjects = await _registeredSubjectService.GetRegisteredSubjectsAsync();
                 registeredSubjects = new List<RegisteredSubject>(registeredSubjects.OrderBy(s => s.Term.Name));

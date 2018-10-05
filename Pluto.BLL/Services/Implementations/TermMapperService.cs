@@ -17,7 +17,7 @@ namespace Pluto.BLL.Services.Implementations
 
         public TermMapperService()
         {
-            termEntityService = UnityBootstrapper.UnityBootstrapperInstance.Container.Resolve<ITermEntityService>();
+            termEntityService = UnityBootstrapper.UnityBootstrapperInstance.Resolve<ITermEntityService>();
         }
 
         public List<Term> GetTerms()

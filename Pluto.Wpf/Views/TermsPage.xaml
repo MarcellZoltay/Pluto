@@ -62,7 +62,7 @@
                                     <Run Text="Registered credits: "/>
                                     <Run Text="{Binding RegisteredCredits, Mode=OneWay}"/>
                                 </TextBlock>
-                            
+
                                 <ListView Grid.Row="2" ItemsSource="{Binding RegisteredSubjects}"
                                           HorizontalContentAlignment="Stretch">
                                     <ListView.ItemTemplate>
@@ -73,7 +73,7 @@
                                                     <ColumnDefinition/>
                                                     <ColumnDefinition/>
                                                 </Grid.ColumnDefinitions>
-                                                
+
                                                 <TextBlock Grid.Column="0" Text="{Binding Name}"/>
                                                 <TextBlock Grid.Column="1" Text="{Binding Credit}"/>
                                                 <CheckBox Grid.Column="2" Content="Completed" IsChecked="{Binding IsCompleted}"

@@ -1,5 +1,6 @@
 ﻿using Pluto.BLL.Model;
 using Pluto.BLL.Model.RegisteredSubjects;
+using Pluto.BLL.Model.Subjects;
 using Pluto.BLL.Services.Interfaces;
 using Pluto.DAL;
 using Pluto.DAL.Entities.RegisteredSubjectEntities;
@@ -11,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pluto.BLL.Services
+namespace Pluto.BLL.Services.Implementations
 {
     public class RegisteredSubjectService : IRegisteredSubjectService
     {

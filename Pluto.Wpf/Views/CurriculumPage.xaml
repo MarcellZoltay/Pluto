@@ -46,7 +46,8 @@
                 Margin="0 0 10 3" Padding="10">
 
             <ListView Name="lvSubjects" ItemsSource="{Binding Subjects}"
-                      SelectedIndex="{Binding SelectedSubjectIndex, Mode=TwoWay}">
+                      SelectedIndex="{Binding SelectedSubjectIndex, Mode=TwoWay}"
+                      SelectedItem="{Binding SelectedSubjectItem, Mode=OneWayToSource}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Name">
@@ -84,7 +85,7 @@
                 </ListView.View>
             </ListView>
         </Border>
-        
+
     </Grid>
-    
+
 </UserControl>
