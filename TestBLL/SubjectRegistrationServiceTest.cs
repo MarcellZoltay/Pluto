@@ -2,7 +2,8 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Pluto.BLL.Model;
-using Pluto.BLL.Services;
+using Pluto.BLL.Model.Subjects;
+using Pluto.BLL.Services.Implementations;
 
 namespace TestBLL
 {

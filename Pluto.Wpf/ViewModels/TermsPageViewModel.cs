@@ -1,5 +1,5 @@
 ﻿using Pluto.BLL.Model;
-using Pluto.BLL.Services;
+using Pluto.BLL.Services.Interfaces;
 using Pluto.Wpf.Command;
 using Pluto.Wpf.ViewModels.Dialogs;
 using Prism.Commands;
@@ -77,7 +77,7 @@ namespace Pluto.Wpf.ViewModels
         {
             var termName = (Terms.Count + 1).ToString() + ". term";
             var dialogViewModel = new CreateOrEditTermDialogViewModel(termName);
-            if(dialogViewModel.ShowDialog() == true)
+            if (dialogViewModel.ShowDialog() == true)
             {
                 var term = new Term(dialogViewModel.TermName, dialogViewModel.TermIsActive);
 
@@ -90,7 +90,7 @@ namespace Pluto.Wpf.ViewModels
             var term = Terms.ElementAt(SelectedTermIndex);
 
             var dialogViewModel = new CreateOrEditTermDialogViewModel(term.Name, term.IsActive);
-            if(dialogViewModel.ShowDialog() == true)
+            if (dialogViewModel.ShowDialog() == true)
             {
                 try
                 {
@@ -101,7 +101,7 @@ namespace Pluto.Wpf.ViewModels
                 {
                     MessageBox.Show(e.Message, "Edit term", MessageBoxButton.OK);
                 }
-                
+
                 SelectedTermIndex = -1;
             }
         }
@@ -111,7 +111,7 @@ namespace Pluto.Wpf.ViewModels
             if (result == MessageBoxResult.OK)
             {
                 var deletable = await _termService.DeleteLastTermAsync();
-                if(deletable)
+                if (deletable)
                     Terms.RemoveAt(Terms.Count - 1);
                 else
                     MessageBox.Show("This term cannot be deleted! Only not closed and empty term can be deleted.", "Delete term", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -125,7 +125,7 @@ namespace Pluto.Wpf.ViewModels
             if (result == MessageBoxResult.OK)
             {
                 var canBeClosed = await _termService.CloseTermAsync(term);
-                if(!canBeClosed)
+                if (!canBeClosed)
                     MessageBox.Show("This term cannot be closed!", "Close term", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }

@@ -5,14 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pluto.BLL.Services
+namespace Pluto.BLL.Services.Interfaces
 {
     public interface ITermService
     {
         event EventHandler TermsChanged;
 
         Task<List<Term>> GetTermsAsync(Predicate<Term> predicate = null);
-        Term GetTermById(int? id);
         Task AddTermAsync(Term term);
         Task UpdateTermAsync(Term termToUpdate);
         Task<bool> DeleteLastTermAsync();

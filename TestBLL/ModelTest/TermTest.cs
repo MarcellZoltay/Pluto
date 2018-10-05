@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Pluto.BLL.Model;
 using Pluto.BLL.Model.RegisteredSubjects;
+using Pluto.BLL.Model.Subjects;
 
 namespace TestBLL.ModelTest
 {

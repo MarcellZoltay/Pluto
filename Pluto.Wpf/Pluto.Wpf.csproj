@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{931BB8DF-5BE2-460B-969B-D7EF38255E7E}</ProjectGuid>
+    <ProjectGuid>{6F78E6D0-BDED-4947-ABF4-07F846C8BD96}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Pluto.Wpf</RootNamespace>
@@ -56,28 +56,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Command\RelayCommand.cs" />
-    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
-    <Compile Include="Converters\ListviewSelectedItemToVisibilityConverter.cs" />
-    <Compile Include="ViewModels\CurriculumPageViewModel.cs" />
-    <Compile Include="ViewModels\Dialogs\CreateOrEditSubjectDialogViewModel.cs" />
-    <Compile Include="ViewModels\Dialogs\CreateOrEditTermDialogViewModel.cs" />
-    <Compile Include="ViewModels\Dialogs\RegisterSubjectDialogViewModel.cs" />
     <Compile Include="ViewModels\StartPageViewModel.cs" />
     <Compile Include="ViewModels\SubjectsPageViewModel.cs" />
     <Compile Include="ViewModels\TermsPageViewModel.cs" />
-    <Compile Include="Views\CurriculumPage.xaml.cs">
-      <DependentUpon>CurriculumPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Dialogs\CreateOrEditSubjectDialog.xaml.cs">
-      <DependentUpon>CreateOrEditSubjectDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Dialogs\CreateOrEditTermDialog.xaml.cs">
-      <DependentUpon>CreateOrEditTermDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Dialogs\RegisterSubjectDialog.xaml.cs">
-      <DependentUpon>RegisterSubjectDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\NavigationBar.xaml.cs">
       <DependentUpon>NavigationBar.xaml</DependentUpon>
     </Compile>
@@ -115,7 +96,26 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Command\RelayCommand.cs" />
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\ListviewSelectedItemToVisibilityConverter.cs" />
+    <Compile Include="ViewModels\CurriculumPageViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\CreateOrEditSubjectDialogViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\CreateOrEditTermDialogViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\RegisterSubjectDialogViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="Views\CurriculumPage.xaml.cs">
+      <DependentUpon>CurriculumPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\CreateOrEditSubjectDialog.xaml.cs">
+      <DependentUpon>CreateOrEditSubjectDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\CreateOrEditTermDialog.xaml.cs">
+      <DependentUpon>CreateOrEditTermDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\RegisterSubjectDialog.xaml.cs">
+      <DependentUpon>RegisterSubjectDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -165,9 +165,7 @@
     <PackageReference Include="EntityFramework">
       <Version>6.2.0</Version>
     </PackageReference>
-    <PackageReference Include="Prism.Autofac">
-      <Version>6.3.0</Version>
-    </PackageReference>
+    <PackageReference Include="Prism.Unity" Version="6.3.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Pluto.BLL\Pluto.BLL.csproj">
@@ -175,6 +173,5 @@
       <Name>Pluto.BLL</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,5 +1,5 @@
-﻿using Pluto.BLL.Model;
-using Pluto.BLL.Services;
+﻿using Pluto.BLL.Model.Subjects;
+using Pluto.BLL.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -57,17 +57,18 @@ namespace Pluto.Web.Controllers
         // GET: Curriculum/Edit/5
         public ActionResult Edit(int? id)
         {
-            if(id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var subject = _subjectService.GetSubjectById(id);
-            if(subject == null)
-            {
-                return HttpNotFound();
-            }
+            //if(id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            //var subject = _subjectService.GetSubjectById(id);
+            //if(subject == null)
+            //{
+            //    return HttpNotFound();
+            //}
 
-            return View(subject);
+            //return View(subject);
+            return View();
         }
 
         // POST: Curriculum/Edit/5
@@ -75,46 +76,48 @@ namespace Pluto.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditPost(int? id)
         {
-            if(id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var subjectToUpdate = _subjectService.GetSubjectById(id);
-            if (TryUpdateModel(subjectToUpdate, "", new string[] { "Name", "Credit"}))
-            {
-                try
-                {
-                    _subjectService.UpdateSubjectAsync(subjectToUpdate);
+            //if(id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            //var subjectToUpdate = _subjectService.GetSubjectById(id);
+            //if (TryUpdateModel(subjectToUpdate, "", new string[] { "Name", "Credit"}))
+            //{
+            //    try
+            //    {
+            //        _subjectService.UpdateSubjectAsync(subjectToUpdate);
 
-                    return RedirectToAction("Index");
-                }
-                catch (DataException)
-                {
-                    ModelState.AddModelError("", "Unable to save changes.");
-                }
-            }
-            return View(subjectToUpdate);
+            //        return RedirectToAction("Index");
+            //    }
+            //    catch (DataException)
+            //    {
+            //        ModelState.AddModelError("", "Unable to save changes.");
+            //    }
+            //}
+            //return View(subjectToUpdate);
+            return View();
         }
 
         // GET: Curriculum/Delete/5
         public ActionResult Delete(int? id, bool? saveChangesError = false)
         {
-            if(id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            if (saveChangesError.GetValueOrDefault())
-            {
-                ViewBag.ErrorMessage = "Delete failed.";
-            }
+            //if(id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            //if (saveChangesError.GetValueOrDefault())
+            //{
+            //    ViewBag.ErrorMessage = "Delete failed.";
+            //}
 
-            var subject = _subjectService.GetSubjectById(id);
-            if(subject == null)
-            {
-                return HttpNotFound();
-            }
-            
-            return View(subject);
+            //var subject = _subjectService.GetSubjectById(id);
+            //if(subject == null)
+            //{
+            //    return HttpNotFound();
+            //}
+
+            //return View(subject);
+            return View();
         }
 
         // POST: Curriculum/Delete/5

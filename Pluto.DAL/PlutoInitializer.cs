@@ -14,11 +14,11 @@ namespace Pluto.DAL
         {
             var subjects = new List<SubjectEntity>
             {
-                new SubjectEntity{ Name = "Analízis", Credit = 6 },
-                new SubjectEntity{ Name = "Bevezetés  a számításelméletbe", Credit = 4 },
-                new SubjectEntity{ Name = "Fizika", Credit = 4 },
+                new SubjectEntity{ Name = "Analízis 1", Credit = 6 },
+                new SubjectEntity{ Name = "Bevezetés a számításelméletbe 1", Credit = 4 },
+                new SubjectEntity{ Name = "Fizika 1i", Credit = 4 },
                 new SubjectEntity{ Name = "Digitális technika", Credit = 7 },
-                new SubjectEntity{ Name = "A programozás alapjai", Credit = 7 }
+                new SubjectEntity{ Name = "A programozás alapjai 1", Credit = 7 }
             };
 
             subjects.ForEach(s => context.Subjects.Add(s));

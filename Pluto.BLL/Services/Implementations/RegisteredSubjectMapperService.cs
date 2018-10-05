@@ -17,7 +17,7 @@ namespace Pluto.BLL.Services.Implementations
 
         public RegisteredSubjectMapperService()
         {
-            registeredSubjectEntityService = UnityBootstrapper.UnityBootstrapperInstance.Container.Resolve<IRegisteredSubjectEntityService>();
+            registeredSubjectEntityService = UnityBootstrapper.UnityBootstrapperInstance.Resolve<IRegisteredSubjectEntityService>();
         }
 
         public List<RegisteredSubject> GetRegisteredSubjects()

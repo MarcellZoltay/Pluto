@@ -1,5 +1,6 @@
 ﻿using Pluto.BLL.Model;
 using Pluto.BLL.Model.RegisteredSubjects;
+using Pluto.BLL.Model.Subjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;

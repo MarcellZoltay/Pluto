@@ -1,5 +1,5 @@
 ﻿using Pluto.BLL.Model;
-using Pluto.BLL.Services;
+using Pluto.BLL.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -48,7 +48,7 @@ namespace Pluto.Web.Controllers
                     var terms = await _termService.GetTermsAsync();
                     int count = terms.Count;
                     term.Name = (count + 1) + ". term";
-                    _termService.AddTermAsync(term);
+                    await _termService.AddTermAsync(term);
 
                     return RedirectToAction("Index");
                 }
@@ -64,17 +64,18 @@ namespace Pluto.Web.Controllers
         // GET: Terms/Edit/5
         public ActionResult Edit(int? id)
         {
-            if(id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var term = _termService.GetTermById(id);
-            if(term == null)
-            {
-                return HttpNotFound();
-            }
+            //if(id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            //var term = _termService.GetTermById(id);
+            //if(term == null)
+            //{
+            //    return HttpNotFound();
+            //}
 
-            return View(term);
+            //return View(term);
+            return View();
         }
 
         // POST: Terms/Edit/5
@@ -82,25 +83,26 @@ namespace Pluto.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditPost(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var termToUpdate = _termService.GetTermById(id);
-            if (TryUpdateModel(termToUpdate, "", new string[] { "IsActive" }))
-            {
-                try
-                {
-                    _termService.UpdateTermAsync(termToUpdate);
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            //var termToUpdate = _termService.GetTermById(id);
+            //if (TryUpdateModel(termToUpdate, "", new string[] { "IsActive" }))
+            //{
+            //    try
+            //    {
+            //        _termService.UpdateTermAsync(termToUpdate);
 
-                    return RedirectToAction("Index");
-                }
-                catch (DataException)
-                {
-                    ModelState.AddModelError("", "Unable to save changes.");
-                }
-            }
-            return View(termToUpdate);
+            //        return RedirectToAction("Index");
+            //    }
+            //    catch (DataException)
+            //    {
+            //        ModelState.AddModelError("", "Unable to save changes.");
+            //    }
+            //}
+            //return View(termToUpdate);
+            return View();
         }
 
         // GET: Terms/Delete/5

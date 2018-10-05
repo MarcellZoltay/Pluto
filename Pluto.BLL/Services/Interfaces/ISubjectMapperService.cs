@@ -1,4 +1,5 @@
 ﻿using Pluto.BLL.Model;
+using Pluto.BLL.Model.Subjects;
 using Pluto.DAL.Entities.SubjectEntities;
 using System;
 using System.Collections.Generic;

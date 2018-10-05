@@ -1,4 +1,5 @@
 ﻿using Pluto.BLL.Model;
+using Pluto.BLL.Model.Subjects;
 using Pluto.BLL.Services.Interfaces;
 using Pluto.DAL.Entities.SubjectEntities;
 using Pluto.DAL.Services.Interfaces;
@@ -17,7 +18,7 @@ namespace Pluto.BLL.Services.Implementations
 
         public SubjectMapperService()
         {
-            subjectEntityService = UnityBootstrapper.UnityBootstrapperInstance.Container.Resolve<ISubjectEntityService>();
+            subjectEntityService = UnityBootstrapper.UnityBootstrapperInstance.Resolve<ISubjectEntityService>();
         }
 
         public List<Subject> GetSubjects()

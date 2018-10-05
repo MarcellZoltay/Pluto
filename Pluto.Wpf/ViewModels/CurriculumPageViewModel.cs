@@ -1,16 +1,15 @@
-﻿using Prism.Mvvm;
+﻿using Pluto.BLL.Model.Subjects;
+using Pluto.BLL.Services.Interfaces;
+using Pluto.Wpf.Command;
+using Pluto.Wpf.ViewModels.Dialogs;
+using Prism.Mvvm;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Pluto.BLL.Model;
-using Pluto.BLL.Services;
-using Pluto.Wpf.ViewModels.Dialogs;
-using Pluto.Wpf.Command;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
-using System;
-using System.Threading.Tasks;
-using Pluto.BLL.Services.Interfaces;
 
 namespace Pluto.Wpf.ViewModels
 {
@@ -31,6 +30,7 @@ namespace Pluto.Wpf.ViewModels
         }
 
         public int SelectedSubjectIndex { get; set; }
+        public Subject SelectedSubjectItem { get; set; }
 
         private bool _isLoading = true;
         public bool IsLoading
@@ -74,28 +74,28 @@ namespace Pluto.Wpf.ViewModels
             {
                 List<Subject> subjects = await _subjectService.GetSubjectsAsync();
 
-                currentDispatcher.Invoke(new Action( () =>
+                currentDispatcher.Invoke(new Action(() =>
                 {
                     Subjects.AddRange(subjects);
                     IsLoading = false;
                 }));
             });
         }
-        
+
         private async void NewSubjectOnClick(object obj)
         {
             var dialogViewModel = new CreateOrEditSubjectDialogViewModel();
-            if(dialogViewModel.ShowDialog() == true)
+            if (dialogViewModel.ShowDialog() == true)
             {
                 var subject = new Subject(dialogViewModel.SubjectName, dialogViewModel.SubjectCredit);
 
                 Subjects.Add(subject);
-                await _subjectService.AddSubjectAsync(subject);             
+                await _subjectService.AddSubjectAsync(subject);
             }
         }
         private async void EditSubjectOnClick(object obj)
         {
-            var subject = Subjects.ElementAt(SelectedSubjectIndex);
+            var subject = SelectedSubjectItem;
 
             var dialogViewModel = new CreateOrEditSubjectDialogViewModel(subject.Name, subject.Credit);
             if (dialogViewModel.ShowDialog() == true)
@@ -118,7 +118,7 @@ namespace Pluto.Wpf.ViewModels
         }
         private async void DeleteSubjectOnClick(object obj)
         {
-            var subject = Subjects.ElementAt(SelectedSubjectIndex);
+            var subject = SelectedSubjectItem;
 
             var result = MessageBox.Show("Are you sure you want to delete " + subject.Name + "?", "Delete subject", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
             if (result == MessageBoxResult.OK)
@@ -134,13 +134,13 @@ namespace Pluto.Wpf.ViewModels
         private void OrderListOnClick(object obj)
         {
             var subjects = new List<Subject>(Subjects.OrderBy(s => s.Name));
-        
+
             Subjects.Clear();
             Subjects.AddRange(subjects);
         }
         private async void RegisterSubjectOnClick(object obj)
         {
-            var subject = Subjects.ElementAt(SelectedSubjectIndex);
+            var subject = SelectedSubjectItem;
 
             if (subject.IsRegistered)
             {
@@ -165,10 +165,10 @@ namespace Pluto.Wpf.ViewModels
         }
         private async void UnregisterSubjectOnClick(object obj)
         {
-            var subject = Subjects.ElementAt(SelectedSubjectIndex);
+            var subject = SelectedSubjectItem;
 
             var result = MessageBox.Show("Do you want to unregister this subject?", "Unregister subject", MessageBoxButton.OKCancel, MessageBoxImage.Question);
-            if(result == MessageBoxResult.OK)
+            if (result == MessageBoxResult.OK)
             {
                 var canBeUnregistered = await _registeredSubjectService.UnregisterSubjectAsync(subject);
 
@@ -178,6 +178,5 @@ namespace Pluto.Wpf.ViewModels
                 SelectedSubjectIndex = -1;
             }
         }
-
     }
 }
