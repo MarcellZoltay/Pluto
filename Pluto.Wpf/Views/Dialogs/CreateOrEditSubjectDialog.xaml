@@ -30,7 +30,7 @@
         <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding SubjectCredit, Mode=TwoWay}"
                  Name="tbCredit"/>
 
-        <Grid Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2">
+        <!--<Grid Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -38,7 +38,12 @@
 
             <Button Grid.Column="0" HorizontalAlignment="Right" Content="{Binding ButtonContent}" Command="{Binding CreateSaveCommand}"/>
             <Button Grid.Column="1" HorizontalAlignment="Left" Content="Back" Command="{Binding BackCommand}" />
-        </Grid>
+        </Grid>-->
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Button Grid.Column="0" HorizontalAlignment="Right" Content="{Binding ButtonContent}" Command="{Binding CreateSaveCommand}"/>
+            <Button Grid.Column="1" HorizontalAlignment="Left" Content="Back" Command="{Binding BackCommand}" />
+        </StackPanel>
     </Grid>
     
 </Window>
