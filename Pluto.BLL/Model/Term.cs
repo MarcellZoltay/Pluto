@@ -25,7 +25,7 @@ namespace Pluto.BLL.Model
         private bool isActive;
         public bool IsActive {
             get { return isActive; }
-            set
+            private set
             {
                 if (isActive == true && value == false)
                 {
@@ -34,10 +34,18 @@ namespace Pluto.BLL.Model
                     else if (RegisteredSubjects.Count != 0)
                         throw new InvalidOperationException("This term has registered subjects.");
                 }
-
+                
                 SetProperty(ref isActive, value);
             }
         }
+
+        private Period period;
+        public Period Period
+        {
+            get { return period; }
+            private set { SetProperty(ref period, value); }
+        }
+
 
         private bool isClosed;
         public bool IsClosed
@@ -68,10 +76,13 @@ namespace Pluto.BLL.Model
             private set { SetProperty(ref registeredCredits, value); }
         }
 
-        public Term(string name, bool isActive)
+        public Term(string name, bool isActive, Period period)
         {
             Name = name;
-            IsActive = isActive;
+
+            if (isActive)
+                SetActive(period);
+
             registeredSubjects = new ObservableCollection<RegisteredSubject>();
             IsClosed = false;
         }
@@ -104,6 +115,19 @@ namespace Pluto.BLL.Model
             return false;
         }
 
+        public void SetActive(Period period)
+        {
+            if (period == null)
+                throw new ArgumentNullException("Period cannot be null.");
+            
+            IsActive = true;
+            Period = period;
+        }
+        public void SetPassive()
+        {
+            IsActive = false;
+            Period = null;
+        }
         public void Close()
         {
             foreach (var subject in registeredSubjects)

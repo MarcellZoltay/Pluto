@@ -10,15 +10,23 @@ namespace TestBLL
     [TestClass]
     public class SubjectRegistrationServiceTest
     {
+        private Term term;
+        private Subject subject;
+        private RegisteredSubjectService registeredSubjectService;
+
+        private void Setup(bool isActive)
+        {
+            term = new Term("Test term", isActive, new Period(DateTime.Today, DateTime.Today)) { TermId = 1 };
+            subject = new Subject("Test subject", 1) { SubjectId = 1 };
+            registeredSubjectService = new RegisteredSubjectService();
+        }
+
         [TestMethod]
         public void RegisterSubjectToActiveOpenTermTest()
         {
-            RegisteredSubjectService subjectRegistrationService = new RegisteredSubjectService();
+            Setup(true);
 
-            Subject subject = new Subject("TestSubject", 4) { SubjectId = 1 };
-            Term term = new Term("TestTerm", true) { TermId = 1 };
-
-            subjectRegistrationService.RegisterSubjectAsync(subject, term);
+            registeredSubjectService.RegisterSubjectAsync(subject, term);
 
             Assert.AreNotEqual(null, subject.RegisteredSubjects.FirstOrDefault(p => p.SubjectId == 1));
             Assert.AreEqual(true, subject.IsRegistered);
@@ -28,13 +36,11 @@ namespace TestBLL
         [TestMethod]
         public void RegisterSubjectToActiveClosedTermTest()
         {
-            RegisteredSubjectService subjectRegistrationService = new RegisteredSubjectService();
+            Setup(true);
 
-            Subject subject = new Subject("TestSubject", 4) { SubjectId = 1 };
-            Term term = new Term("TestTerm", true) { TermId = 1 };
             term.Close();
 
-            subjectRegistrationService.RegisterSubjectAsync(subject, term);
+            registeredSubjectService.RegisterSubjectAsync(subject, term);
 
             Assert.AreEqual(null, subject.RegisteredSubjects.FirstOrDefault(p => p.SubjectId == 1));
             Assert.AreEqual(null, term.RegisteredSubjects.FirstOrDefault(p => p.TermId == 1));
@@ -43,12 +49,9 @@ namespace TestBLL
         [TestMethod]
         public void RegisterSubjectToPassiveTermTest()
         {
-            RegisteredSubjectService subjectRegistrationService = new RegisteredSubjectService();
+            Setup(false);
 
-            Subject subject = new Subject("TestSubject", 4) { SubjectId = 1 };
-            Term term = new Term("TestTerm", false) { TermId = 1 };
-
-            subjectRegistrationService.RegisterSubjectAsync(subject, term);
+            registeredSubjectService.RegisterSubjectAsync(subject, term);
 
             Assert.AreEqual(null, subject.RegisteredSubjects.FirstOrDefault(p => p.SubjectId == 1));
             Assert.AreEqual(null, term.RegisteredSubjects.FirstOrDefault(p => p.TermId == 1));
@@ -57,14 +60,11 @@ namespace TestBLL
         [TestMethod]
         public void UnregisterSubjectTermActiveOpenTest()
         {
-            RegisteredSubjectService subjectRegistrationService = new RegisteredSubjectService();
+            Setup(true);
 
-            Subject subject = new Subject("TestSubject", 4) { SubjectId = 1 };
-            Term term = new Term("TestTerm", true) { TermId = 1 };
+            registeredSubjectService.RegisterSubjectAsync(subject, term);
 
-            subjectRegistrationService.RegisterSubjectAsync(subject, term);
-
-            subjectRegistrationService.UnregisterSubjectAsync(subject);
+            registeredSubjectService.UnregisterSubjectAsync(subject);
 
             Assert.AreEqual(0, term.RegisteredSubjects.Count);
             Assert.AreEqual(0, subject.RegisteredSubjects.Count);
@@ -74,16 +74,13 @@ namespace TestBLL
         [TestMethod]
         public void UnregisterSubjectTermActiveClosedTest()
         {
-            RegisteredSubjectService subjectRegistrationService = new RegisteredSubjectService();
+            Setup(true);
 
-            Subject subject = new Subject("TestSubject", 4) { SubjectId = 1 };
-            Term term = new Term("TestTerm", true) { TermId = 1 };
-
-            subjectRegistrationService.RegisterSubjectAsync(subject, term);
+            registeredSubjectService.RegisterSubjectAsync(subject, term);
 
             term.Close();
 
-            subjectRegistrationService.UnregisterSubjectAsync(subject);
+            registeredSubjectService.UnregisterSubjectAsync(subject);
 
             Assert.AreEqual(1, term.RegisteredSubjects.Count);
             Assert.AreEqual(1, subject.RegisteredSubjects.Count);

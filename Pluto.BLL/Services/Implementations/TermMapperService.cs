@@ -56,13 +56,16 @@ namespace Pluto.BLL.Services.Implementations
                 Id = term.TermId,
                 Name = term.Name,
                 IsActive = term.IsActive,
-                IsClosed = term.IsClosed
+                IsClosed = term.IsClosed,
+                StartDate = term.Period != null ? term.Period.StartDate : (DateTime?) null,
+                EndDate = term.Period != null ? term.Period.EndDate : (DateTime?) null
             };
         }
 
         private Term ConvertToModel(TermEntity termEntity)
         {
-            var term = new Term(termEntity.Name, termEntity.IsActive);
+            var term = new Term(termEntity.Name, termEntity.IsActive, 
+                termEntity.IsActive ? new Period((DateTime)termEntity.StartDate, (DateTime)termEntity.EndDate) : null);
             term.Load(termEntity.Id, termEntity.IsClosed);
 
             return term;

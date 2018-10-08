@@ -49,6 +49,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ModelTest\PeriodTest.cs" />
     <Compile Include="ModelTest\SubjectTest.cs" />
     <Compile Include="ModelTest\TermTest.cs" />
     <Compile Include="ModelTest\RegisteredSubjectTest.cs" />

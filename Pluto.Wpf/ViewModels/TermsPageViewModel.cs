@@ -79,22 +79,46 @@ namespace Pluto.Wpf.ViewModels
             var dialogViewModel = new CreateOrEditTermDialogViewModel(termName);
             if (dialogViewModel.ShowDialog() == true)
             {
-                var term = new Term(dialogViewModel.TermName, dialogViewModel.TermIsActive);
+                try
+                {
+                    var term = new Term(dialogViewModel.TermName, dialogViewModel.TermIsActive, new Period(dialogViewModel.SelectedStartDate, dialogViewModel.SelectedEndDate));
 
-                Terms.Add(term);
-                await _termService.AddTermAsync(term);
+                    Terms.Add(term);
+                    await _termService.AddTermAsync(term);
+                }
+                catch(InvalidOperationException e)
+                {
+                    MessageBox.Show(e.Message, "Create term", MessageBoxButton.OK);
+                }
             }
         }
         private async void EditTermOnClick(object obj)
         {
             var term = Terms.ElementAt(SelectedTermIndex);
 
-            var dialogViewModel = new CreateOrEditTermDialogViewModel(term.Name, term.IsActive);
+            DateTime startDate, endDate;
+
+            if (term.Period != null)
+            {
+                startDate = term.Period.StartDate;
+                endDate = term.Period.EndDate;
+            }
+            else
+            {
+                startDate = DateTime.Today;
+                endDate = DateTime.Today;
+            }
+
+            var dialogViewModel = new CreateOrEditTermDialogViewModel(term.Name, term.IsActive, startDate, endDate);
             if (dialogViewModel.ShowDialog() == true)
             {
                 try
                 {
-                    term.IsActive = dialogViewModel.TermIsActive;
+                    if (dialogViewModel.TermIsActive)
+                        term.SetActive(new Period(dialogViewModel.SelectedStartDate, dialogViewModel.SelectedEndDate));
+                    else
+                        term.SetPassive();
+
                     await _termService.UpdateTermAsync(term);
                 }
                 catch (InvalidOperationException e)

@@ -9,10 +9,20 @@ namespace TestBLL.ModelTest
     [TestClass]
     public class SubjectTest
     {
+        private Term term;
+        private Subject subject;
+        private RegisteredSubject registeredSubject;
+
+        private void Setup(bool isActive)
+        {
+            term = new Term("Test term", isActive, new Period(DateTime.Today, DateTime.Today)) { TermId = 1 };
+            subject = new Subject("Test subject", 1) { SubjectId = 1 };
+        }
+
         [TestMethod]
         public void CreateSubjectTest()
         {
-            Subject subject = new Subject("TestSubject", 2);
+            Setup(false);
 
             Assert.AreNotEqual(null, subject.Name);
             Assert.AreEqual(false, subject.IsRegistered);
@@ -22,10 +32,11 @@ namespace TestBLL.ModelTest
         [TestMethod]
         public void RegisterSubjectTest()
         {
-            Subject subject = new Subject("TestSubject", 2);
-            RegisteredSubject registereSubject = subject.Register();
+            Setup(false);
 
-            Assert.AreNotEqual(null, registereSubject);
+            registeredSubject = subject.Register();
+
+            Assert.AreNotEqual(null, registeredSubject);
             Assert.AreEqual(1, subject.RegisteredSubjects.Count);
             Assert.AreEqual(true, subject.IsRegistered);
         }
@@ -33,12 +44,14 @@ namespace TestBLL.ModelTest
         [TestMethod]
         public void RegisterSubjectTwiceTest()
         {
-            Subject subject = new Subject("TestSubject", 2);
-            RegisteredSubject registereSubject_1 = subject.Register();
-            RegisteredSubject registereSubject_2 = subject.Register();
+            Setup(false);
 
-            Assert.AreNotEqual(null, registereSubject_1);
-            Assert.AreEqual(null, registereSubject_2);
+            registeredSubject = subject.Register();
+
+            RegisteredSubject registeredSubject_2 = subject.Register();
+
+            Assert.AreNotEqual(null, registeredSubject);
+            Assert.AreEqual(null, registeredSubject_2);
             Assert.AreEqual(1, subject.RegisteredSubjects.Count);
             Assert.AreEqual(true, subject.IsRegistered);
         }
@@ -46,10 +59,11 @@ namespace TestBLL.ModelTest
         [TestMethod]
         public void RollbackRegistrationTest()
         {
-            Subject subject = new Subject("TestSubject", 2);
-            RegisteredSubject registereSubject = subject.Register();
+            Setup(false);
 
-            subject.RollbackRegistration(registereSubject);
+            registeredSubject = subject.Register();
+
+            subject.RollbackRegistration(registeredSubject);
 
             Assert.AreEqual(0, subject.RegisteredSubjects.Count);
             Assert.AreEqual(false, subject.IsRegistered);
@@ -58,7 +72,7 @@ namespace TestBLL.ModelTest
         [TestMethod]
         public void SubjectIsDeletableEmptyTest()
         {
-            Subject subject = new Subject("TestSubject", 2);
+            Setup(false);
 
             Assert.AreEqual(true, subject.IsDeletable);
         }
@@ -66,8 +80,9 @@ namespace TestBLL.ModelTest
         [TestMethod]
         public void SubjectIsDeletableNotEmptyOpenTest()
         {
-            Subject subject = new Subject("TestSubject", 2);
-            subject.Register();
+            Setup(false);
+
+            registeredSubject = subject.Register();
 
             Assert.AreEqual(false, subject.IsDeletable);
         }
@@ -75,8 +90,9 @@ namespace TestBLL.ModelTest
         [TestMethod]
         public void SubjectIsDeletableNotEmptyClosedTest()
         {
-            Subject subject = new Subject("TestSubject", 2);
-            var registeredSubject = subject.Register();
+            Setup(false);
+
+            registeredSubject = subject.Register();
 
             registeredSubject.Close();
 
@@ -86,7 +102,7 @@ namespace TestBLL.ModelTest
         [TestMethod]
         public void SubjectCompletedNotRegisteredTest()
         {
-            Subject subject = new Subject("TestSubject", 2) { SubjectId = 1 };
+            Setup(false);
 
             subject.IsCompleted = true;
 
@@ -96,9 +112,10 @@ namespace TestBLL.ModelTest
         [TestMethod]
         public void SubjectCompletedRegisteredTest()
         {
-            Subject subject = new Subject("TestSubject", 2) { SubjectId = 1 };
+            Setup(false);
 
-            subject.Register();
+            registeredSubject = subject.Register();
+
             subject.IsCompleted = true;
 
             Assert.AreEqual(true, subject.IsCompleted);
@@ -107,9 +124,10 @@ namespace TestBLL.ModelTest
         [TestMethod]
         public void SubjectIsDeletableCompletedTest()
         {
-            Subject subject = new Subject("TestSubject", 2) { SubjectId = 1 };
+            Setup(false);
 
-            subject.Register();
+            registeredSubject = subject.Register();
+
             subject.IsCompleted = true;
 
             Assert.AreEqual(false, subject.IsDeletable);
@@ -118,10 +136,11 @@ namespace TestBLL.ModelTest
         [TestMethod]
         public void SubjectIsDeletableCompletedClosedRegisteredSubjectTest()
         {
-            Subject subject = new Subject("TestSubject", 2) { SubjectId = 1 };
-            RegisteredSubject registeredSubject = subject.Register();
+            Setup(false);
 
-            subject.IsCompleted = true;
+            registeredSubject = subject.Register();
+
+            registeredSubject.IsCompleted = true;
             registeredSubject.Close();
 
             Assert.AreEqual(false, subject.IsDeletable);
@@ -130,10 +149,11 @@ namespace TestBLL.ModelTest
         [TestMethod]
         public void UnregisterCompletedSubject()
         {
-            Subject subject = new Subject("TestSubject", 2);
-            RegisteredSubject registereSubject = subject.Register();
+            Setup(false);
 
-            registereSubject.IsCompleted = true;
+            registeredSubject = subject.Register();
+
+            registeredSubject.IsCompleted = true;
 
             var result = subject.Unregister();
 
@@ -143,14 +163,11 @@ namespace TestBLL.ModelTest
         [TestMethod]
         public void UnregisterIncompletedSubject()
         {
-            Subject subject = new Subject("TestSubject", 2);
-            RegisteredSubject registeredSubject = subject.Register();
-            Term term = new Term("1. félév", true);
+            Setup(true);
+
+            registeredSubject = subject.Register();
 
             term.RegisterSubject(registeredSubject);
-
-            registeredSubject.IsCompleted = true;
-            registeredSubject.IsCompleted = false;
 
             var result = subject.Unregister();
 
@@ -160,13 +177,13 @@ namespace TestBLL.ModelTest
         [TestMethod]
         public void RegisterCompletedUnregisteredSubject()
         {
-            Subject subject = new Subject("TestSubject", 2);
-            RegisteredSubject registeredSubject_1 = subject.Register();
-            Term term = new Term("1. félév", true);
+            Setup(true);
 
-            term.RegisterSubject(registeredSubject_1);
+            registeredSubject = subject.Register();
 
-            registeredSubject_1.IsCompleted = true;
+            term.RegisterSubject(registeredSubject);
+
+            registeredSubject.IsCompleted = true;
 
             term.Close();
 

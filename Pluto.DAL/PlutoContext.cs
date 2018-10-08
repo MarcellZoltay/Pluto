@@ -24,11 +24,9 @@ namespace Pluto.DAL
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
-            modelBuilder.Entity<SubjectEntity>().ToTable("Subject");
-            modelBuilder.Entity<TermEntity>().ToTable("Term");
-            modelBuilder.Entity<RegisteredSubjectEntity>().ToTable("RegisteredSubject");
+            modelBuilder.Entity<SubjectEntity>().ToTable("Subjects");
+            modelBuilder.Entity<TermEntity>().ToTable("Terms");
+            modelBuilder.Entity<RegisteredSubjectEntity>().ToTable("RegisteredSubjects");
         }
     }
 }

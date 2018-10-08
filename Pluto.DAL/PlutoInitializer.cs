@@ -28,7 +28,7 @@ namespace Pluto.DAL
             var terms = new List<TermEntity>();
             for (var i = 1; i < 5; i++)
             {
-                terms.Add(new TermEntity() { Name = i + ". term", IsActive = (i % 2 == 0 ? true : false) });
+                terms.Add(new TermEntity() { Name = i + ". term", IsActive = true, StartDate = DateTime.Today, EndDate = DateTime.Today });
             }
 
             terms.ForEach(t => context.Terms.Add(t));
