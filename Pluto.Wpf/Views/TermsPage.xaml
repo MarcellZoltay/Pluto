@@ -54,8 +54,16 @@
 
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="{Binding Name}" />
-                                    <CheckBox Content="Active" IsChecked="{Binding IsActive}" IsEnabled="False" />
+                                    <CheckBox Content="Active" IsChecked="{Binding IsActive, Mode=OneWay}" IsEnabled="False" />
                                     <CheckBox Content="Closed" IsChecked="{Binding IsClosed, Mode=OneWay}" IsEnabled="False" />
+                                    <TextBlock>
+                                        <Run Text="     "/>
+                                        <Run Text="{Binding Period.StartDate, StringFormat=d}"/>
+                                    </TextBlock>
+                                    <TextBlock>
+                                        <Run Text="     "/>
+                                        <Run Text="{Binding Period.EndDate, StringFormat=d}"/>
+                                    </TextBlock>
                                 </StackPanel>
 
                                 <TextBlock Grid.Row="1">

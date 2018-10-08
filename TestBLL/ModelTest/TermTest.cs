@@ -9,23 +9,60 @@ namespace TestBLL.ModelTest
     [TestClass]
     public class TermTest
     {
-        [TestMethod]
-        public void CreateTermTest()
+        private Term term;
+        private Subject subject;
+        private RegisteredSubject registeredSubject;
+
+        private void Setup(bool isActive, Period period = null)
         {
-            Term term = new Term("1. félév", false);
+            term = new Term("Test term", isActive, period);
+            subject = new Subject("Test subject", 1);
+            registeredSubject = subject.Register();
+        }
+
+        private Period GetValidDate()
+        {
+            return new Period(DateTime.Today, DateTime.Today);
+        }
+
+        [TestMethod]
+        public void CreateActiveRightDateTermTest()
+        {
+            Setup(true, GetValidDate());
 
             Assert.AreNotEqual(null, term.Name);
-            Assert.AreEqual(false, term.IsActive);
+            Assert.AreEqual(true, term.IsActive);
             Assert.AreNotEqual(null, term.RegisteredSubjects);
             Assert.AreEqual(false, term.IsClosed);
         }
 
         [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void CreateActiveWrongDateTermTest()
+        {
+            Setup(true, new Period(new DateTime(2018, 1, 1), new DateTime(2017, 1, 1)));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void CreateActiveNullDateTermTest()
+        {
+            Setup(true);
+        }
+
+        [TestMethod]
+        public void CreatePassiveTermWithDateTest()
+        {
+            Setup(false);
+
+            Assert.AreEqual(false, term.IsActive);
+            Assert.AreEqual(null, term.Period);
+        }
+
+        [TestMethod]
         public void RegisterSubjectTermNotActiveOpenTest()
         {
-            Subject subject = new Subject("TestSubject", 2);
-            RegisteredSubject registeredSubject = new RegisteredSubject(subject);
-            Term term = new Term("1. félév", false);
+            Setup(false);
 
             var succeeded = term.RegisterSubject(registeredSubject);
             Assert.AreEqual(false, succeeded);
@@ -35,9 +72,7 @@ namespace TestBLL.ModelTest
         [TestMethod]
         public void RegisterSubjectTermActiveOpenTest()
         {
-            Subject subject = new Subject("TestSubject", 2);
-            RegisteredSubject registeredSubject = new RegisteredSubject(subject);
-            Term term = new Term("1. félév", true);
+            Setup(true, GetValidDate());
 
             var succeeded = term.RegisterSubject(registeredSubject);
             Assert.AreEqual(true, succeeded);
@@ -47,9 +82,8 @@ namespace TestBLL.ModelTest
         [TestMethod]
         public void RegisterSubjectTermActiveClosedTest()
         {
-            Subject subject = new Subject("TestSubject", 2);
-            RegisteredSubject registeredSubject = new RegisteredSubject(subject);
-            Term term = new Term("1. félév", true);
+            Setup(true, GetValidDate());
+
             term.Close();
 
             var succeeded = term.RegisterSubject(registeredSubject);
@@ -60,8 +94,7 @@ namespace TestBLL.ModelTest
         [TestMethod]
         public void CloseTermTest()
         {
-            Subject subject = new Subject("TestSubject", 2);
-            Term term = new Term("1. félév", true);
+            Setup(true, GetValidDate());
 
             for(int i = 1; i < 4; i++)
             {
@@ -86,9 +119,7 @@ namespace TestBLL.ModelTest
         [TestMethod]
         public void UnregisterSubjectTermPassiveTest()
         {
-            Subject subject = new Subject("TestSubject", 2);
-            RegisteredSubject registeredSubject = new RegisteredSubject(subject);
-            Term term = new Term("1. félév", false);
+            Setup(false);
 
             term.RegisterSubject(registeredSubject);
             var succeeded = term.UnregisterSubject(registeredSubject);
@@ -99,9 +130,7 @@ namespace TestBLL.ModelTest
         [TestMethod]
         public void UnregisterSubjectTermActiveOpenTest()
         {
-            Subject subject = new Subject("TestSubject", 2);
-            RegisteredSubject registeredSubject = new RegisteredSubject(subject);
-            Term term = new Term("1. félév", true);
+            Setup(true, GetValidDate());
 
             term.RegisterSubject(registeredSubject);
             var succeeded = term.UnregisterSubject(registeredSubject);
@@ -112,9 +141,7 @@ namespace TestBLL.ModelTest
         [TestMethod]
         public void UnregisterSubjectTermActiveClosedTest()
         {
-            Subject subject = new Subject("TestSubject", 2);
-            RegisteredSubject registeredSubject = new RegisteredSubject(subject);
-            Term term = new Term("1. félév", true);
+            Setup(true, GetValidDate());
 
             term.RegisterSubject(registeredSubject);
 
@@ -128,7 +155,7 @@ namespace TestBLL.ModelTest
         [TestMethod]
         public void TermIsDeletableOpenEmptyTest()
         {
-            Term term = new Term("1. félév", true);
+            Setup(true, GetValidDate());
 
             Assert.AreEqual(true, term.IsDeletable);
         }
@@ -136,9 +163,7 @@ namespace TestBLL.ModelTest
         [TestMethod]
         public void TermIsDeletableOpenNotEmptyTest()
         {
-            Subject subject = new Subject("TestSubject", 2);
-            RegisteredSubject registeredSubject = new RegisteredSubject(subject);
-            Term term = new Term("1. félév", true);
+            Setup(true, GetValidDate());
 
             term.RegisterSubject(registeredSubject);
 
@@ -148,7 +173,8 @@ namespace TestBLL.ModelTest
         [TestMethod]
         public void TermIsDeletableClosedEmptyTest()
         {
-            Term term = new Term("1. félév", true);
+            Setup(true, GetValidDate());
+
             term.Close();
 
             Assert.AreEqual(false, term.IsDeletable);
@@ -157,43 +183,52 @@ namespace TestBLL.ModelTest
         [TestMethod]
         public void TermSetActiveFromPassiveTest()
         {
-            Term term = new Term("Test term", false);
+            Setup(false);
 
-            term.IsActive = true;
+            term.SetActive(new Period(DateTime.Today, DateTime.Today));
 
             Assert.AreEqual(true, term.IsActive);
         }
 
         [TestMethod]
-        public void TermSetPassiveFromActiveNotClosedEmptyTest() {
-            Term term = new Term("Test term", true);
+        public void TermSetPassiveFromActiveNotClosedEmptyTest()
+        {
+            Setup(true, GetValidDate());
 
-            term.IsActive = false;
+            term.SetPassive();
 
             Assert.AreEqual(false, term.IsActive);
+            Assert.AreEqual(null, term.Period);
         }
 
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         public void TermSetPassiveFromActiveClosedEmptyTest()
         {
-            Term term = new Term("Test term", true);
+            Setup(true, GetValidDate());
 
             term.Close();
-            term.IsActive = false;
+            term.SetPassive();
         }
 
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         public void TermSetPassiveFromActiveNotClosedNotEmptyTest()
         {
-            Subject subject = new Subject("TestSubject", 2);
-            RegisteredSubject registeredSubject = new RegisteredSubject(subject);
-            Term term = new Term("Test term", true);
+            Setup(true, GetValidDate());
 
             term.RegisterSubject(registeredSubject);
 
-            term.IsActive = false;
+            term.SetPassive();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void TermSetInvalidPeriodTest()
+        {
+            Setup(true, GetValidDate());
+
+            term.Period.StartDate = new DateTime(2019, 1, 1);
         }
     }
 }

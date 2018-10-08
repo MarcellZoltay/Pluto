@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Pluto.Wpf.Views.Dialogs"
         mc:Ignorable="d"
         Title="{Binding Title}" WindowStartupLocation="CenterOwner"
-        Width="200" Height="150">
+        Width="200" Height="200">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -17,19 +17,27 @@
 
         <Label HorizontalAlignment="Center" Content="{Binding TermName}" />
 
-        <CheckBox Grid.Row="1" Content="Aktív" 
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <CheckBox Name="cbActive" Grid.Row="0" Grid.ColumnSpan="2" Content="Aktív" 
                   HorizontalAlignment="Center" VerticalAlignment="Center"
                   IsChecked="{Binding TermIsActive, Mode=TwoWay}"/>
 
-        <!--<Grid Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+            <Label Grid.Row="1" Grid.Column="0" Content="Start date: "/>
+            <DatePicker Grid.Row="1" Grid.Column="1" SelectedDate="{Binding SelectedStartDate}" IsEnabled="{Binding ElementName=cbActive, Path=IsChecked}"/>
 
-            <Button Grid.Column="0" HorizontalAlignment="Right" Content="{Binding ButtonContent}" Command="{Binding CreateSaveCommand}"/>
-            <Button Grid.Column="1" HorizontalAlignment="Left" Content="Back" Command="{Binding BackCommand}" />
-        </Grid>-->
+            <Label Grid.Row="2" Grid.Column="0" Content="End date: "/>
+            <DatePicker Grid.Row="2" Grid.Column="1" SelectedDate="{Binding SelectedEndDate}" IsEnabled="{Binding ElementName=cbActive, Path=IsChecked}"/>
+        </Grid>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal"
                     HorizontalAlignment="Center">

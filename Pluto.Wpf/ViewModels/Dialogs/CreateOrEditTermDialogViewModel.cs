@@ -1,4 +1,5 @@
-﻿using Pluto.Wpf.Views.Dialogs;
+﻿using Pluto.BLL.Model;
+using Pluto.Wpf.Views.Dialogs;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
@@ -14,6 +15,8 @@ namespace Pluto.Wpf.ViewModels.Dialogs
 
         public string TermName { get; private set; }
         public bool TermIsActive { get; set; }
+        public DateTime SelectedStartDate { get; set; }
+        public DateTime SelectedEndDate { get; set; }
 
         public DelegateCommand CreateSaveCommand { get; private set; }
         public DelegateCommand BackCommand { get; private set; }
@@ -35,11 +38,14 @@ namespace Pluto.Wpf.ViewModels.Dialogs
             Title = "Create term";
             ButtonContent = "Create";
 
+            SelectedStartDate = DateTime.Today;
+            SelectedEndDate = DateTime.Today;
+
             InitCommands();
 
             TermName = name;
         }
-        public CreateOrEditTermDialogViewModel(string name, bool isActive)
+        public CreateOrEditTermDialogViewModel(string name, bool isActive, DateTime startDate, DateTime endDate)
         {
             Title = "Edit term";
             ButtonContent = "Save";
@@ -48,6 +54,8 @@ namespace Pluto.Wpf.ViewModels.Dialogs
 
             TermName = name;
             TermIsActive = isActive;
+            SelectedStartDate = startDate;
+            SelectedEndDate = endDate;
         }
 
         private void InitCommands()
@@ -75,3 +83,4 @@ namespace Pluto.Wpf.ViewModels.Dialogs
         }
     }
 }
+

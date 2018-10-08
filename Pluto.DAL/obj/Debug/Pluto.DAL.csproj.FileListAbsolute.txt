@@ -16,3 +16,4 @@ c:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.csproj.CoreCo
 c:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.csproj.CopyComplete
 c:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.dll
 c:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.pdb
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.DAL\obj\Debug\Pluto.DAL.Migrations.TermPeriodAdded.resources

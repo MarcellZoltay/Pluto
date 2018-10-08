@@ -97,6 +97,7 @@
   <ItemGroup>
     <Compile Include="Model\DataManager.cs" />
     <Compile Include="Model\MyBindableBase.cs" />
+    <Compile Include="Model\Period.cs" />
     <Compile Include="Model\RegisteredSubjects\RegisteredSubject.cs" />
     <Compile Include="Model\Subjects\Subject.cs" />
     <Compile Include="Model\Term.cs" />

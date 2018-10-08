@@ -18,6 +18,8 @@ namespace Pluto.DAL.Entities
         public string Name { get; set; }
         public bool IsActive { get; set; }
         public bool IsClosed { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
 
         public virtual ICollection<RegisteredSubjectEntity> RegisteredSubjectEntities { get; set; }
     }

@@ -70,6 +70,10 @@
     <Compile Include="Migrations\201809301026326_IsCompletedAddedToSubjectEntity.Designer.cs">
       <DependentUpon>201809301026326_IsCompletedAddedToSubjectEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810081544186_TermPeriodAdded.cs" />
+    <Compile Include="Migrations\201810081544186_TermPeriodAdded.Designer.cs">
+      <DependentUpon>201810081544186_TermPeriodAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PlutoContext.cs" />
     <Compile Include="PlutoInitializer.cs" />
@@ -100,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809301026326_IsCompletedAddedToSubjectEntity.resx">
       <DependentUpon>201809301026326_IsCompletedAddedToSubjectEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810081544186_TermPeriodAdded.resx">
+      <DependentUpon>201810081544186_TermPeriodAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
