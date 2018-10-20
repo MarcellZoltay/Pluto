@@ -56,9 +56,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\Dialogs\CreateOrEditAttendanceDialogViewModel.cs" />
     <Compile Include="ViewModels\StartPageViewModel.cs" />
     <Compile Include="ViewModels\SubjectsPageViewModel.cs" />
     <Compile Include="ViewModels\TermsPageViewModel.cs" />
+    <Compile Include="Views\Dialogs\CreateOrEditAttendanceDialog.xaml.cs">
+      <DependentUpon>CreateOrEditAttendanceDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NavigationBar.xaml.cs">
       <DependentUpon>NavigationBar.xaml</DependentUpon>
     </Compile>
@@ -72,6 +76,10 @@
       <DependentUpon>TermsPage.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\CurriculumPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\CreateOrEditAttendanceDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

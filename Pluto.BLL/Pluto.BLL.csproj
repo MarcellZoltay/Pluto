@@ -95,6 +95,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Attendance.cs" />
     <Compile Include="Model\DataManager.cs" />
     <Compile Include="Model\MyBindableBase.cs" />
     <Compile Include="Model\Period.cs" />
@@ -102,12 +103,14 @@
     <Compile Include="Model\Subjects\Subject.cs" />
     <Compile Include="Model\Term.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Implementations\AttendanceMapperService.cs" />
     <Compile Include="Services\Implementations\RegisteredSubjectMapperService.cs" />
     <Compile Include="Services\Implementations\SubjectMapperService.cs" />
     <Compile Include="Services\Implementations\RegisteredSubjectService.cs" />
     <Compile Include="Services\Implementations\SubjectService.cs" />
     <Compile Include="Services\Implementations\TermMapperService.cs" />
     <Compile Include="Services\Implementations\TermService.cs" />
+    <Compile Include="Services\Interfaces\IAttendanceMapperService.cs" />
     <Compile Include="Services\Interfaces\IRegisteredSubjectMapperService.cs" />
     <Compile Include="Services\Interfaces\IRegisteredSubjectService.cs" />
     <Compile Include="Services\Interfaces\ISubjectMapperService.cs" />

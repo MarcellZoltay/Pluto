@@ -21,6 +21,7 @@ namespace Pluto.BLL.Model
             subjectMapperService = UnityBootstrapper.UnityBootstrapperInstance.Resolve<ISubjectMapperService>();
             termMapperService = UnityBootstrapper.UnityBootstrapperInstance.Resolve<ITermMapperService>();
             registeredSubjectMapperService = UnityBootstrapper.UnityBootstrapperInstance.Resolve<IRegisteredSubjectMapperService>();
+            attendanceMapperService = UnityBootstrapper.UnityBootstrapperInstance.Resolve<IAttendanceMapperService>();
 
             subjects = new List<Subject>();
             terms = new List<Term>();
@@ -37,6 +38,7 @@ namespace Pluto.BLL.Model
         private ISubjectMapperService subjectMapperService;
         private ITermMapperService termMapperService;
         private IRegisteredSubjectMapperService registeredSubjectMapperService;
+        private IAttendanceMapperService attendanceMapperService;
 
         private List<Subject> subjects;
         private List<Term> terms;
@@ -125,6 +127,7 @@ namespace Pluto.BLL.Model
             subjectMapperService.DeleteSubject(subjectToDelete);
         }
 
+
         public List<RegisteredSubject> GetRegisteredSubjects()
         {
             return registeredSubjects;
@@ -147,6 +150,20 @@ namespace Pluto.BLL.Model
         {
             registeredSubjectMapperService.UpdateRegisteredSubject(registeredSubjectToSet);
             subjectMapperService.UpdateSubject(registeredSubjectToSet.Subject);
+        }
+
+
+        public void AddAttendance(Attendance attendance)
+        {
+            attendanceMapperService.AddAttendance(attendance);
+        }
+        public void UpdateAttendance(Attendance attendanceToUpdate)
+        {
+            attendanceMapperService.UpdateAttendance(attendanceToUpdate);
+        }
+        public void DeleteAttendance(Attendance attendanceToDelete)
+        {
+            attendanceMapperService.DeleteAttendance(attendanceToDelete);
         }
     }
 }

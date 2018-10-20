@@ -15,7 +15,7 @@ namespace Pluto.DAL.Services.Implementations
         {
             using (var db = new PlutoContext())
             {
-                return db.RegisteredSubjects.ToList();
+                return db.RegisteredSubjects.Include("AttendanceEntities").ToList();
             }
         }
 

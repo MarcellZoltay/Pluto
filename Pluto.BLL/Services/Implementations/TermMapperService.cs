@@ -11,7 +11,7 @@ using Unity;
 
 namespace Pluto.BLL.Services.Implementations
 {
-    class TermMapperService : ITermMapperService
+    public class TermMapperService : ITermMapperService
     {
         private ITermEntityService termEntityService;
 

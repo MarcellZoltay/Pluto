@@ -35,10 +35,12 @@ namespace Pluto.BLL
             container.RegisterType<ISubjectMapperService, SubjectMapperService>();
             container.RegisterType<ITermMapperService, TermMapperService>();
             container.RegisterType<IRegisteredSubjectMapperService, RegisteredSubjectMapperService>();
+            container.RegisterType<IAttendanceMapperService, AttendanceMapperService>();
 
             container.RegisterType<ISubjectEntityService, SubjectEntityService>();
             container.RegisterType<ITermEntityService, TermEntityService>();
             container.RegisterType<IRegisteredSubjectEntityService, RegisteredSubjectEntityService>();
+            container.RegisterType<IAttendanceEntityService, AttendanceEntityService>();
         }
 
         public T Resolve<T>()

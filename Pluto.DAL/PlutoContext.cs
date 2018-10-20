@@ -21,12 +21,14 @@ namespace Pluto.DAL
         public DbSet<SubjectEntity> Subjects { get; set; }
         public DbSet<TermEntity> Terms { get; set; }
         public DbSet<RegisteredSubjectEntity> RegisteredSubjects { get; set; }
+        public DbSet<AttendanceEntity> Attendances { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<SubjectEntity>().ToTable("Subjects");
             modelBuilder.Entity<TermEntity>().ToTable("Terms");
             modelBuilder.Entity<RegisteredSubjectEntity>().ToTable("RegisteredSubjects");
+            modelBuilder.Entity<AttendanceEntity>().ToTable("Attendances");
         }
     }
 }

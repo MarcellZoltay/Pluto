@@ -40,6 +40,7 @@
 
             <ListView ItemsSource="{Binding Terms}"
                       SelectedIndex="{Binding SelectedTermIndex, Mode=TwoWay}"
+                      SelectedItem="{Binding SelectedTerm, Mode=OneWayToSource}"
                       HorizontalContentAlignment="Stretch">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -71,9 +72,9 @@
                                     <Run Text="{Binding RegisteredCredits, Mode=OneWay}"/>
                                 </TextBlock>
 
-                                <ListView Grid.Row="2" ItemsSource="{Binding RegisteredSubjects}"
+                                <ItemsControl Grid.Row="2" ItemsSource="{Binding RegisteredSubjects}"
                                           HorizontalContentAlignment="Stretch">
-                                    <ListView.ItemTemplate>
+                                    <ItemsControl.ItemTemplate>
                                         <DataTemplate>
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
@@ -88,8 +89,8 @@
                                                           IsEnabled="False"/>
                                             </Grid>
                                         </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
                             </Grid>
                         </Border>
                     </DataTemplate>

@@ -83,5 +83,32 @@ namespace TestBLL.ModelTest
 
             Assert.AreEqual(true, subject.IsCompleted);
         }
+
+        [TestMethod]
+        public void AddAttendance()
+        {
+            Setup(false);
+
+            registeredSubject.AddAttendance(new Attendance("Test Attendance"));
+
+            Assert.AreNotEqual(0, registeredSubject.Attendances.Count);
+        }
+
+        [TestMethod]
+        public void RemoveAttendance()
+        {
+            Setup(false);
+
+            var attendance = new Attendance("Test Attendance");
+
+            registeredSubject.AddAttendance(attendance);
+
+            Assert.AreEqual(1, registeredSubject.Attendances.Count);
+
+            registeredSubject.RemoveAttendance(attendance);
+
+            Assert.AreEqual(0, registeredSubject.Attendances.Count);
+        }
     }
+
 }

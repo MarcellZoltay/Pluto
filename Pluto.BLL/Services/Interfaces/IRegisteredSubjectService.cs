@@ -18,5 +18,9 @@ namespace Pluto.BLL.Services.Interfaces
 
         Task RegisterSubjectAsync(Subject subject, Term selectedTerm);
         Task<bool> UnregisterSubjectAsync(Subject subject);
+
+        Task AddAttendanceToRegisteredSubjectAsync(RegisteredSubject registeredSubject, Attendance attendance);
+        Task UpdateAttendanceAsync(Attendance attendance);
+        Task DeleteAttendanceAsync(Attendance selectedAttendance);
     }
 }

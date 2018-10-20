@@ -53,6 +53,7 @@
     <Compile Include="ModelTest\SubjectTest.cs" />
     <Compile Include="ModelTest\TermTest.cs" />
     <Compile Include="ModelTest\RegisteredSubjectTest.cs" />
+    <Compile Include="ModelTest\AttendanceTest.cs" />
     <Compile Include="SubjectRegistrationServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
