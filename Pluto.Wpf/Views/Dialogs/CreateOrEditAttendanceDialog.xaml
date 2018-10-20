@@ -1,0 +1,73 @@
+﻿<Window x:Class="Pluto.Wpf.Views.Dialogs.CreateOrEditAttendanceDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pluto.Wpf.Views.Dialogs"
+        mc:Ignorable="d"
+        Title="{Binding Title}" WindowStartupLocation="CenterOwner"
+        Width="400" Height="400">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Name: " />
+            <TextBox Grid.Column="1" Text="{Binding AttendanceName, Mode=TwoWay}" />
+
+            <Label Grid.Row="1" Grid.Column="0" Content="Date: "/>
+            <DatePicker Grid.Row="1" Grid.Column="1" SelectedDate="{Binding Date}" />
+
+            <Label Grid.Row="2" Grid.Column="0" Content="Start time: "/>
+            <StackPanel Grid.Row="2" Grid.Column="1"
+                        Orientation="Horizontal">
+                <TextBox Text="{Binding StartTime, StringFormat=hh, Mode=OneWay}" IsEnabled="False"/>
+                <Button Content="˄" Command="{Binding IncreaseStartTimeHourCommand}"/>
+                <Button Content="˅" Command="{Binding DecreaseStartTimeHourCommand}"/>
+
+                <TextBox Text="{Binding StartTime, StringFormat=mm, Mode=OneWay}" IsEnabled="False"
+                         Margin="15 0 0 0"/>
+                <Button Content="˄" Command="{Binding IncreaseStartTimeMinuteCommand}"/>
+                <Button Content="˅" Command="{Binding DecreaseStartTimeMinuteCommand}"/>
+
+                <Label Content="hh:mm"/>
+            </StackPanel>
+
+            <Label Grid.Row="3" Grid.Column="0" Content="End time: "/>
+            <StackPanel Grid.Row="3" Grid.Column="1"
+                        Orientation="Horizontal">
+                <TextBox Text="{Binding EndTime, StringFormat=hh, Mode=OneWay}" IsEnabled="False"/>
+                <Button Content="˄" Command="{Binding IncreaseEndTimeHourCommand}"/>
+                <Button Content="˅" Command="{Binding DecreaseEndTimeHourCommand}"/>
+
+                <TextBox Text="{Binding EndTime, StringFormat=mm, Mode=OneWay}" IsEnabled="False"
+                         Margin="15 0 0 0"/>
+                <Button Content="˄" Command="{Binding IncreaseEndTimeMinuteCommand}"/>
+                <Button Content="˅" Command="{Binding DecreaseEndTimeMinuteCommand}"/>
+
+                <Label Content="hh:mm"/>
+            </StackPanel>
+        </Grid>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Button Grid.Column="0" HorizontalAlignment="Right" Content="{Binding ButtonContent}" Command="{Binding AddSaveCommand}"/>
+            <Button Grid.Column="1" HorizontalAlignment="Left" Content="Back" Command="{Binding BackCommand}" />
+        </StackPanel>    
+    </Grid>
+</Window>

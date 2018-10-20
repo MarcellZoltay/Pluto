@@ -23,13 +23,15 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Label Grid.Column="1" Content="Loading..." Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"
                HorizontalAlignment="Left"/>
 
-        <ListView Grid.RowSpan="2" Name="lvRegsiteredSubjects" ItemsSource="{Binding Source={StaticResource RegsiteredSubjectsViewSource}}"
+        <ListView Grid.RowSpan="4" Name="lvRegsiteredSubjects" ItemsSource="{Binding Source={StaticResource RegsiteredSubjectsViewSource}}"
                   SelectedItem="{Binding SelectedRegisteredSubject, Mode=OneWayToSource}">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -66,6 +68,46 @@
                   IsChecked="{Binding ElementName=lvRegsiteredSubjects, Path=SelectedItem.IsCompleted, Mode=TwoWay}" 
                   Visibility="{Binding ElementName=lvRegsiteredSubjects, Path=SelectedItem, Converter={StaticResource ListviewSelectedItemToVisibilityConverter}}"
                   Command="{Binding CompletedCheckboxCheckChangedCommand}"/>
+
+        <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Orientation="Horizontal"
+                    Visibility="{Binding ElementName=lvRegsiteredSubjects, Path=SelectedItem, Converter={StaticResource ListviewSelectedItemToVisibilityConverter}}">
+            <Button Content="Add attendance" 
+                    Command="{Binding AddAttendanceCommand}" />
+            <Button Content="Edit attendance" 
+                    Command="{Binding EditAttendanceCommand}"/>
+            <Button Content="Delete attendance" 
+                    Command="{Binding DeleteAttendanceCommand}"/>
+        </StackPanel>
+
+        <Border Grid.Column="1" Grid.Row="3"
+                BorderBrush="Black" BorderThickness="1.5" CornerRadius="10"
+                Margin="10 0 10 3" Padding="10"
+                Visibility="{Binding ElementName=lvRegsiteredSubjects, Path=SelectedItem, Converter={StaticResource ListviewSelectedItemToVisibilityConverter}}">
+            <ListView ItemsSource="{Binding ElementName=lvRegsiteredSubjects, Path=SelectedItem.Attendances}"
+                      SelectedIndex="{Binding SelectedAttendanceIndex, Mode=TwoWay}"
+                      SelectedItem="{Binding SelectedAttendance, Mode=OneWayToSource}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Content="{Binding Name}" IsChecked="{Binding IsAttended, Mode=TwoWay}"
+                                      Command="{Binding AttendanceCheckboxCheckChangedCommand}"/>
+                            <TextBlock>
+                                <Run Text="     "/>
+                                <Run Text="{Binding Date, StringFormat=d}"/>
+                            </TextBlock>
+                            <TextBlock>
+                                <Run Text="     "/>
+                                <Run Text="{Binding StartTime, StringFormat=hh\\:mm}"/>
+                            </TextBlock>
+                            <TextBlock>
+                                <Run Text="     "/>
+                                <Run Text="{Binding EndTime, StringFormat=hh\\:mm}"/>
+                            </TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Border>
     </Grid>
     
 </UserControl>

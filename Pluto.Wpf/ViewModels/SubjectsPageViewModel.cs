@@ -1,6 +1,8 @@
-﻿using Pluto.BLL.Model.RegisteredSubjects;
+﻿using Pluto.BLL.Model;
+using Pluto.BLL.Model.RegisteredSubjects;
 using Pluto.BLL.Services.Interfaces;
 using Pluto.Wpf.Command;
+using Pluto.Wpf.ViewModels.Dialogs;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
@@ -8,6 +10,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Threading;
 
 namespace Pluto.Wpf.ViewModels
@@ -36,10 +39,15 @@ namespace Pluto.Wpf.ViewModels
         }
 
         public RegisteredSubject SelectedRegisteredSubject { get; set; }
+        public Attendance SelectedAttendance { get; set; }
+        public int SelectedAttendanceIndex { get; set; }
 
         private IRegisteredSubjectService _registeredSubjectService;
 
         public RelayCommand CompletedCheckboxCheckChangedCommand { get; private set; }
+        public RelayCommand AddAttendanceCommand { get; private set; }
+        public RelayCommand EditAttendanceCommand { get; private set; }
+        public RelayCommand DeleteAttendanceCommand { get; private set; }
 
         public SubjectsPageViewModel(IRegisteredSubjectService registeredSubjectService)
         {
@@ -47,6 +55,11 @@ namespace Pluto.Wpf.ViewModels
             _registeredSubjectService.RegisteredSubjectsChanged += _registeredSubjectService_RegisteredSubjectsChanged;
 
             CompletedCheckboxCheckChangedCommand = new RelayCommand(CompletedCheckboxOnCheckChanged);
+            AddAttendanceCommand = new RelayCommand(AddAttendanceOnClick);
+            EditAttendanceCommand = new RelayCommand(EditAttendanceOnClick, p => SelectedAttendanceIndex > -1);
+            DeleteAttendanceCommand = new RelayCommand(DeleteAttendanceOnClick, p => SelectedAttendanceIndex > -1);
+
+            SelectedAttendanceIndex = -1;
 
             RegisteredSubjects = new ObservableCollection<RegisteredSubject>();
 
@@ -84,6 +97,53 @@ namespace Pluto.Wpf.ViewModels
         private async void CompletedCheckboxOnCheckChanged(object obj)
         {
             await _registeredSubjectService.SetRegisteredSubjectCompletionAsync(SelectedRegisteredSubject);
+        }
+
+        private async void AddAttendanceOnClick(object obj)
+        {
+            var dialogViewModel = new CreateOrEditAttendanceDialogViewModel();
+            if (dialogViewModel.ShowDialog() == true)
+            {
+                var attendance = new Attendance(dialogViewModel.AttendanceName)
+                { 
+                    Date = dialogViewModel.Date,
+                    StartTime = dialogViewModel.StartTime,
+                    EndTime = dialogViewModel.EndTime
+                };
+
+                await _registeredSubjectService.AddAttendanceToRegisteredSubjectAsync(SelectedRegisteredSubject, attendance);
+            }
+        }
+        private async void EditAttendanceOnClick(object obj)
+        {
+            var attendance = SelectedAttendance;
+
+            var dialogViewModel = new CreateOrEditAttendanceDialogViewModel(attendance.Name, attendance.Date, attendance.StartTime, attendance.EndTime);
+            if (dialogViewModel.ShowDialog() == true)
+            {
+                attendance.Name = dialogViewModel.AttendanceName;
+                attendance.Date = dialogViewModel.Date;
+                attendance.StartTime = dialogViewModel.StartTime;
+                attendance.EndTime = dialogViewModel.EndTime;
+
+                await _registeredSubjectService.UpdateAttendanceAsync(attendance);
+            }
+
+            SelectedAttendanceIndex = -1;
+        }
+        private async void DeleteAttendanceOnClick(object obj)
+        {
+            var attendance = SelectedAttendance;
+
+            var result = MessageBox.Show("Are you sure you want to delete this attendance?", "Delete subject", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.OK)
+            {
+                SelectedRegisteredSubject.RemoveAttendance(attendance);
+
+                await _registeredSubjectService.DeleteAttendanceAsync(attendance);
+            }
+
+            SelectedAttendanceIndex = -1;
         }
     }
 }

@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\AttendanceEntity.cs" />
     <Compile Include="Entities\RegisteredSubjectEntities\RegisteredSubjectEntity.cs" />
     <Compile Include="Entities\SubjectEntities\SubjectEntity.cs" />
     <Compile Include="Entities\TermEntity.cs" />
@@ -74,13 +75,19 @@
     <Compile Include="Migrations\201810081544186_TermPeriodAdded.Designer.cs">
       <DependentUpon>201810081544186_TermPeriodAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810201722307_AddAttendance.cs" />
+    <Compile Include="Migrations\201810201722307_AddAttendance.Designer.cs">
+      <DependentUpon>201810201722307_AddAttendance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PlutoContext.cs" />
     <Compile Include="PlutoInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Implementations\AttendanceEntityService.cs" />
     <Compile Include="Services\Implementations\RegisteredSubjectEntityService.cs" />
     <Compile Include="Services\Implementations\SubjectEntityService.cs" />
     <Compile Include="Services\Implementations\TermEntityService.cs" />
+    <Compile Include="Services\Interfaces\IAttendanceEntityService.cs" />
     <Compile Include="Services\Interfaces\IRegisteredSubjectEntityService.cs" />
     <Compile Include="Services\Interfaces\ISubjectEntityService.cs" />
     <Compile Include="Services\Interfaces\ITermEntityService.cs" />
@@ -107,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810081544186_TermPeriodAdded.resx">
       <DependentUpon>201810081544186_TermPeriodAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810201722307_AddAttendance.resx">
+      <DependentUpon>201810201722307_AddAttendance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

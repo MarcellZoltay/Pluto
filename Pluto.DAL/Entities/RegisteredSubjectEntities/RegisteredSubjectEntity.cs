@@ -10,6 +10,11 @@ namespace Pluto.DAL.Entities.RegisteredSubjectEntities
 {
     public class RegisteredSubjectEntity
     {
+        public RegisteredSubjectEntity()
+        {
+            AttendanceEntities = new HashSet<AttendanceEntity>();
+        }
+
         public int Id { get; set; }
 
         [ForeignKey("SubjectEntity")]
@@ -24,5 +29,6 @@ namespace Pluto.DAL.Entities.RegisteredSubjectEntities
 
         public virtual SubjectEntity SubjectEntity { get; set; }
         public virtual TermEntity TermEntity { get; set; }
+        public virtual ICollection<AttendanceEntity> AttendanceEntities { get; set; }
     }
 }

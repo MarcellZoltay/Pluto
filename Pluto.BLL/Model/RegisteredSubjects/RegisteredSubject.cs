@@ -1,6 +1,7 @@
 ﻿using Pluto.BLL.Model.Subjects;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -90,12 +91,18 @@ namespace Pluto.BLL.Model.RegisteredSubjects
             }
         }
 
-        public RegisteredSubject() { }
+        public ObservableCollection<Attendance> Attendances { get; private set; }
+
+        public RegisteredSubject()
+        {
+            Attendances = new ObservableCollection<Attendance>();
+        }
         public RegisteredSubject(Subject subject)
         {
             Subject = subject;
             Name = subject.Name;
             Credit = subject.Credit;
+            Attendances = new ObservableCollection<Attendance>();
         }
 
         private void Subject_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -120,6 +127,15 @@ namespace Pluto.BLL.Model.RegisteredSubjects
                 return term.UnregisterSubject(this);
 
             return false;
+        }
+        public void AddAttendance(Attendance attendance)
+        {
+            Attendances.Add(attendance);
+            attendance.RegisteredSubjectId = RegisteredSubjectId;
+        }
+        public void RemoveAttendance(Attendance attendance)
+        {
+            Attendances.Remove(attendance);
         }
 
         public void Load(int subjectId, int termId, bool isCompleted, bool isClosed)

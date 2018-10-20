@@ -12,7 +12,7 @@ using Unity;
 
 namespace Pluto.BLL.Services.Implementations
 {
-    class SubjectMapperService : ISubjectMapperService
+    public class SubjectMapperService : ISubjectMapperService
     {
         private ISubjectEntityService subjectEntityService;
 

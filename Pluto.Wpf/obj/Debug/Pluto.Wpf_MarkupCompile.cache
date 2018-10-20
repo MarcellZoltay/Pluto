@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\App.xaml
-91634282072
+10-1570705279
 
-251248935706
+271802329411
 78-1200618849
-Views\CurriculumPage.xaml;Views\Dialogs\CreateOrEditSubjectDialog.xaml;Views\Dialogs\CreateOrEditTermDialog.xaml;Views\Dialogs\RegisterSubjectDialog.xaml;Views\MainWindow.xaml;Views\NavigationBar.xaml;Views\StartPage.xaml;Views\SubjectsPage.xaml;Views\TermsPage.xaml;
+Views\CurriculumPage.xaml;Views\Dialogs\CreateOrEditAttendanceDialog.xaml;Views\Dialogs\CreateOrEditSubjectDialog.xaml;Views\Dialogs\CreateOrEditTermDialog.xaml;Views\Dialogs\RegisterSubjectDialog.xaml;Views\MainWindow.xaml;Views\NavigationBar.xaml;Views\StartPage.xaml;Views\SubjectsPage.xaml;Views\TermsPage.xaml;
 
 False
 

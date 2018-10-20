@@ -62,5 +62,20 @@ namespace Pluto.BLL.Services.Implementations
             
             return false;
         }
+
+        public async Task AddAttendanceToRegisteredSubjectAsync(RegisteredSubject registeredSubject, Attendance attendance)
+        {
+            registeredSubject.AddAttendance(attendance);
+
+            await Task.Factory.StartNew(() => DataManager.Instance.AddAttendance(attendance));
+        }
+        public async Task UpdateAttendanceAsync(Attendance attendanceToUpdate)
+        {
+            await Task.Factory.StartNew(() => DataManager.Instance.UpdateAttendance(attendanceToUpdate));
+        }
+        public async Task DeleteAttendanceAsync(Attendance attendance)
+        {
+            await Task.Factory.StartNew(() => DataManager.Instance.DeleteAttendance(attendance));
+        }
     }
 }

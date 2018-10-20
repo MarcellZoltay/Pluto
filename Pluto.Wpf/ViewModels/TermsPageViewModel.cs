@@ -31,6 +31,7 @@ namespace Pluto.Wpf.ViewModels
         }
 
         public int SelectedTermIndex { get; set; }
+        public Term SelectedTerm { get; set; }
 
         private bool _isLoading = true;
         public bool IsLoading
@@ -94,7 +95,7 @@ namespace Pluto.Wpf.ViewModels
         }
         private async void EditTermOnClick(object obj)
         {
-            var term = Terms.ElementAt(SelectedTermIndex);
+            var term = SelectedTerm;
 
             DateTime startDate, endDate;
 
@@ -143,7 +144,7 @@ namespace Pluto.Wpf.ViewModels
         }
         private async void CloseTermOnClick(object obj)
         {
-            var term = Terms.ElementAt(SelectedTermIndex);
+            var term = SelectedTerm;
 
             var result = MessageBox.Show("Are you sure you want to close this term?", "Close term", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
             if (result == MessageBoxResult.OK)

@@ -14,10 +14,12 @@ namespace Pluto.BLL.Services.Implementations
     class RegisteredSubjectMapperService : IRegisteredSubjectMapperService
     {
         private IRegisteredSubjectEntityService registeredSubjectEntityService;
+        private IAttendanceMapperService attendanceMapperService;
 
         public RegisteredSubjectMapperService()
         {
             registeredSubjectEntityService = UnityBootstrapper.UnityBootstrapperInstance.Resolve<IRegisteredSubjectEntityService>();
+            attendanceMapperService = UnityBootstrapper.UnityBootstrapperInstance.Resolve<IAttendanceMapperService>();
         }
 
         public List<RegisteredSubject> GetRegisteredSubjects()
@@ -25,9 +27,16 @@ namespace Pluto.BLL.Services.Implementations
             List<RegisteredSubject> registeredSubjects = new List<RegisteredSubject>();
             var registeredSubjectEntities = registeredSubjectEntityService.GetRegisteredSubjectEntities();
 
-            foreach (var item in registeredSubjectEntities)
+            foreach (var subjectEntity in registeredSubjectEntities)
             {
-                var subject = ConvertToModel(item);
+                var subject = ConvertToModel(subjectEntity);
+
+                foreach (var attendanceEntity in subjectEntity.AttendanceEntities)
+                {
+                    var attendance = attendanceMapperService.GetAttendance(attendanceEntity);
+                    subject.AddAttendance(attendance);
+                }
+
                 registeredSubjects.Add(subject);
             }
 
