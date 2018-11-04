@@ -3,6 +3,7 @@ using Pluto.BLL.Model.Subjects;
 using Pluto.BLL.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 namespace Pluto.BLL.Model
@@ -32,6 +33,7 @@ namespace Pluto.BLL.Model
             LoadRegisteredSubjects();
 
             SetAssociations();
+            SetEventHandlers();
         }
         #endregion
 
@@ -66,14 +68,43 @@ namespace Pluto.BLL.Model
                 item.SetAssociations(subject, term);
 
                 subject.SetAssociations(
-                    item, 
+                    item,
                     item.RegisteredSubjectId == subject.ActualRegisteredSubjectId ? item : null
                     );
                 term.SetAssociations(item);
             }
         }
+        private void SetEventHandlers()
+        {
+            foreach(var subject in registeredSubjects)
+            {
+                subject.PropertyChanged += RegisteredSubjectCompletedChanged;
+
+                foreach(var attendance in subject.Attendances)
+                {
+                    attendance.PropertyChanged += AttendanceIsAttendedChanged;
+                }
+            }
+        }
+
+        private void RegisteredSubjectCompletedChanged(object sender, PropertyChangedEventArgs e)
+        {
+            var registeredSubject = (RegisteredSubject)sender;
+            if (e.PropertyName == nameof(registeredSubject.IsCompleted))
+            {
+                registeredSubjectMapperService.UpdateRegisteredSubject(registeredSubject);
+                subjectMapperService.UpdateSubject(registeredSubject.Subject);
+            }
+        }
+        private void AttendanceIsAttendedChanged(object sender, PropertyChangedEventArgs e)
+        {
+            var attendance = (Attendance)sender;
+            if (e.PropertyName == nameof(attendance.IsAttended))
+                UpdateAttendance(attendance);
+        }
 
         
+
         public List<Term> GetTerms(Predicate<Term> predicate)
         {
             return predicate == null ? terms : terms.FindAll(predicate);
@@ -89,8 +120,8 @@ namespace Pluto.BLL.Model
         }
         public void DeleteTerm(Term termtToDelete)
         {
-           terms.Remove(termtToDelete);
-           termMapperService.DeleteTerm(termtToDelete);
+            terms.Remove(termtToDelete);
+            termMapperService.DeleteTerm(termtToDelete);
         }
         public void CloseTerm(Term termToClose)
         {
@@ -134,6 +165,7 @@ namespace Pluto.BLL.Model
         }
         public void AddRegisteredSubject(RegisteredSubject registeredSubject)
         {
+            registeredSubject.PropertyChanged += RegisteredSubjectCompletedChanged;
             registeredSubjects.Add(registeredSubject);
             registeredSubjectMapperService.AddRegisteredSubject(registeredSubject);
         }
@@ -143,18 +175,15 @@ namespace Pluto.BLL.Model
         }
         public void DeleteRegisteredSubject(RegisteredSubject registeredSubjectToDelete)
         {
+            registeredSubjectToDelete.PropertyChanged -= RegisteredSubjectCompletedChanged;
             registeredSubjects.Remove(registeredSubjectToDelete);
             registeredSubjectMapperService.DeleteRegisteredSubject(registeredSubjectToDelete);
-        }
-        public void SetRegisteredSubjectCompletion(RegisteredSubject registeredSubjectToSet)
-        {
-            registeredSubjectMapperService.UpdateRegisteredSubject(registeredSubjectToSet);
-            subjectMapperService.UpdateSubject(registeredSubjectToSet.Subject);
         }
 
 
         public void AddAttendance(Attendance attendance)
         {
+            attendance.PropertyChanged += AttendanceIsAttendedChanged;
             attendanceMapperService.AddAttendance(attendance);
         }
         public void UpdateAttendance(Attendance attendanceToUpdate)
@@ -163,6 +192,7 @@ namespace Pluto.BLL.Model
         }
         public void DeleteAttendance(Attendance attendanceToDelete)
         {
+            attendanceToDelete.PropertyChanged -= AttendanceIsAttendedChanged;
             attendanceMapperService.DeleteAttendance(attendanceToDelete);
         }
     }

@@ -66,8 +66,7 @@
         <CheckBox Grid.Column="1" Grid.Row="1" VerticalAlignment="Top"
                   Content="Completed"
                   IsChecked="{Binding ElementName=lvRegsiteredSubjects, Path=SelectedItem.IsCompleted, Mode=TwoWay}" 
-                  Visibility="{Binding ElementName=lvRegsiteredSubjects, Path=SelectedItem, Converter={StaticResource ListviewSelectedItemToVisibilityConverter}}"
-                  Command="{Binding CompletedCheckboxCheckChangedCommand}"/>
+                  Visibility="{Binding ElementName=lvRegsiteredSubjects, Path=SelectedItem, Converter={StaticResource ListviewSelectedItemToVisibilityConverter}}"/>
 
         <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Orientation="Horizontal"
                     Visibility="{Binding ElementName=lvRegsiteredSubjects, Path=SelectedItem, Converter={StaticResource ListviewSelectedItemToVisibilityConverter}}">
@@ -89,8 +88,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <CheckBox Content="{Binding Name}" IsChecked="{Binding IsAttended, Mode=TwoWay}"
-                                      Command="{Binding AttendanceCheckboxCheckChangedCommand}"/>
+                            <CheckBox Content="{Binding Name}" IsChecked="{Binding IsAttended, Mode=TwoWay}"/>
                             <TextBlock>
                                 <Run Text="     "/>
                                 <Run Text="{Binding Date, StringFormat=d}"/>

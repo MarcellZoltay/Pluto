@@ -83,10 +83,10 @@ namespace Pluto.BLL.Model.RegisteredSubjects
             {
                 if (!IsClosed)
                 {
-                    SetProperty(ref isCompleted, value);
-
                     if (Subject != null)
                         Subject.IsCompleted = value;
+
+                    SetProperty(ref isCompleted, value, nameof(IsCompleted));
                 }
             }
         }
