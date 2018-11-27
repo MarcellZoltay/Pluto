@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Pluto.Wpf.ResourceDictionaries">
+
+    <Color x:Key="DarkBlue">#FF1D2840</Color>
+    <Color x:Key="LightBlue">#FF2A364F</Color>
+
+    <Color x:Key="LightTextColor">#FFEEEEEE</Color>
+</ResourceDictionary>

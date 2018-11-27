@@ -54,3 +54,8 @@ c:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Pluto.Wpf.exe
 c:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Pluto.Wpf.pdb
 C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\Dialogs\CreateOrEditAttendanceDialog.g.cs
 C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\Dialogs\CreateOrEditAttendanceDialog.baml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\App.baml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\ResourceDictionaries\BaseStyleDictionary.baml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\ResourceDictionaries\BrushDictionary.baml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\ResourceDictionaries\ColorDictionary.baml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\ResourceDictionaries\LabelStyleDictionary.baml

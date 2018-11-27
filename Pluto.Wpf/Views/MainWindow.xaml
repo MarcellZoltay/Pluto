@@ -8,16 +8,26 @@
         WindowStartupLocation="CenterScreen" WindowState="Maximized"
         MinWidth="600" MinHeight="600">
 
+    <Window.Background>
+        <SolidColorBrush Color="{StaticResource LightBlue}" />
+    </Window.Background>
+    
     <DockPanel>
         <myControls:NavigationBar DockPanel.Dock="Top"
-                                  StartPageCommand="{Binding NavigateToStartPageCommand}"
+                                  Background="{StaticResource dockedPanelBackgroundBrush}"
                                   CurriculumPageCommand="{Binding NavigateToCurriculumPageCommand}"
                                   TermsPageCommand="{Binding NavigateToTermsPageCommand}"
-                                  SubjectsPageCommand="{Binding NavigateToSubjectsPageCommand}"/>
-        <Label DockPanel.Dock="Bottom" Content="{Binding Title}"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center"/>
-        <ContentControl prism:RegionManager.RegionName="MainRegion" />
+                                  SubjectsPageCommand="{Binding NavigateToSubjectsPageCommand}"
+                                  Height="40"
+                                  VerticalContentAlignment="Center"/>
+        <Label DockPanel.Dock="Bottom"
+               Style="{StaticResource labelBaseStyle}"
+               FontSize="15"
+               Background="{StaticResource dockedPanelBackgroundBrush}"
+               Content="{Binding Title}"
+               HorizontalAlignment="Stretch"
+               HorizontalContentAlignment="Center"/>
+        <ContentControl prism:RegionManager.RegionName="MainRegion"/>
     </DockPanel>
     
 </Window>

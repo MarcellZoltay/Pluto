@@ -9,17 +9,93 @@
         <converter:BoolToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <converter:ListviewSelectedItemToVisibilityConverter x:Key="ListviewSelectedItemToVisibilityConverter"/>
 
-        <CollectionViewSource x:Key="RegsiteredSubjectsViewSource" Source="{Binding RegisteredSubjects}">
+        <CollectionViewSource x:Key="RegisteredSubjectsViewSource" Source="{Binding RegisteredSubjects}">
             <CollectionViewSource.GroupDescriptions>
                 <PropertyGroupDescription PropertyName="Term.Name" />
             </CollectionViewSource.GroupDescriptions>
         </CollectionViewSource>
+
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource buttonBaseStyle}">
+            <Setter Property="Margin" Value="3 5" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+        <Style TargetType="ListViewItem" x:Key="subjectsListView">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="{StaticResource lightTextColorBrush}" />
+            <Setter Property="Margin" Value="2 1.5"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewItem">
+                        <Border Name="Border" BorderBrush="Black" BorderThickness="0.8" CornerRadius="3" Background="{TemplateBinding Background}">
+                            <ContentPresenter Margin="5 5" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <SolidColorBrush Color="{StaticResource DarkBlue}"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="true">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <SolidColorBrush Color="{StaticResource DarkBlue}"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="ListViewItem" x:Key="attendanceListView">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="{StaticResource lightTextColorBrush}" />
+            <Setter Property="Margin" Value="2 1.5"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewItem">
+                        <Border Name="Border" BorderBrush="Black" BorderThickness="0.5" CornerRadius="3" Background="{TemplateBinding Background}">
+                            <GridViewRowPresenter Margin="5 5" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <SolidColorBrush Color="{StaticResource DarkBlue}"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="true">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <SolidColorBrush Color="{StaticResource DarkBlue}"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource textblockFont}" />
+        <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource checkboxBaseStyle}" />
+        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource labelBaseStyle}" />
     </UserControl.Resources>
 
+    <UserControl.Background>
+        <SolidColorBrush Color="{StaticResource LightBlue}" />
+    </UserControl.Background>
+    
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="220" />
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -31,8 +107,14 @@
         <Label Grid.Column="1" Content="Loading..." Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"
                HorizontalAlignment="Left"/>
 
-        <ListView Grid.RowSpan="4" Name="lvRegsiteredSubjects" ItemsSource="{Binding Source={StaticResource RegsiteredSubjectsViewSource}}"
-                  SelectedItem="{Binding SelectedRegisteredSubject, Mode=OneWayToSource}">
+        <ListView Grid.RowSpan="4" Name="lvRegsiteredSubjects" ItemsSource="{Binding Source={StaticResource RegisteredSubjectsViewSource}}"
+                  SelectedItem="{Binding SelectedRegisteredSubject, Mode=OneWayToSource}"
+                  BorderThickness="0 0 1 0" BorderBrush="Black"
+                  ItemContainerStyle="{StaticResource subjectsListView}">
+            <ListView.Background>
+                <SolidColorBrush Color="{StaticResource LightBlue}"/>
+            </ListView.Background>
+
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}"/>
@@ -48,27 +130,35 @@
                                     <ControlTemplate>
                                         <Expander IsExpanded="True">
                                             <Expander.Header>
-                                                <TextBlock Text="{Binding Name}"/>
+                                                <TextBlock Text="{Binding Name}"
+                                                           Foreground="{StaticResource lightTextColorBrush}"
+                                                           Margin="0 5"/>
                                             </Expander.Header>
                                             <ItemsPresenter />
                                         </Expander>
                                     </ControlTemplate>
                                 </Setter.Value>
                             </Setter>
+                            <Setter Property="Foreground" Value="{StaticResource lightTextColorBrush}" />
+                            <Setter Property="FontSize" Value="18" />
                         </Style>
                     </GroupStyle.ContainerStyle>
                 </GroupStyle>
             </ListView.GroupStyle>
         </ListView>
 
-        <Label Grid.Column="1" Content="{Binding ElementName=lvRegsiteredSubjects, Path=SelectedItem.Name}" />
+        <Label Grid.Column="1" Content="{Binding ElementName=lvRegsiteredSubjects, Path=SelectedItem.Name}" 
+               Margin="8"
+               FontSize="22"/>
 
-        <CheckBox Grid.Column="1" Grid.Row="1" VerticalAlignment="Top"
+        <CheckBox Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" HorizontalAlignment="Left"
                   Content="Completed"
+                  Margin="8"
+                  FontSize="15"
                   IsChecked="{Binding ElementName=lvRegsiteredSubjects, Path=SelectedItem.IsCompleted, Mode=TwoWay}" 
                   Visibility="{Binding ElementName=lvRegsiteredSubjects, Path=SelectedItem, Converter={StaticResource ListviewSelectedItemToVisibilityConverter}}"/>
 
-        <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Orientation="Horizontal"
+        <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Orientation="Horizontal" Margin="8 4"
                     Visibility="{Binding ElementName=lvRegsiteredSubjects, Path=SelectedItem, Converter={StaticResource ListviewSelectedItemToVisibilityConverter}}">
             <Button Content="Add attendance" 
                     Command="{Binding AddAttendanceCommand}" />
@@ -80,31 +170,66 @@
 
         <Border Grid.Column="1" Grid.Row="3"
                 BorderBrush="Black" BorderThickness="1.5" CornerRadius="10"
-                Margin="10 0 10 3" Padding="10"
+                Margin="8 0 8 3" Padding="10 5 10 5"
                 Visibility="{Binding ElementName=lvRegsiteredSubjects, Path=SelectedItem, Converter={StaticResource ListviewSelectedItemToVisibilityConverter}}">
-            <ListView ItemsSource="{Binding ElementName=lvRegsiteredSubjects, Path=SelectedItem.Attendances}"
-                      SelectedIndex="{Binding SelectedAttendanceIndex, Mode=TwoWay}"
-                      SelectedItem="{Binding SelectedAttendance, Mode=OneWayToSource}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <CheckBox Content="{Binding Name}" IsChecked="{Binding IsAttended, Mode=TwoWay}"/>
-                            <TextBlock>
-                                <Run Text="     "/>
-                                <Run Text="{Binding Date, StringFormat=d}"/>
-                            </TextBlock>
-                            <TextBlock>
-                                <Run Text="     "/>
-                                <Run Text="{Binding StartTime, StringFormat=hh\\:mm}"/>
-                            </TextBlock>
-                            <TextBlock>
-                                <Run Text="     "/>
-                                <Run Text="{Binding EndTime, StringFormat=hh\\:mm}"/>
-                            </TextBlock>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+
+            <StackPanel>
+                <Label Content="Attendances" 
+                       FontSize="20"
+                       Margin="0 0 0 5"/>
+
+                <ListView ItemsSource="{Binding ElementName=lvRegsiteredSubjects, Path=SelectedItem.Attendances}"
+                          SelectedIndex="{Binding SelectedAttendanceIndex, Mode=TwoWay}"
+                          SelectedItem="{Binding SelectedAttendance, Mode=OneWayToSource}"
+                          BorderThickness="0"
+                          ItemContainerStyle="{StaticResource attendanceListView}">
+                    <ListView.Background>
+                        <SolidColorBrush Color="{StaticResource LightBlue}" />
+                    </ListView.Background>
+
+                    <ListView.Resources>
+                        <Style TargetType="GridViewColumnHeader">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </Style>
+                    </ListView.Resources>
+                
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Content="{Binding Name}" IsChecked="{Binding IsAttended, Mode=TwoWay}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Date, StringFormat=yyyy.MM.dd.}" HorizontalAlignment="Center"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding StartTime, StringFormat=hh\\:mm}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding EndTime, StringFormat=hh\\:mm}"/> 
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
         </Border>
     </Grid>
     

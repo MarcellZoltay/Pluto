@@ -1,5 +1,9 @@
-﻿C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\GeneratedInternalTypeHelper.g.cs
-
+﻿
+FC:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\App.xaml;;
+FC:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\ResourceDictionaries\BaseStyleDictionary.xaml;;
+FC:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\ResourceDictionaries\BrushDictionary.xaml;;
+FC:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\ResourceDictionaries\ColorDictionary.xaml;;
+FC:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\ResourceDictionaries\LabelStyleDictionary.xaml;;
 FC:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\Views\CurriculumPage.xaml;;
 FC:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\Views\Dialogs\CreateOrEditAttendanceDialog.xaml;;
 FC:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\Views\Dialogs\CreateOrEditSubjectDialog.xaml;;
