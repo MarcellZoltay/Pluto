@@ -7,12 +7,57 @@
 
     <UserControl.Resources>
         <converter:BoolToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource buttonBaseStyle}">
+            <Setter Property="Margin" Value="3 5" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+        <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource textblockBaseStyle}">
+            <Setter Property="Foreground" Value="{StaticResource lightTextColorBrush}"/>
+        </Style>
+        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource labelBaseStyle}" />
+        <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource checkboxBaseStyle}"/>
+        <Style TargetType="{x:Type ListViewItem}">
+            <Setter Property="Foreground" Value="{StaticResource lightTextColorBrush}" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="2 1.5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewItem">
+                        <Border Name="Border" BorderBrush="Black" BorderThickness="0.8" CornerRadius="3" Background="{TemplateBinding Background}">
+                            <ContentPresenter Margin="10 5"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <SolidColorBrush Color="{StaticResource DarkBlue}"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="true">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <SolidColorBrush Color="{StaticResource DarkBlue}"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </UserControl.Resources>
 
-    <Grid>
+    <UserControl.Background>
+        <SolidColorBrush Color="{StaticResource LightBlue}" />
+    </UserControl.Background>
+    
+    <Grid Margin="5 0">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" MinHeight="50" />
-            <RowDefinition Height="auto" MinHeight="50" MaxHeight="50" />
+            <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -22,12 +67,14 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Label Content="{Binding Title}" />
-            <Label Grid.Row="1" Content="Loading..." Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            <Label Content="{Binding Title}" 
+                   Style="{StaticResource pageTitleStyle}"/>
+            <Label Grid.Row="1" Content="Loading..." Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" />
         </Grid>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal"
-                    VerticalAlignment="Center">
+                    VerticalAlignment="Center"
+                    Margin="0 4">
             <Button Content="New term" Command="{Binding NewTermCommand}" />
             <Button Content="Edit term" Command="{Binding EditTermCommand}" />
             <Button Content="Delete last term" Command="{Binding DeleteLastTermCommand}" />
@@ -36,63 +83,70 @@
 
         <Border Grid.Row="2"
                 BorderBrush="Black" BorderThickness="1.5" CornerRadius="10"
-                Margin="10 0 10 3" Padding="10">
+                Margin="3 0 3 3" Padding="5">
 
             <ListView ItemsSource="{Binding Terms}"
                       SelectedIndex="{Binding SelectedTermIndex, Mode=TwoWay}"
                       SelectedItem="{Binding SelectedTerm, Mode=OneWayToSource}"
-                      HorizontalContentAlignment="Stretch">
+                      HorizontalContentAlignment="Stretch"
+                      BorderThickness="0">
+                <ListView.Background>
+                    <SolidColorBrush Color="{StaticResource LightBlue}"/>
+                </ListView.Background>
+
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="Black" BorderThickness="1"
-                                Margin="5" Padding="5">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                </Grid.RowDefinitions>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
 
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Name}" />
-                                    <CheckBox Content="Active" IsChecked="{Binding IsActive, Mode=OneWay}" IsEnabled="False" />
-                                    <CheckBox Content="Closed" IsChecked="{Binding IsClosed, Mode=OneWay}" IsEnabled="False" />
-                                    <TextBlock>
-                                        <Run Text="     "/>
-                                        <Run Text="{Binding Period.StartDate, StringFormat=d}"/>
-                                    </TextBlock>
-                                    <TextBlock>
-                                        <Run Text="     "/>
-                                        <Run Text="{Binding Period.EndDate, StringFormat=d}"/>
-                                    </TextBlock>
-                                </StackPanel>
-
-                                <TextBlock Grid.Row="1">
-                                    <Run Text="Registered credits: "/>
-                                    <Run Text="{Binding RegisteredCredits, Mode=OneWay}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                                <TextBlock Text="{Binding Name}"
+                                            FontSize="16" FontWeight="Bold"
+                                            Margin="0 0 40 0" />
+                                <CheckBox Content="Active" IsChecked="{Binding IsActive, Mode=OneWay}" IsEnabled="False" 
+                                            Margin="0 0 10 0"/>
+                                <CheckBox Content="Closed" IsChecked="{Binding IsClosed, Mode=OneWay}" IsEnabled="False" 
+                                            Margin="0 0 10 0"/>
+                                <TextBlock Margin="30 0 0 0" VerticalAlignment="Center">
+                                    <Run Text="{Binding Period.StartDate, StringFormat=yyyy.MM.dd.}" />
+                                    <Run Text=" - " />
+                                    <Run Text="{Binding Period.EndDate, StringFormat=yyyy.MM.dd.}" />
                                 </TextBlock>
+                            </StackPanel>
 
-                                <ItemsControl Grid.Row="2" ItemsSource="{Binding RegisteredSubjects}"
-                                          HorizontalContentAlignment="Stretch">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition/>
-                                                    <ColumnDefinition/>
-                                                    <ColumnDefinition/>
-                                                </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Row="1"
+                                        Margin="0 0 0 3">
+                                <Run Text="Registered credits: "/>
+                                <Run Text="{Binding RegisteredCredits, Mode=OneWay}"/>
+                            </TextBlock>
 
-                                                <TextBlock Grid.Column="0" Text="{Binding Name}"/>
-                                                <TextBlock Grid.Column="1" Text="{Binding Credit}"/>
-                                                <CheckBox Grid.Column="2" Content="Completed" IsChecked="{Binding IsCompleted}"
-                                                          IsEnabled="False"/>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                            </Grid>
-                        </Border>
+                            <ItemsControl Grid.Row="2" ItemsSource="{Binding RegisteredSubjects}"
+                                            HorizontalContentAlignment="Stretch">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="20 3">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Grid.Column="0" Text="{Binding Name}"/>
+                                            <TextBlock Grid.Column="1"> 
+                                                <Run Text="{Binding Credit}"/>
+                                                <Run Text=" credits"/>
+                                            </TextBlock>
+                                            <CheckBox Grid.Column="2" Content="Completed" IsChecked="{Binding IsCompleted}"
+                                                        IsEnabled="False"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

@@ -5,24 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pluto.Wpf.Views.Dialogs"
         mc:Ignorable="d"
-        Title="{Binding Title}" WindowStartupLocation="CenterOwner"
-        Width="300" Height="200">
+        Title="{Binding Title}" WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Width="300" Height="160">
 
+    <Window.Background>
+        <SolidColorBrush Color="{StaticResource LightBlue}" />
+    </Window.Background>
+
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource buttonBaseStyle}">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Width" Value="70" />
+        </Style>
+        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource labelBaseStyle}" />
+    </Window.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70" />
+            <RowDefinition Height="*" MaxHeight="40"/>
             <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <Label Content="{Binding RegisterSubjectName}" />
+        <Label Content="{Binding RegisterSubjectName}" 
+               HorizontalAlignment="Center" VerticalAlignment="Center" 
+               FontSize="20"
+               FontWeight="Bold"/>
 
-        <ComboBox Grid.Row="1" 
-                  ItemsSource="{Binding ActiveTerms}"
-                  VerticalAlignment="Center" HorizontalAlignment="Center"
-                  SelectedIndex="{Binding SelectedTermIndex, Mode=TwoWay}"
-                  DisplayMemberPath="Name">
-        </ComboBox>
+        <StackPanel Grid.Row="1" 
+                    Orientation="Horizontal"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+            <Label Content="Select term: " 
+                   FontSize="16"/>
+            <ComboBox ItemsSource="{Binding ActiveTerms}"
+                      VerticalAlignment="Center" HorizontalAlignment="Center"
+                      SelectedIndex="{Binding SelectedTermIndex, Mode=TwoWay}"
+                      DisplayMemberPath="Name">
+            </ComboBox>
+        </StackPanel>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal"
                     HorizontalAlignment="Center">

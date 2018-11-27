@@ -44,7 +44,6 @@ namespace Pluto.Wpf.ViewModels
 
         private IRegisteredSubjectService _registeredSubjectService;
 
-        public RelayCommand CompletedCheckboxCheckChangedCommand { get; private set; }
         public RelayCommand AddAttendanceCommand { get; private set; }
         public RelayCommand EditAttendanceCommand { get; private set; }
         public RelayCommand DeleteAttendanceCommand { get; private set; }
@@ -54,7 +53,6 @@ namespace Pluto.Wpf.ViewModels
             _registeredSubjectService = registeredSubjectService;
             _registeredSubjectService.RegisteredSubjectsChanged += _registeredSubjectService_RegisteredSubjectsChanged;
 
-            CompletedCheckboxCheckChangedCommand = new RelayCommand(CompletedCheckboxOnCheckChanged);
             AddAttendanceCommand = new RelayCommand(AddAttendanceOnClick);
             EditAttendanceCommand = new RelayCommand(EditAttendanceOnClick, p => SelectedAttendanceIndex > -1);
             DeleteAttendanceCommand = new RelayCommand(DeleteAttendanceOnClick, p => SelectedAttendanceIndex > -1);
@@ -92,11 +90,6 @@ namespace Pluto.Wpf.ViewModels
                     RegisteredSubjects.AddRange(registeredSubjects);
                 }));
             });
-        }
-
-        private async void CompletedCheckboxOnCheckChanged(object obj)
-        {
-            await _registeredSubjectService.SetRegisteredSubjectCompletionAsync(SelectedRegisteredSubject);
         }
 
         private async void AddAttendanceOnClick(object obj)

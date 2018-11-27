@@ -21,16 +21,6 @@ namespace Pluto.Wpf.Views
     /// </summary>
     public partial class NavigationBar : UserControl
     {
-        public DelegateCommand StartPageCommand
-        {
-            get { return (DelegateCommand)GetValue(NavigationBar.StartPageCommandProperty); }
-            set { SetValue(NavigationBar.StartPageCommandProperty, value); }
-        }
-        public static readonly DependencyProperty StartPageCommandProperty = DependencyProperty.Register(
-            nameof(StartPageCommand),
-            typeof(DelegateCommand),
-            typeof(NavigationBar));
-
         public DelegateCommand CurriculumPageCommand
         {
             get { return (DelegateCommand)GetValue(NavigationBar.CurriculumPageCommandProperty); }

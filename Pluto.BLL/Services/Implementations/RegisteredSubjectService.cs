@@ -22,10 +22,6 @@ namespace Pluto.BLL.Services.Implementations
         {
             return await Task.Factory.StartNew(() => Model.DataManager.Instance.GetRegisteredSubjects());
         }
-        public async Task SetRegisteredSubjectCompletionAsync(RegisteredSubject registeredSubjectToSet)
-        {
-            await Task.Factory.StartNew(() => Model.DataManager.Instance.SetRegisteredSubjectCompletion(registeredSubjectToSet));
-        }
 
         public async Task RegisterSubjectAsync(Subject subject, Term selectedTerm)
         {

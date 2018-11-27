@@ -33,7 +33,7 @@ namespace Pluto.BLL.Model
         public bool IsAttended
         {
             get { return isAttended; }
-            set { SetProperty(ref isAttended, value); }
+            set { SetProperty(ref isAttended, value, nameof(IsAttended)); }
         }
 
         private DateTime startDateTime;

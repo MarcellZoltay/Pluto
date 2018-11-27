@@ -30,7 +30,6 @@ namespace Pluto.Wpf
         {
             base.ConfigureContainer();
 
-            Container.RegisterTypeForNavigation<StartPage>();
             Container.RegisterTypeForNavigation<CurriculumPage>();
             Container.RegisterTypeForNavigation<TermsPage>();
             Container.RegisterTypeForNavigation<SubjectsPage>();
