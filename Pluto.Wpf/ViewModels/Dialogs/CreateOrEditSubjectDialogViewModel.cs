@@ -34,15 +34,15 @@ namespace Pluto.Wpf.ViewModels.Dialogs
 
         public CreateOrEditSubjectDialogViewModel()
         {
-            Title = "Create subject";
-            ButtonContent = "Create";
+            Title = Strings.SubjectDialog_Title_Create;
+            ButtonContent = Strings.SubjectDialog_Button_Create;
 
             InitCommands();
         }
         public CreateOrEditSubjectDialogViewModel(string name, int credit)
         {
-            Title = "Edit subject";
-            ButtonContent = "Save";
+            Title = Strings.SubjectDialog_Title_Edit;
+            ButtonContent = Strings.SubjectDialog_Button_Save;
 
             InitCommands();
 
@@ -60,7 +60,6 @@ namespace Pluto.Wpf.ViewModels.Dialogs
         {
             view = new CreateOrEditSubjectDialog();
             view.DataContext = this;
-            //view.tbCredit.PreviewTextInput += PreviewCreditTextboxHandler;
             view.ShowDialog();
 
             return DialogResult;
@@ -74,16 +73,5 @@ namespace Pluto.Wpf.ViewModels.Dialogs
         {
             DialogResult = false;
         }
-
-        //private void PreviewCreditTextboxHandler(object sender, TextCompositionEventArgs e)
-        //{
-        //    Regex regex = new Regex("^[0-9]{1,2}$");
-
-        //    int value;
-        //    Int32.TryParse(e.Text, out value);
-        //    bool accepted = (value >= 0 && value <= 30);
-
-        //    e.Handled = regex.IsMatch(e.Text) && accepted;
-        //}
     }
 }

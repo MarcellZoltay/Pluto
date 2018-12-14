@@ -3,7 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Pluto.Wpf.Views.Dialogs"
+        xmlns:lex="http://wpflocalizeextension.codeplex.com"
+        lex:LocalizeDictionary.DesignCulture="hu-HU"
+        lex:ResxLocalizationProvider.DefaultAssembly="Pluto.Wpf"
+        lex:ResxLocalizationProvider.DefaultDictionary="Strings"
         mc:Ignorable="d"
         Title="{Binding Title}" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
@@ -38,7 +41,7 @@
                     Orientation="Horizontal"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center">
-            <Label Content="Select term: " 
+            <Label Content="{lex:Loc RegisterSubjectDialog_SelectTerm}" 
                    FontSize="16"/>
             <ComboBox ItemsSource="{Binding ActiveTerms}"
                       VerticalAlignment="Center" HorizontalAlignment="Center"
@@ -49,8 +52,8 @@
 
         <StackPanel Grid.Row="3" Orientation="Horizontal"
                     HorizontalAlignment="Center">
-            <Button Grid.Column="0" HorizontalAlignment="Right" Content="Register" Command="{Binding RegisterSubjectCommand}"/>
-            <Button Grid.Column="1" HorizontalAlignment="Left" Content="Back" Command="{Binding BackCommand}" />
+            <Button Grid.Column="0" HorizontalAlignment="Right" Content="{lex:Loc RegisteredSubjectDialog_Button_Register}" Command="{Binding RegisterSubjectCommand}"/>
+            <Button Grid.Column="1" HorizontalAlignment="Left" Content="{lex:Loc RegisteredSubjectDialog_Button_Back}" Command="{Binding BackCommand}" />
         </StackPanel>
     </Grid>
     

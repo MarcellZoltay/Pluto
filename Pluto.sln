@@ -44,7 +44,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {7473D730-83CF-4BBD-A3F9-4AAB5278347C}
+		RESX_ShowPerformanceTraces = True
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35
+		SolutionGuid = {7473D730-83CF-4BBD-A3F9-4AAB5278347C}
 	EndGlobalSection
 EndGlobal

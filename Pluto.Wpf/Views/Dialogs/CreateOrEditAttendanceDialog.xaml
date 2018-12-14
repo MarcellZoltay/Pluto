@@ -3,7 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Pluto.Wpf.Views.Dialogs"
+        xmlns:lex="http://wpflocalizeextension.codeplex.com"
+        lex:LocalizeDictionary.DesignCulture="hu-HU"
+        lex:ResxLocalizationProvider.DefaultAssembly="Pluto.Wpf"
+        lex:ResxLocalizationProvider.DefaultDictionary="Strings"
         mc:Ignorable="d"
         Title="{Binding Title}" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
@@ -44,13 +47,13 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Label Content="Name: " />
+            <Label Content="{lex:Loc AttendanceDialog_Name}" />
             <TextBox Grid.Column="1" Text="{Binding AttendanceName, Mode=TwoWay}" />
 
-            <Label Grid.Row="1" Grid.Column="0" Content="Date: "/>
+            <Label Grid.Row="1" Grid.Column="0" Content="{lex:Loc AttendanceDialog_Date}"/>
             <DatePicker Grid.Row="1" Grid.Column="1" SelectedDate="{Binding Date}" />
 
-            <Label Grid.Row="2" Grid.Column="0" Content="Start time: "/>
+            <Label Grid.Row="2" Grid.Column="0" Content="{lex:Loc AttendanceDialog_StartTime}"/>
             <StackPanel Grid.Row="2" Grid.Column="1"
                         Orientation="Horizontal">
                 <TextBox Text="{Binding StartTime, StringFormat=hh, Mode=OneWay}" IsEnabled="False"
@@ -63,11 +66,11 @@
                 <Button Content="˄" Command="{Binding IncreaseStartTimeMinuteCommand}"/>
                 <Button Content="˅" Command="{Binding DecreaseStartTimeMinuteCommand}"/>
 
-                <Label Content="hh:mm"
+                <Label Content="{lex:Loc AttendanceDialog_TimeFormat}"
                        Margin="10 0"/>
             </StackPanel>
 
-            <Label Grid.Row="3" Grid.Column="0" Content="End time: "/>
+            <Label Grid.Row="3" Grid.Column="0" Content="{lex:Loc AttendanceDialog_EndTime}"/>
             <StackPanel Grid.Row="3" Grid.Column="1"
                         Orientation="Horizontal">
                 <TextBox Text="{Binding EndTime, StringFormat=hh, Mode=OneWay}" IsEnabled="False"
@@ -80,7 +83,7 @@
                 <Button Content="˄" Command="{Binding IncreaseEndTimeMinuteCommand}"/>
                 <Button Content="˅" Command="{Binding DecreaseEndTimeMinuteCommand}"/>
 
-                <Label Content="hh:mm"
+                <Label Content="{lex:Loc AttendanceDialog_TimeFormat}"
                        Margin="10 0"/>
             </StackPanel>
         </Grid>
@@ -93,7 +96,7 @@
                     Width="70"
                     Margin="5"/>
             <Button Grid.Column="1" HorizontalAlignment="Left" 
-                    Content="Back" 
+                    Content="{lex:Loc AttendanceDialog_Back}" 
                     Command="{Binding BackCommand}"
                     Width="70"
                     Margin="5"/>

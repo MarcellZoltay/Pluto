@@ -18,6 +18,7 @@
                                   CurriculumPageCommand="{Binding NavigateToCurriculumPageCommand}"
                                   TermsPageCommand="{Binding NavigateToTermsPageCommand}"
                                   SubjectsPageCommand="{Binding NavigateToSubjectsPageCommand}"
+                                  LanguageCommand="{Binding LanguageCommand}"
                                   Height="40"
                                   VerticalContentAlignment="Center"/>
         <Label DockPanel.Dock="Bottom"

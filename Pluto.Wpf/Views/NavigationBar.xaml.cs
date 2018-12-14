@@ -51,6 +51,16 @@ namespace Pluto.Wpf.Views
             typeof(DelegateCommand),
             typeof(NavigationBar));
 
+        public DelegateCommand LanguageCommand
+        {
+            get { return (DelegateCommand)GetValue(NavigationBar.LanguageCommandCommandProperty); }
+            set { SetValue(NavigationBar.LanguageCommandCommandProperty, value); }
+        }
+        public static readonly DependencyProperty LanguageCommandCommandProperty = DependencyProperty.Register(
+            nameof(LanguageCommand),
+            typeof(DelegateCommand),
+            typeof(NavigationBar));
+
         public NavigationBar()
         {
             InitializeComponent();

@@ -35,8 +35,8 @@ namespace Pluto.Wpf.ViewModels.Dialogs
 
         public CreateOrEditTermDialogViewModel(string name)
         {
-            Title = "Create term";
-            ButtonContent = "Create";
+            Title = Strings.TermDialog_Title_CreateTerm;
+            ButtonContent = Strings.TermDialog_Button_Create;
 
             SelectedStartDate = DateTime.Today;
             SelectedEndDate = DateTime.Today;
@@ -47,8 +47,8 @@ namespace Pluto.Wpf.ViewModels.Dialogs
         }
         public CreateOrEditTermDialogViewModel(string name, bool isActive, DateTime startDate, DateTime endDate)
         {
-            Title = "Edit term";
-            ButtonContent = "Save";
+            Title = Strings.TermDialog_Title_EditTerm;
+            ButtonContent = Strings.TermDialog_Button_Save;
 
             InitCommands();
 

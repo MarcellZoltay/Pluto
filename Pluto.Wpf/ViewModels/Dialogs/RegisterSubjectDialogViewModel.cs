@@ -33,7 +33,7 @@ namespace Pluto.Wpf.ViewModels.Dialogs
 
         public RegisterSubjectDialogViewModel(string registerSubjectName, List<Term> activeTerms)
         {
-            Title = "Register subject";
+            Title = Strings.RegisteredSubjectDialog_Title_Register;
             RegisterSubjectName = registerSubjectName;
             ActiveTerms = activeTerms;
 

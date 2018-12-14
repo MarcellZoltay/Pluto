@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AttendanceDialog_Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="AttendanceDialog_Button_Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="AttendanceDialog_Button_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="AttendanceDialog_Date" xml:space="preserve">
+    <value>Date:</value>
+  </data>
+  <data name="AttendanceDialog_EndTime" xml:space="preserve">
+    <value>End time:</value>
+  </data>
+  <data name="AttendanceDialog_Name" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="AttendanceDialog_Question" xml:space="preserve">
+    <value>Are you sure you want to delete this attendance</value>
+  </data>
+  <data name="AttendanceDialog_StartTime" xml:space="preserve">
+    <value>Start time:</value>
+  </data>
+  <data name="AttendanceDialog_TimeFormat" xml:space="preserve">
+    <value>hh:mm</value>
+  </data>
+  <data name="AttendanceDialog_Title_AddAttendance" xml:space="preserve">
+    <value>Add attendance</value>
+  </data>
+  <data name="AttendanceDialog_Title_Delete" xml:space="preserve">
+    <value>Delete attendance</value>
+  </data>
+  <data name="AttendanceDialog_Title_EditAttendance" xml:space="preserve">
+    <value>Edit attendance</value>
+  </data>
+  <data name="Button_Curriculum" xml:space="preserve">
+    <value>Curriculum</value>
+  </data>
+  <data name="Button_Language" xml:space="preserve">
+    <value>Magyar</value>
+  </data>
+  <data name="Button_Subjects" xml:space="preserve">
+    <value>Subjects</value>
+  </data>
+  <data name="Button_Terms" xml:space="preserve">
+    <value>Terms</value>
+  </data>
+  <data name="Checkbox_Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="CurriculumPage_Button_DeleteSubject" xml:space="preserve">
+    <value>Delete subject</value>
+  </data>
+  <data name="CurriculumPage_Button_EditSubject" xml:space="preserve">
+    <value>Edit subject</value>
+  </data>
+  <data name="CurriculumPage_Button_NewSubject" xml:space="preserve">
+    <value>New subject</value>
+  </data>
+  <data name="CurriculumPage_Button_RegisterSubject" xml:space="preserve">
+    <value>Register subject</value>
+  </data>
+  <data name="CurriculumPage_Button_UnregisterSubject" xml:space="preserve">
+    <value>Unregister subject</value>
+  </data>
+  <data name="CurriculumPage_ListviewHeader_Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="CurriculumPage_ListviewHeader_Credit" xml:space="preserve">
+    <value>Credit</value>
+  </data>
+  <data name="CurriculumPage_ListviewHeader_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="CurriculumPage_ListviewHeader_Registered" xml:space="preserve">
+    <value>Registered</value>
+  </data>
+  <data name="CurriculumPage_Title" xml:space="preserve">
+    <value>Curriculum</value>
+  </data>
+  <data name="Label_Loading" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="Label_Term" xml:space="preserve">
+    <value>term</value>
+  </data>
+  <data name="RegisteredSubjectDialog_Button_Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="RegisteredSubjectDialog_Button_Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="RegisteredSubjectDialog_Message_Completed" xml:space="preserve">
+    <value>This subject is completed</value>
+  </data>
+  <data name="RegisteredSubjectDialog_Message_Registered" xml:space="preserve">
+    <value>This subject is already registered</value>
+  </data>
+  <data name="RegisteredSubjectDialog_Message_Unregister" xml:space="preserve">
+    <value>This subject is unregistered or completed</value>
+  </data>
+  <data name="RegisteredSubjectDialog_Question_Unregister" xml:space="preserve">
+    <value>Do you want to unregister this subject</value>
+  </data>
+  <data name="RegisteredSubjectDialog_Title_Register" xml:space="preserve">
+    <value>Register subject</value>
+  </data>
+  <data name="RegisteredSubjectDialog_Title_Unregister" xml:space="preserve">
+    <value>Unregister subject</value>
+  </data>
+  <data name="RegisterSubjectDialog_SelectTerm" xml:space="preserve">
+    <value>Select term:</value>
+  </data>
+  <data name="SubjectDialog_Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="SubjectDialog_Button_Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="SubjectDialog_Button_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SubjectDialog_Credit" xml:space="preserve">
+    <value>Credit:</value>
+  </data>
+  <data name="SubjectDialog_Message_Question" xml:space="preserve">
+    <value>Are you sure you want to delete</value>
+  </data>
+  <data name="SubjectDialog_Message_Warning" xml:space="preserve">
+    <value>This subject cannot be deleted!</value>
+  </data>
+  <data name="SubjectDialog_Name" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="SubjectDialog_Question_SubjectWord" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SubjectDialog_Title_Create" xml:space="preserve">
+    <value>New subject</value>
+  </data>
+  <data name="SubjectDialog_Title_Delete" xml:space="preserve">
+    <value>Delete subject</value>
+  </data>
+  <data name="SubjectDialog_Title_Edit" xml:space="preserve">
+    <value>Edit subject</value>
+  </data>
+  <data name="SubjectsPage_Attendances" xml:space="preserve">
+    <value>Attendances</value>
+  </data>
+  <data name="SubjectsPage_Button_AddAttendance" xml:space="preserve">
+    <value>Add attendance</value>
+  </data>
+  <data name="SubjectsPage_Button_DeleteAttendance" xml:space="preserve">
+    <value>Delete attendance</value>
+  </data>
+  <data name="SubjectsPage_Button_EditAttendance" xml:space="preserve">
+    <value>Edit attendance</value>
+  </data>
+  <data name="TermDialog_Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="TermDialog_Button_Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="TermDialog_Button_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="TermDialog_Checkbox_Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="TermDialog_EndDate" xml:space="preserve">
+    <value>End date:</value>
+  </data>
+  <data name="TermDIalog_Meassage_DeleteLastTerm" xml:space="preserve">
+    <value>This term cannot be deleted! Only not closed and empty term can be deleted</value>
+  </data>
+  <data name="TermDialog_Message_CloseTerm" xml:space="preserve">
+    <value>This term cannot be closed</value>
+  </data>
+  <data name="TermDialog_Question_CloseTerm" xml:space="preserve">
+    <value>Are you sure you want to close this term</value>
+  </data>
+  <data name="TermDialog_Question_DeleteLastTerm" xml:space="preserve">
+    <value>Are you sure you want to delete the last term</value>
+  </data>
+  <data name="TermDialog_StartDate" xml:space="preserve">
+    <value>Start date:</value>
+  </data>
+  <data name="TermDialog_Title_CloseTerm" xml:space="preserve">
+    <value>Close term</value>
+  </data>
+  <data name="TermDialog_Title_CreateTerm" xml:space="preserve">
+    <value>Create term</value>
+  </data>
+  <data name="TermDialog_Title_DeleteLastTerm" xml:space="preserve">
+    <value>Delete last term</value>
+  </data>
+  <data name="TermDialog_Title_EditTerm" xml:space="preserve">
+    <value>Edit term</value>
+  </data>
+  <data name="TermsPage_Button_CloseTerm" xml:space="preserve">
+    <value>Close term</value>
+  </data>
+  <data name="TermsPage_Button_DeleteLastTerm" xml:space="preserve">
+    <value>Delete last term</value>
+  </data>
+  <data name="TermsPage_Button_EditTerm" xml:space="preserve">
+    <value>Edit term</value>
+  </data>
+  <data name="TermsPage_Button_NewTerm" xml:space="preserve">
+    <value>New term</value>
+  </data>
+  <data name="TermsPage_Checkbox_Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="TermsPage_Checkbox_Closed" xml:space="preserve">
+    <value>Closed</value>
+  </data>
+  <data name="TermsPage_Credits" xml:space="preserve">
+    <value>credits</value>
+  </data>
+  <data name="TermsPage_RegisteredCredits" xml:space="preserve">
+    <value>Registered credits:</value>
+  </data>
+  <data name="TermsPage_Title" xml:space="preserve">
+    <value>Terms</value>
+  </data>
+</root>

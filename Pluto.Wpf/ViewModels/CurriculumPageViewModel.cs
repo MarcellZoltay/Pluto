@@ -15,13 +15,6 @@ namespace Pluto.Wpf.ViewModels
 {
     public class CurriculumPageViewModel : BindableBase
     {
-        private string _title = "Curriculum Page";
-        public string Title
-        {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
-        }
-
         private ObservableCollection<Subject> subjects;
         public ObservableCollection<Subject> Subjects
         {
@@ -46,7 +39,6 @@ namespace Pluto.Wpf.ViewModels
         public RelayCommand NewSubjectCommand { get; private set; }
         public RelayCommand EditSubjectCommand { get; private set; }
         public RelayCommand DeleteSubjectCommand { get; private set; }
-        public RelayCommand OrderListCommand { get; private set; }
         public RelayCommand RegisterSubjectCommand { get; private set; }
         public RelayCommand UnregisterSubjectCommand { get; private set; }
 
@@ -61,7 +53,6 @@ namespace Pluto.Wpf.ViewModels
             NewSubjectCommand = new RelayCommand(NewSubjectOnClick);
             EditSubjectCommand = new RelayCommand(EditSubjectOnClick, p => SelectedSubjectIndex > -1);
             DeleteSubjectCommand = new RelayCommand(DeleteSubjectOnClick, p => SelectedSubjectIndex > -1);
-            OrderListCommand = new RelayCommand(OrderListOnClick);
             RegisterSubjectCommand = new RelayCommand(RegisterSubjectOnClick, p => SelectedSubjectIndex > -1);
             UnregisterSubjectCommand = new RelayCommand(UnregisterSubjectOnClick, p => SelectedSubjectIndex > -1);
 
@@ -108,7 +99,7 @@ namespace Pluto.Wpf.ViewModels
                 }
                 catch (InvalidOperationException e)
                 {
-                    MessageBox.Show(e.Message, "Edit subject", MessageBoxButton.OK);
+                    MessageBox.Show(e.Message, Strings.SubjectDialog_Title_Edit, MessageBoxButton.OK);
                 }
 
                 SelectedSubjectIndex = -1;
@@ -120,7 +111,7 @@ namespace Pluto.Wpf.ViewModels
         {
             var subject = SelectedSubjectItem;
 
-            var result = MessageBox.Show("Are you sure you want to delete " + subject.Name + "?", "Delete subject", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            var result = MessageBox.Show(Strings.SubjectDialog_Message_Question + " " + subject.Name + (Strings.SubjectDialog_Question_SubjectWord.Length == 0 ? "" : " ") + Strings.SubjectDialog_Question_SubjectWord + "?", Strings.SubjectDialog_Title_Delete, MessageBoxButton.OKCancel, MessageBoxImage.Warning);
             if (result == MessageBoxResult.OK)
             {
                 var deletable = await _subjectService.DeleteSubjectAsync(subject);
@@ -128,15 +119,8 @@ namespace Pluto.Wpf.ViewModels
                 if (deletable)
                     Subjects.Remove(subject);
                 else
-                    MessageBox.Show("This subject cannot be deleted!", "Delete term", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show(Strings.SubjectDialog_Message_Warning, Strings.SubjectDialog_Title_Delete, MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-        }
-        private void OrderListOnClick(object obj)
-        {
-            var subjects = new List<Subject>(Subjects.OrderBy(s => s.Name));
-
-            Subjects.Clear();
-            Subjects.AddRange(subjects);
         }
         private async void RegisterSubjectOnClick(object obj)
         {
@@ -144,11 +128,11 @@ namespace Pluto.Wpf.ViewModels
 
             if (subject.IsRegistered)
             {
-                MessageBox.Show("This subject is already registered.", "Register subject", MessageBoxButton.OK);
+                MessageBox.Show(Strings.RegisteredSubjectDialog_Message_Registered + ".", Strings.RegisteredSubjectDialog_Title_Register, MessageBoxButton.OK);
             }
             else if (subject.IsCompleted)
             {
-                MessageBox.Show("This subject is completed.", "Register subject", MessageBoxButton.OK);
+                MessageBox.Show(Strings.RegisteredSubjectDialog_Message_Completed + ".", Strings.RegisteredSubjectDialog_Title_Register, MessageBoxButton.OK);
             }
             else
             {
@@ -167,13 +151,13 @@ namespace Pluto.Wpf.ViewModels
         {
             var subject = SelectedSubjectItem;
 
-            var result = MessageBox.Show("Do you want to unregister this subject?", "Unregister subject", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            var result = MessageBox.Show(Strings.RegisteredSubjectDialog_Question_Unregister + "?", Strings.RegisteredSubjectDialog_Title_Unregister, MessageBoxButton.OKCancel, MessageBoxImage.Question);
             if (result == MessageBoxResult.OK)
             {
                 var canBeUnregistered = await _registeredSubjectService.UnregisterSubjectAsync(subject);
 
                 if (!canBeUnregistered)
-                    MessageBox.Show("This subject is unregistered or completed.", "Unregister subject", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show(Strings.RegisteredSubjectDialog_Message_Unregister + ".", Strings.RegisteredSubjectDialog_Title_Unregister, MessageBoxButton.OK, MessageBoxImage.Warning);
 
                 SelectedSubjectIndex = -1;
             }
