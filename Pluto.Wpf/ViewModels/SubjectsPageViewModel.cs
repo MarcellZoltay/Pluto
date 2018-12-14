@@ -17,13 +17,6 @@ namespace Pluto.Wpf.ViewModels
 {
     public class SubjectsPageViewModel : BindableBase
     {
-        private string _title = "Subjects page";
-        public string Title
-        {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
-        }
-
         private bool _isLoading = true;
         public bool IsLoading
         {
@@ -128,7 +121,7 @@ namespace Pluto.Wpf.ViewModels
         {
             var attendance = SelectedAttendance;
 
-            var result = MessageBox.Show("Are you sure you want to delete this attendance?", "Delete subject", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            var result = MessageBox.Show(Strings.AttendanceDialog_Question + "?", Strings.AttendanceDialog_Title_Delete, MessageBoxButton.OKCancel, MessageBoxImage.Warning);
             if (result == MessageBoxResult.OK)
             {
                 SelectedRegisteredSubject.RemoveAttendance(attendance);

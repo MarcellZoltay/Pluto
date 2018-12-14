@@ -3,7 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"   
              xmlns:converter="clr-namespace:Pluto.Wpf.Converters"
-             prism:ViewModelLocator.AutoWireViewModel="True">
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             lex:LocalizeDictionary.DesignCulture="hu-HU"
+             lex:ResxLocalizationProvider.DefaultAssembly="Pluto.Wpf"
+             lex:ResxLocalizationProvider.DefaultDictionary="Strings">
 
     <UserControl.Resources>
         <converter:BoolToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
@@ -104,7 +108,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Column="1" Content="Loading..." Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"
+        <Label Grid.Column="1" Content="{lex:Loc Label_Loading}" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"
                HorizontalAlignment="Left"/>
 
         <ListView Grid.RowSpan="4" Name="lvRegsiteredSubjects" ItemsSource="{Binding Source={StaticResource RegisteredSubjectsViewSource}}"
@@ -130,9 +134,12 @@
                                     <ControlTemplate>
                                         <Expander IsExpanded="True">
                                             <Expander.Header>
-                                                <TextBlock Text="{Binding Name}"
-                                                           Foreground="{StaticResource lightTextColorBrush}"
-                                                           Margin="0 5"/>
+                                                <TextBlock Foreground="{StaticResource lightTextColorBrush}"
+                                                           Margin="0 5">
+                                                    <Run Text="{Binding Name, Mode=OneWay}"/>
+                                                    <Run Text=". "/>
+                                                    <Run Text="{lex:Loc Label_Term}" />
+                                                </TextBlock>
                                             </Expander.Header>
                                             <ItemsPresenter />
                                         </Expander>
@@ -152,7 +159,7 @@
                FontSize="22"/>
 
         <CheckBox Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" HorizontalAlignment="Left"
-                  Content="Completed"
+                  Content="{lex:Loc Checkbox_Completed}"
                   Margin="8"
                   FontSize="15"
                   IsChecked="{Binding ElementName=lvRegsiteredSubjects, Path=SelectedItem.IsCompleted, Mode=TwoWay}" 
@@ -160,11 +167,11 @@
 
         <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Orientation="Horizontal" Margin="8 4"
                     Visibility="{Binding ElementName=lvRegsiteredSubjects, Path=SelectedItem, Converter={StaticResource ListviewSelectedItemToVisibilityConverter}}">
-            <Button Content="Add attendance" 
+            <Button Content="{lex:Loc SubjectsPage_Button_AddAttendance}" 
                     Command="{Binding AddAttendanceCommand}" />
-            <Button Content="Edit attendance" 
+            <Button Content="{lex:Loc SubjectsPage_Button_EditAttendance}" 
                     Command="{Binding EditAttendanceCommand}"/>
-            <Button Content="Delete attendance" 
+            <Button Content="{lex:Loc SubjectsPage_Button_DeleteAttendance}" 
                     Command="{Binding DeleteAttendanceCommand}"/>
         </StackPanel>
 
@@ -174,7 +181,7 @@
                 Visibility="{Binding ElementName=lvRegsiteredSubjects, Path=SelectedItem, Converter={StaticResource ListviewSelectedItemToVisibilityConverter}}">
 
             <StackPanel>
-                <Label Content="Attendances" 
+                <Label Content="{lex:Loc SubjectsPage_Attendances}" 
                        FontSize="20"
                        Margin="0 0 0 5"/>
 

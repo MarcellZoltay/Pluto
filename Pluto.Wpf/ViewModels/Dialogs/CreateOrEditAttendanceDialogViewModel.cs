@@ -58,8 +58,8 @@ namespace Pluto.Wpf.ViewModels.Dialogs
 
         public CreateOrEditAttendanceDialogViewModel()
         {
-            Title = "Add attendance";
-            ButtonContent = "Add";
+            Title = Strings.AttendanceDialog_Title_AddAttendance;
+            ButtonContent = Strings.AttendanceDialog_Button_Add;
 
             Date = DateTime.Today;
 
@@ -67,8 +67,8 @@ namespace Pluto.Wpf.ViewModels.Dialogs
         }
         public CreateOrEditAttendanceDialogViewModel(string name, DateTime date, TimeSpan startTime, TimeSpan endTime)
         {
-            Title = "Edit attendance";
-            ButtonContent = "Save";
+            Title = Strings.AttendanceDialog_Title_EditAttendance;
+            ButtonContent = Strings.AttendanceDialog_Button_Save;
 
             AttendanceName = name;
             Date = date;

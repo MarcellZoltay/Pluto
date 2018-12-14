@@ -3,7 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:converter="clr-namespace:Pluto.Wpf.Converters"
-             prism:ViewModelLocator.AutoWireViewModel="True">
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             lex:LocalizeDictionary.DesignCulture="hu-HU"
+             lex:ResxLocalizationProvider.DefaultAssembly="Pluto.Wpf"
+             lex:ResxLocalizationProvider.DefaultDictionary="Strings">
 
     <UserControl.Resources>
         <converter:BoolToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
@@ -87,20 +91,20 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Label Content="{Binding Title}"
+            <Label Content="{lex:Loc CurriculumPage_Title}"
                    Style="{StaticResource pageTitleStyle}"/>
-            <Label Grid.Row="1" Content="Loading..." Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"
+            <Label Grid.Row="1" Content="{lex:Loc Label_Loading}" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"
                    Style="{StaticResource labelBaseStyle}"/>
         </Grid>
 
         <StackPanel Grid.Row="1" VerticalAlignment="Stretch">
-            <Button Content="New subject" Command="{Binding NewSubjectCommand}" />
-            <Button Content="Edit subject" Command="{Binding EditSubjectCommand}" />
-            <Button Content="Delete subject" Command="{Binding DeleteSubjectCommand}" />
+            <Button Content="{lex:Loc CurriculumPage_Button_NewSubject}" Command="{Binding NewSubjectCommand}" />
+            <Button Content="{lex:Loc CurriculumPage_Button_EditSubject}" Command="{Binding EditSubjectCommand}" />
+            <Button Content="{lex:Loc CurriculumPage_Button_DeleteSubject}" Command="{Binding DeleteSubjectCommand}" />
 
-            <Button Content="Register subject" Command="{Binding RegisterSubjectCommand}" 
+            <Button Content="{lex:Loc CurriculumPage_Button_RegisterSubject}" Command="{Binding RegisterSubjectCommand}" 
                     Margin="5 20 5 3"/>
-            <Button Content="Unregister subject" Command="{Binding UnregisterSubjectCommand}" />
+            <Button Content="{lex:Loc CurriculumPage_Button_UnregisterSubject}" Command="{Binding UnregisterSubjectCommand}" />
         </StackPanel>
 
         <Border Grid.Column="1" Grid.Row="1"
@@ -116,7 +120,7 @@
                 </ListView.Background>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Name">
+                        <GridViewColumn Header="{lex:Loc CurriculumPage_ListviewHeader_Name}">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock x:Name="Name" Text="{Binding Name}"/>
@@ -124,7 +128,7 @@
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
-                        <GridViewColumn Header="Credit">
+                        <GridViewColumn Header="{lex:Loc CurriculumPage_ListviewHeader_Credit}">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock x:Name="Credit" Text="{Binding Credit}" HorizontalAlignment="Center"/>
@@ -132,7 +136,7 @@
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
-                        <GridViewColumn Header="Registered">
+                        <GridViewColumn Header="{lex:Loc CurriculumPage_ListviewHeader_Registered}">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <CheckBox x:Name="Registered" IsChecked="{Binding IsRegistered}" IsEnabled="False" HorizontalAlignment="Center"/>
@@ -140,7 +144,7 @@
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
-                        <GridViewColumn Header="Completed">
+                        <GridViewColumn Header="{lex:Loc CurriculumPage_ListviewHeader_Completed}">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <CheckBox x:Name="Completed" IsChecked="{Binding IsCompleted}" IsEnabled="False" HorizontalAlignment="Center"/>

@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AttendanceDialog_Back" xml:space="preserve">
+    <value>Vissza</value>
+  </data>
+  <data name="AttendanceDialog_Button_Add" xml:space="preserve">
+    <value>Hozzáad</value>
+  </data>
+  <data name="AttendanceDialog_Button_Save" xml:space="preserve">
+    <value>Mentés</value>
+  </data>
+  <data name="AttendanceDialog_Date" xml:space="preserve">
+    <value>Dátum:</value>
+  </data>
+  <data name="AttendanceDialog_EndTime" xml:space="preserve">
+    <value>Vég:</value>
+  </data>
+  <data name="AttendanceDialog_Name" xml:space="preserve">
+    <value>Név:</value>
+  </data>
+  <data name="AttendanceDialog_Question" xml:space="preserve">
+    <value>Biztos törölni szeretnéd ezt a jelenlétet</value>
+  </data>
+  <data name="AttendanceDialog_StartTime" xml:space="preserve">
+    <value>Kezdés:</value>
+  </data>
+  <data name="AttendanceDialog_TimeFormat" xml:space="preserve">
+    <value>óó:pp</value>
+  </data>
+  <data name="AttendanceDialog_Title_AddAttendance" xml:space="preserve">
+    <value>Jelenlét hozzáadása</value>
+  </data>
+  <data name="AttendanceDialog_Title_Delete" xml:space="preserve">
+    <value>Jelenlét törlése</value>
+  </data>
+  <data name="AttendanceDialog_Title_EditAttendance" xml:space="preserve">
+    <value>Jelenlét szerkesztése</value>
+  </data>
+  <data name="Button_Curriculum" xml:space="preserve">
+    <value>Tanterv</value>
+  </data>
+  <data name="Button_Language" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Button_Subjects" xml:space="preserve">
+    <value>Tárgyak</value>
+  </data>
+  <data name="Button_Terms" xml:space="preserve">
+    <value>Félévek</value>
+  </data>
+  <data name="Checkbox_Completed" xml:space="preserve">
+    <value>Teljesített</value>
+  </data>
+  <data name="CurriculumPage_Button_DeleteSubject" xml:space="preserve">
+    <value>Tantárgy törlése</value>
+  </data>
+  <data name="CurriculumPage_Button_EditSubject" xml:space="preserve">
+    <value>Tantárgy szerkesztése</value>
+  </data>
+  <data name="CurriculumPage_Button_NewSubject" xml:space="preserve">
+    <value>Új tantárgy</value>
+  </data>
+  <data name="CurriculumPage_Button_RegisterSubject" xml:space="preserve">
+    <value>Tantárgy felvétele</value>
+  </data>
+  <data name="CurriculumPage_Button_UnregisterSubject" xml:space="preserve">
+    <value>Tantárgy leadása</value>
+  </data>
+  <data name="CurriculumPage_ListviewHeader_Completed" xml:space="preserve">
+    <value>Telejesített</value>
+  </data>
+  <data name="CurriculumPage_ListviewHeader_Credit" xml:space="preserve">
+    <value>Kredit</value>
+  </data>
+  <data name="CurriculumPage_ListviewHeader_Name" xml:space="preserve">
+    <value>Tárgynév</value>
+  </data>
+  <data name="CurriculumPage_ListviewHeader_Registered" xml:space="preserve">
+    <value>Felvett</value>
+  </data>
+  <data name="CurriculumPage_Title" xml:space="preserve">
+    <value>Tanterv</value>
+  </data>
+  <data name="Label_Loading" xml:space="preserve">
+    <value>Töltés...</value>
+  </data>
+  <data name="Label_Term" xml:space="preserve">
+    <value>félév</value>
+  </data>
+  <data name="RegisteredSubjectDialog_Button_Back" xml:space="preserve">
+    <value>Vissza</value>
+  </data>
+  <data name="RegisteredSubjectDialog_Button_Register" xml:space="preserve">
+    <value>Felvétel</value>
+  </data>
+  <data name="RegisteredSubjectDialog_Message_Completed" xml:space="preserve">
+    <value>Ez a tárgy teljesítve van</value>
+  </data>
+  <data name="RegisteredSubjectDialog_Message_Registered" xml:space="preserve">
+    <value>Ez a tárgy fel van véve</value>
+  </data>
+  <data name="RegisteredSubjectDialog_Message_Unregister" xml:space="preserve">
+    <value>Ez a tárgy le van adva vagy teljesített</value>
+  </data>
+  <data name="RegisteredSubjectDialog_Question_Unregister" xml:space="preserve">
+    <value>Le akarod adni ezt a tárgyat</value>
+  </data>
+  <data name="RegisteredSubjectDialog_Title_Register" xml:space="preserve">
+    <value>Tantárgy felvétele</value>
+  </data>
+  <data name="RegisteredSubjectDialog_Title_Unregister" xml:space="preserve">
+    <value>Tantárgy leadása</value>
+  </data>
+  <data name="RegisterSubjectDialog_SelectTerm" xml:space="preserve">
+    <value>Válassz félévet:</value>
+  </data>
+  <data name="SubjectDialog_Back" xml:space="preserve">
+    <value>Vissza</value>
+  </data>
+  <data name="SubjectDialog_Button_Create" xml:space="preserve">
+    <value>Létrehoz</value>
+  </data>
+  <data name="SubjectDialog_Button_Save" xml:space="preserve">
+    <value>Mentés</value>
+  </data>
+  <data name="SubjectDialog_Credit" xml:space="preserve">
+    <value>Kredit:</value>
+  </data>
+  <data name="SubjectDialog_Message_Question" xml:space="preserve">
+    <value>Biztos törölni akarod a(z)</value>
+  </data>
+  <data name="SubjectDialog_Message_Warning" xml:space="preserve">
+    <value>Ezt a tárgyat nem lehet törölni!</value>
+  </data>
+  <data name="SubjectDialog_Name" xml:space="preserve">
+    <value>Tárgynév:</value>
+  </data>
+  <data name="SubjectDialog_Question_SubjectWord" xml:space="preserve">
+    <value>tárgyat</value>
+  </data>
+  <data name="SubjectDialog_Title_Create" xml:space="preserve">
+    <value>Új tantárgy</value>
+  </data>
+  <data name="SubjectDialog_Title_Delete" xml:space="preserve">
+    <value>Tantárgy törlése</value>
+  </data>
+  <data name="SubjectDialog_Title_Edit" xml:space="preserve">
+    <value>Tantárgy szerkesztése</value>
+  </data>
+  <data name="SubjectsPage_Attendances" xml:space="preserve">
+    <value>Jelenlét</value>
+  </data>
+  <data name="SubjectsPage_Button_AddAttendance" xml:space="preserve">
+    <value>Új jelenlét</value>
+  </data>
+  <data name="SubjectsPage_Button_DeleteAttendance" xml:space="preserve">
+    <value>Jelenlét törlése</value>
+  </data>
+  <data name="SubjectsPage_Button_EditAttendance" xml:space="preserve">
+    <value>Jelenlét szerkesztése</value>
+  </data>
+  <data name="TermDialog_Back" xml:space="preserve">
+    <value>Vissza</value>
+  </data>
+  <data name="TermDialog_Button_Create" xml:space="preserve">
+    <value>Létrehoz</value>
+  </data>
+  <data name="TermDialog_Button_Save" xml:space="preserve">
+    <value>Mentés</value>
+  </data>
+  <data name="TermDialog_Checkbox_Active" xml:space="preserve">
+    <value>Aktív</value>
+  </data>
+  <data name="TermDialog_EndDate" xml:space="preserve">
+    <value>Vég dátum:</value>
+  </data>
+  <data name="TermDIalog_Meassage_DeleteLastTerm" xml:space="preserve">
+    <value>Ezt a félévet nem lehet törölni! Csak nem lezárt és üres félévet lehet törölni</value>
+  </data>
+  <data name="TermDialog_Message_CloseTerm" xml:space="preserve">
+    <value>Ezt a félévet nem lehet lezárni</value>
+  </data>
+  <data name="TermDialog_Question_CloseTerm" xml:space="preserve">
+    <value>Biztos le szeretnéd zárni ezt a félévet</value>
+  </data>
+  <data name="TermDialog_Question_DeleteLastTerm" xml:space="preserve">
+    <value>Biztos törölni szeretnéd az utolsó félévet</value>
+  </data>
+  <data name="TermDialog_StartDate" xml:space="preserve">
+    <value>Kezdő dátum:</value>
+  </data>
+  <data name="TermDialog_Title_CloseTerm" xml:space="preserve">
+    <value>Félév lezárása</value>
+  </data>
+  <data name="TermDialog_Title_CreateTerm" xml:space="preserve">
+    <value>Félév létrehozása</value>
+  </data>
+  <data name="TermDialog_Title_DeleteLastTerm" xml:space="preserve">
+    <value>Utolsó félév törlése</value>
+  </data>
+  <data name="TermDialog_Title_EditTerm" xml:space="preserve">
+    <value>Félév szerkesztése</value>
+  </data>
+  <data name="TermsPage_Button_CloseTerm" xml:space="preserve">
+    <value>Féléve lezárása</value>
+  </data>
+  <data name="TermsPage_Button_DeleteLastTerm" xml:space="preserve">
+    <value>Utolsó félév törlése</value>
+  </data>
+  <data name="TermsPage_Button_EditTerm" xml:space="preserve">
+    <value>Félév szerkesztése</value>
+  </data>
+  <data name="TermsPage_Button_NewTerm" xml:space="preserve">
+    <value>Új félév</value>
+  </data>
+  <data name="TermsPage_Checkbox_Active" xml:space="preserve">
+    <value>Aktív</value>
+  </data>
+  <data name="TermsPage_Checkbox_Closed" xml:space="preserve">
+    <value>Lezárt</value>
+  </data>
+  <data name="TermsPage_Credits" xml:space="preserve">
+    <value>kredit</value>
+  </data>
+  <data name="TermsPage_RegisteredCredits" xml:space="preserve">
+    <value>Felvett kredit:</value>
+  </data>
+  <data name="TermsPage_Title" xml:space="preserve">
+    <value>Félévek</value>
+  </data>
+</root>

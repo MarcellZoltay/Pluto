@@ -79,6 +79,41 @@
           "lib/net45/Microsoft.Practices.Unity.dll": {}
         }
       },
+      "WPFLocalizeExtension/3.3.1": {
+        "type": "package",
+        "dependencies": {
+          "XAMLMarkupExtensions": "1.5.1"
+        },
+        "frameworkAssemblies": [
+          "System.Management"
+        ],
+        "compile": {
+          "lib/net452/WPFLocalizeExtension.dll": {}
+        },
+        "runtime": {
+          "lib/net452/WPFLocalizeExtension.dll": {}
+        }
+      },
+      "XAMLMarkupExtensions/1.5.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "PresentationCore",
+          "PresentationFramework",
+          "System",
+          "System.Core",
+          "System.Drawing",
+          "System.Xaml",
+          "System.Xml",
+          "System.Xml.Linq",
+          "WindowsBase"
+        ],
+        "compile": {
+          "lib/net452/XAMLMarkupExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/net452/XAMLMarkupExtensions.dll": {}
+        }
+      },
       "Pluto.BLL/1.0.0": {
         "type": "project",
         "dependencies": {
@@ -177,6 +212,41 @@
           "lib/net45/Microsoft.Practices.Unity.Configuration.dll": {},
           "lib/net45/Microsoft.Practices.Unity.RegistrationByConvention.dll": {},
           "lib/net45/Microsoft.Practices.Unity.dll": {}
+        }
+      },
+      "WPFLocalizeExtension/3.3.1": {
+        "type": "package",
+        "dependencies": {
+          "XAMLMarkupExtensions": "1.5.1"
+        },
+        "frameworkAssemblies": [
+          "System.Management"
+        ],
+        "compile": {
+          "lib/net452/WPFLocalizeExtension.dll": {}
+        },
+        "runtime": {
+          "lib/net452/WPFLocalizeExtension.dll": {}
+        }
+      },
+      "XAMLMarkupExtensions/1.5.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "PresentationCore",
+          "PresentationFramework",
+          "System",
+          "System.Core",
+          "System.Drawing",
+          "System.Xaml",
+          "System.Xml",
+          "System.Xml.Linq",
+          "WindowsBase"
+        ],
+        "compile": {
+          "lib/net452/XAMLMarkupExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/net452/XAMLMarkupExtensions.dll": {}
         }
       },
       "Pluto.BLL/1.0.0": {
@@ -279,6 +349,41 @@
           "lib/net45/Microsoft.Practices.Unity.dll": {}
         }
       },
+      "WPFLocalizeExtension/3.3.1": {
+        "type": "package",
+        "dependencies": {
+          "XAMLMarkupExtensions": "1.5.1"
+        },
+        "frameworkAssemblies": [
+          "System.Management"
+        ],
+        "compile": {
+          "lib/net452/WPFLocalizeExtension.dll": {}
+        },
+        "runtime": {
+          "lib/net452/WPFLocalizeExtension.dll": {}
+        }
+      },
+      "XAMLMarkupExtensions/1.5.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "PresentationCore",
+          "PresentationFramework",
+          "System",
+          "System.Core",
+          "System.Drawing",
+          "System.Xaml",
+          "System.Xml",
+          "System.Xml.Linq",
+          "WindowsBase"
+        ],
+        "compile": {
+          "lib/net452/XAMLMarkupExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/net452/XAMLMarkupExtensions.dll": {}
+        }
+      },
       "Pluto.BLL/1.0.0": {
         "type": "project",
         "dependencies": {
@@ -377,6 +482,41 @@
           "lib/net45/Microsoft.Practices.Unity.Configuration.dll": {},
           "lib/net45/Microsoft.Practices.Unity.RegistrationByConvention.dll": {},
           "lib/net45/Microsoft.Practices.Unity.dll": {}
+        }
+      },
+      "WPFLocalizeExtension/3.3.1": {
+        "type": "package",
+        "dependencies": {
+          "XAMLMarkupExtensions": "1.5.1"
+        },
+        "frameworkAssemblies": [
+          "System.Management"
+        ],
+        "compile": {
+          "lib/net452/WPFLocalizeExtension.dll": {}
+        },
+        "runtime": {
+          "lib/net452/WPFLocalizeExtension.dll": {}
+        }
+      },
+      "XAMLMarkupExtensions/1.5.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "PresentationCore",
+          "PresentationFramework",
+          "System",
+          "System.Core",
+          "System.Drawing",
+          "System.Xaml",
+          "System.Xml",
+          "System.Xml.Linq",
+          "WindowsBase"
+        ],
+        "compile": {
+          "lib/net452/XAMLMarkupExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/net452/XAMLMarkupExtensions.dll": {}
         }
       },
       "Pluto.BLL/1.0.0": {
@@ -520,6 +660,41 @@
         "unity.nuspec"
       ]
     },
+    "WPFLocalizeExtension/3.3.1": {
+      "sha512": "p2YA4ddMXwIe4efABX8fVCBniYwg64DYtPDcR450NYE1WhKaB5lGPDUTTAtO0sDs33U+ZEy8pHDfvNfJrHprYQ==",
+      "type": "package",
+      "path": "wpflocalizeextension/3.3.1",
+      "files": [
+        ".signature.p7s",
+        "lib/net35/WPFLocalizeExtension.dll",
+        "lib/net35/WPFLocalizeExtension.pdb",
+        "lib/net35/WPFLocalizeExtension.xml",
+        "lib/net452/WPFLocalizeExtension.dll",
+        "lib/net452/WPFLocalizeExtension.pdb",
+        "lib/net452/WPFLocalizeExtension.xml",
+        "wpflocalizeextension.3.3.1.nupkg.sha512",
+        "wpflocalizeextension.nuspec"
+      ]
+    },
+    "XAMLMarkupExtensions/1.5.1": {
+      "sha512": "0KbGbtNm33C/q++KrzpvE2fsRopsAFCiYgz7iYZ5dS6wY3MOeOl7jJWp4hfkm5eldDImMShYCa/g4/7RZaB94Q==",
+      "type": "package",
+      "path": "xamlmarkupextensions/1.5.1",
+      "files": [
+        ".signature.p7s",
+        "lib/net35/XAMLMarkupExtensions.dll",
+        "lib/net35/XAMLMarkupExtensions.pdb",
+        "lib/net35/XAMLMarkupExtensions.xml",
+        "lib/net40/XAMLMarkupExtensions.dll",
+        "lib/net40/XAMLMarkupExtensions.pdb",
+        "lib/net40/XAMLMarkupExtensions.xml",
+        "lib/net452/XAMLMarkupExtensions.dll",
+        "lib/net452/XAMLMarkupExtensions.pdb",
+        "lib/net452/XAMLMarkupExtensions.xml",
+        "xamlmarkupextensions.1.5.1.nupkg.sha512",
+        "xamlmarkupextensions.nuspec"
+      ]
+    },
     "Pluto.BLL/1.0.0": {
       "type": "project",
       "path": "../Pluto.BLL/Pluto.BLL.csproj",
@@ -535,7 +710,8 @@
     ".NETFramework,Version=v4.6.1": [
       "EntityFramework >= 6.2.0",
       "Pluto.BLL >= 1.0.0",
-      "Prism.Unity >= 6.3.0"
+      "Prism.Unity >= 6.3.0",
+      "WPFLocalizeExtension >= 3.3.1"
     ]
   },
   "packageFolders": {
@@ -582,6 +758,10 @@
           "Prism.Unity": {
             "target": "Package",
             "version": "[6.3.0, )"
+          },
+          "WPFLocalizeExtension": {
+            "target": "Package",
+            "version": "[3.3.1, )"
           }
         }
       }

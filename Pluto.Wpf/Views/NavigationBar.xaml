@@ -2,8 +2,11 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Pluto.Wpf.Views"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             lex:LocalizeDictionary.DesignCulture="hu-HU"
+             lex:ResxLocalizationProvider.DefaultAssembly="Pluto.Wpf"
+             lex:ResxLocalizationProvider.DefaultDictionary="Strings"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              x:Name="navigationbar">
@@ -16,9 +19,10 @@
     </UserControl.Resources>
     
     <WrapPanel Margin="10 0">
-        <Button Content="Tanterv" Command="{Binding ElementName=navigationbar, Path=CurriculumPageCommand}" />
-        <Button Content="Félévek" Command="{Binding ElementName=navigationbar, Path=TermsPageCommand}" />
-        <Button Content="Tantárgyak" Command="{Binding ElementName=navigationbar, Path=SubjectsPageCommand}" />
+        <Button Content="{lex:Loc Button_Curriculum}" Command="{Binding ElementName=navigationbar, Path=CurriculumPageCommand}" />
+        <Button Content="{lex:Loc Button_Terms}" Command="{Binding ElementName=navigationbar, Path=TermsPageCommand}" />
+        <Button Content="{lex:Loc Button_Subjects}" Command="{Binding ElementName=navigationbar, Path=SubjectsPageCommand}" />
+        <Button Content="{lex:Loc Button_Language}" Command="{Binding ElementName=navigationbar, Path=LanguageCommand}" />
     </WrapPanel>
 
 </UserControl>

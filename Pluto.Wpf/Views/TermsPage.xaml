@@ -3,7 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:converter="clr-namespace:Pluto.Wpf.Converters"            
-             prism:ViewModelLocator.AutoWireViewModel="True">
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             lex:LocalizeDictionary.DesignCulture="hu-HU"
+             lex:ResxLocalizationProvider.DefaultAssembly="Pluto.Wpf"
+             lex:ResxLocalizationProvider.DefaultDictionary="Strings">
 
     <UserControl.Resources>
         <converter:BoolToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
@@ -67,18 +71,18 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Label Content="{Binding Title}" 
+            <Label Content="{lex:Loc TermsPage_Title}" 
                    Style="{StaticResource pageTitleStyle}"/>
-            <Label Grid.Row="1" Content="Loading..." Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            <Label Grid.Row="1" Content="{lex:Loc Label_Loading}" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" />
         </Grid>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal"
                     VerticalAlignment="Center"
                     Margin="0 4">
-            <Button Content="New term" Command="{Binding NewTermCommand}" />
-            <Button Content="Edit term" Command="{Binding EditTermCommand}" />
-            <Button Content="Delete last term" Command="{Binding DeleteLastTermCommand}" />
-            <Button Content="Close term" Command="{Binding CloseTermCommand}" />
+            <Button Content="{lex:Loc TermsPage_Button_NewTerm}" Command="{Binding NewTermCommand}" />
+            <Button Content="{lex:Loc TermsPage_Button_EditTerm}" Command="{Binding EditTermCommand}" />
+            <Button Content="{lex:Loc TermsPage_Button_DeleteLastTerm}" Command="{Binding DeleteLastTermCommand}" />
+            <Button Content="{lex:Loc TermsPage_Button_CloseTerm}" Command="{Binding CloseTermCommand}" />
         </StackPanel>
 
         <Border Grid.Row="2"
@@ -104,13 +108,16 @@
                             </Grid.RowDefinitions>
 
                             <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
-                                <TextBlock Text="{Binding Name}"
-                                            FontSize="16" FontWeight="Bold"
-                                            Margin="0 0 40 0" />
-                                <CheckBox Content="Active" IsChecked="{Binding IsActive, Mode=OneWay}" IsEnabled="False" 
-                                            Margin="0 0 10 0"/>
-                                <CheckBox Content="Closed" IsChecked="{Binding IsClosed, Mode=OneWay}" IsEnabled="False" 
-                                            Margin="0 0 10 0"/>
+                                <TextBlock FontSize="16" FontWeight="Bold"
+                                           Margin="0 0 40 0">
+                                    <Run Text="{Binding Name}" />
+                                    <Run Text=". " />
+                                    <Run Text="{lex:Loc Label_Term}" />
+                                </TextBlock>
+                                <CheckBox Content="{lex:Loc TermsPage_Checkbox_Active}" IsChecked="{Binding IsActive, Mode=OneWay}" IsEnabled="False" 
+                                          Margin="0 0 10 0"/>
+                                <CheckBox Content="{lex:Loc TermsPage_Checkbox_Closed}" IsChecked="{Binding IsClosed, Mode=OneWay}" IsEnabled="False" 
+                                          Margin="0 0 10 0"/>
                                 <TextBlock Margin="30 0 0 0" VerticalAlignment="Center">
                                     <Run Text="{Binding Period.StartDate, StringFormat=yyyy.MM.dd.}" />
                                     <Run Text=" - " />
@@ -119,8 +126,9 @@
                             </StackPanel>
 
                             <TextBlock Grid.Row="1"
-                                        Margin="0 0 0 3">
-                                <Run Text="Registered credits: "/>
+                                       Margin="0 0 0 3">
+                                <Run Text="{lex:Loc TermsPage_RegisteredCredits}"/>
+                                <Run Text=" " />
                                 <Run Text="{Binding RegisteredCredits, Mode=OneWay}"/>
                             </TextBlock>
 
@@ -138,9 +146,10 @@
                                             <TextBlock Grid.Column="0" Text="{Binding Name}"/>
                                             <TextBlock Grid.Column="1"> 
                                                 <Run Text="{Binding Credit}"/>
-                                                <Run Text=" credits"/>
+                                                <Run Text=" " />
+                                                <Run Text="{lex:Loc TermsPage_Credits}"/>
                                             </TextBlock>
-                                            <CheckBox Grid.Column="2" Content="Completed" IsChecked="{Binding IsCompleted}"
+                                            <CheckBox Grid.Column="2" Content="{lex:Loc Checkbox_Completed}" IsChecked="{Binding IsCompleted}"
                                                         IsEnabled="False"/>
                                         </Grid>
                                     </DataTemplate>

@@ -16,13 +16,6 @@ namespace Pluto.Wpf.ViewModels
 {
     public class TermsPageViewModel : BindableBase
     {
-        private string _title = "Terms page";
-        public string Title
-        {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
-        }
-
         private ObservableCollection<Term> terms;
         public ObservableCollection<Term> Terms
         {
@@ -76,7 +69,7 @@ namespace Pluto.Wpf.ViewModels
 
         private async void NewTermOnClick(object obj)
         {
-            var termName = (Terms.Count + 1).ToString() + ". term";
+            var termName = (Terms.Count + 1).ToString();
             var dialogViewModel = new CreateOrEditTermDialogViewModel(termName);
             if (dialogViewModel.ShowDialog() == true)
             {
@@ -89,7 +82,7 @@ namespace Pluto.Wpf.ViewModels
                 }
                 catch(InvalidOperationException e)
                 {
-                    MessageBox.Show(e.Message, "Create term", MessageBoxButton.OK);
+                    MessageBox.Show(e.Message, Strings.TermDialog_Title_CreateTerm, MessageBoxButton.OK);
                 }
             }
         }
@@ -124,7 +117,7 @@ namespace Pluto.Wpf.ViewModels
                 }
                 catch (InvalidOperationException e)
                 {
-                    MessageBox.Show(e.Message, "Edit term", MessageBoxButton.OK);
+                    MessageBox.Show(e.Message, Strings.TermDialog_Title_EditTerm, MessageBoxButton.OK);
                 }
 
                 SelectedTermIndex = -1;
@@ -132,26 +125,26 @@ namespace Pluto.Wpf.ViewModels
         }
         private async void DeleteLastTermOnClick(object obj)
         {
-            var result = MessageBox.Show("Are you sure you want to delete the last term?", "Delete term", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            var result = MessageBox.Show(Strings.TermDialog_Question_DeleteLastTerm + "?", Strings.TermDialog_Title_DeleteLastTerm, MessageBoxButton.OKCancel, MessageBoxImage.Warning);
             if (result == MessageBoxResult.OK)
             {
                 var deletable = await _termService.DeleteLastTermAsync();
                 if (deletable)
                     Terms.RemoveAt(Terms.Count - 1);
                 else
-                    MessageBox.Show("This term cannot be deleted! Only not closed and empty term can be deleted.", "Delete term", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show(Strings.TermDIalog_Meassage_DeleteLastTerm + ".", Strings.TermDialog_Title_DeleteLastTerm, MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
         private async void CloseTermOnClick(object obj)
         {
             var term = SelectedTerm;
 
-            var result = MessageBox.Show("Are you sure you want to close this term?", "Close term", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            var result = MessageBox.Show(Strings.TermDialog_Question_CloseTerm + "?", Strings.TermDialog_Title_CloseTerm, MessageBoxButton.OKCancel, MessageBoxImage.Warning);
             if (result == MessageBoxResult.OK)
             {
                 var canBeClosed = await _termService.CloseTermAsync(term);
                 if (!canBeClosed)
-                    MessageBox.Show("This term cannot be closed!", "Close term", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show(Strings.TermDialog_Message_CloseTerm + "!", Strings.TermDialog_Title_CloseTerm, MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
     }
