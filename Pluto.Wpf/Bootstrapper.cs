@@ -37,6 +37,8 @@ namespace Pluto.Wpf
             Container.RegisterType<ISubjectService, SubjectService>(new ContainerControlledLifetimeManager());
             Container.RegisterType<ITermService, TermService>(new ContainerControlledLifetimeManager());
             Container.RegisterType<IRegisteredSubjectService, RegisteredSubjectService>(new ContainerControlledLifetimeManager());
+
+            Container.RegisterInstance(Container);
         }
     }
 }

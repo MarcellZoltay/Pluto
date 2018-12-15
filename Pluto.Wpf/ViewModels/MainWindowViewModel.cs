@@ -1,4 +1,6 @@
-﻿using Prism.Commands;
+﻿using Microsoft.Practices.Unity;
+using Pluto.Wpf.Views;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
 using System.Globalization;
@@ -8,6 +10,7 @@ namespace Pluto.Wpf.ViewModels
     public class MainWindowViewModel : BindableBase
     {
         private readonly IRegionManager regionManager;
+        private readonly IUnityContainer unityContainer;
 
         private string _title = "Pluto";
         public string Title
@@ -21,14 +24,19 @@ namespace Pluto.Wpf.ViewModels
         public DelegateCommand NavigateToSubjectsPageCommand { get; set; }
         public DelegateCommand LanguageCommand { get; set; }
 
-        public MainWindowViewModel(IRegionManager regionManager)
+        public MainWindowViewModel(IRegionManager regionManager, IUnityContainer unityContainer)
         {
             this.regionManager = regionManager;
+            this.unityContainer = unityContainer;
 
             NavigateToCurriculumPageCommand = new DelegateCommand(NavigateToCurriculumPage);
             NavigateToTermsPageCommand = new DelegateCommand(NavigateToTermsPage);
             NavigateToSubjectsPageCommand = new DelegateCommand(NavigateToSubjectsPage);
             LanguageCommand = new DelegateCommand(ChangeLanguage);
+
+            regionManager.RegisterViewWithRegion("MainRegion", () => unityContainer.Resolve<WelcomePage>());
+
+            WPFLocalizeExtension.Engine.LocalizeDictionary.Instance.Culture = new CultureInfo(Properties.Settings.Default.Localization);
         }
 
         private void NavigateToCurriculumPage()
@@ -52,11 +60,15 @@ namespace Pluto.Wpf.ViewModels
 
             if (language)
             {
-               WPFLocalizeExtension.Engine.LocalizeDictionary.Instance.Culture = new CultureInfo("hu-HU");
+                WPFLocalizeExtension.Engine.LocalizeDictionary.Instance.Culture = new CultureInfo("hu-HU");
+                Properties.Settings.Default.Localization = "hu-HU";
+                Properties.Settings.Default.Save();
             }
             else
             {
                 WPFLocalizeExtension.Engine.LocalizeDictionary.Instance.Culture = new CultureInfo("en");
+                Properties.Settings.Default.Localization = "en";
+                Properties.Settings.Default.Save();
             }
         }
     }

@@ -67,3 +67,5 @@ C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\en\Pluto.Wpf.resources.
 C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Pluto.Wpf.Strings.resources
 C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Pluto.Wpf.Strings.hu-Hu.resources
 C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Pluto.Wpf.Strings.en.resources
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\WelcomePage.baml
+C:\Data\SoftwareProjects\Pluto\Pluto\Pluto.Wpf\obj\Debug\Views\WelcomePage.g.cs
