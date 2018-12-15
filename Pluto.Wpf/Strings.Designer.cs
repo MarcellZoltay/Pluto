@@ -322,6 +322,15 @@ namespace Pluto.Wpf {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Welcome!.
+        /// </summary>
+        public static string Label_Welcome {
+            get {
+                return ResourceManager.GetString("Label_Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back.
         /// </summary>
         public static string RegisteredSubjectDialog_Button_Back {

@@ -345,4 +345,7 @@
   <data name="TermsPage_Title" xml:space="preserve">
     <value>Félévek</value>
   </data>
+  <data name="Label_Welcome" xml:space="preserve">
+    <value>Üdvözlünk!</value>
+  </data>
 </root>
